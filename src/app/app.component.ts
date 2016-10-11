@@ -18,18 +18,22 @@ export class MyApp {
       StatusBar.styleDefault();
 
       let secureStorage: SecureStorage = new SecureStorage();
-      secureStorage.get('isFirstLogin').then(() => {
-        this.rootPage = HomePage;
-      }).catch(() => {
-        this.rootPage = OnboardPage;
-        secureStorage.create('babydate').then(() => {
-          secureStorage.set('isFirstLogin', 'true').then().catch(error => {
+      secureStorage.create('babydate').then(() => {
+        secureStorage.get('isFirstLogin').then(() => {
+          this.rootPage = HomePage;
+        }).catch(error => {
+          this.rootPage = OnboardPage;
+          secureStorage.set('isFirstLogin', 'true').then(key => {
+            console.log(key);
+          }).catch(error => {
             console.log(error);
           });
-        }).catch(error => {
-          console.log(error);
         });
+      }).catch(error => {
+        this.rootPage = OnboardPage;
+        console.log(error);
       });
     });
+
   }
 }
