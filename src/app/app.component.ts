@@ -23,7 +23,6 @@ export class MyApp {
         let secureStorage: SecureStorage = new SecureStorage();
         secureStorage.create('babydate').then(() => {
           secureStorage.get('version').then(data => {
-
             if (semver.lt(data, ver) == true) {
               this.rootPage = OnboardPage;
               secureStorage.set('version', ver).then(key => {
@@ -32,7 +31,6 @@ export class MyApp {
                 console.log(error);
               });
             } else {
-              console.log(ver);
               this.rootPage = HomePage;
             }
 
