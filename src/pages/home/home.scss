@@ -1,3 +1,10 @@
 page-home {
+  .toolbar-title {
+    color: $common-color;
+  }
 
+  .toolbar-background {
+    background-color: $header-background-color;
+    border: none;
+  }
 }

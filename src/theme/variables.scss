@@ -10,8 +10,10 @@
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$text-color:        #000;
-$background-color:  #fff;
+$text-color:              #000;
+$background-color:        #fff;
+$common-color:            #f35fa3;
+$header-background-color: #fff;
 
 
 // Named Color Variables
@@ -28,7 +30,8 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  favorite:   #69BB7B
+  favorite:   #69BB7B,
+  common:     $common-color,
 );
 
 
