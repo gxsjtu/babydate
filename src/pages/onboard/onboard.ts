@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
-
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 /*
   Generated class for the Onboard page.
 
@@ -13,19 +12,8 @@ import { NavController, Slides } from 'ionic-angular';
 })
 export class OnboardPage {
 
-  @ViewChild('onboardSlider') slider: Slides;
+  constructor(public navCtrl: NavController) {
 
-  onboardSliderOptions = {
-    pager: true
   }
-
-  onOnboardSliderChange(){
-    if(this.slider.isBeginning() == true){
-      //不能右滑
-      console.log(this.slider.getSlider());
-    }
-  }
-
-  constructor(public navCtrl: NavController) {}
 
 }

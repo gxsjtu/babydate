@@ -3,7 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { OnboardPage } from '../pages/onboard/onboard';
 import { HomePage } from '../pages/home/home';
-import { SecureStorage } from 'ionic-native';
+import { SecureStorage, AppVersion } from 'ionic-native';
+import * as semver from 'semver';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
@@ -17,22 +18,42 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
 
-      let secureStorage: SecureStorage = new SecureStorage();
-      secureStorage.create('babydate').then(() => {
-        secureStorage.get('isFirstLogin').then(() => {
-          this.rootPage = HomePage;
+      AppVersion.getVersionNumber().then(ver => {
+
+        let secureStorage: SecureStorage = new SecureStorage();
+        secureStorage.create('babydate').then(() => {
+          secureStorage.get('version').then(data => {
+
+            if (semver.lt(data, ver) == true) {
+              this.rootPage = OnboardPage;
+              secureStorage.set('version', ver).then(key => {
+                console.log(ver);
+              }).catch(error => {
+                console.log(error);
+              });
+            } else {
+              console.log(ver);
+              this.rootPage = HomePage;
+            }
+
+          }).catch(error => {
+            this.rootPage = OnboardPage;
+            secureStorage.set('version', ver).then(key => {
+              console.log(ver);
+            }).catch(error => {
+              console.log(error);
+            });
+          });
         }).catch(error => {
           this.rootPage = OnboardPage;
-          secureStorage.set('isFirstLogin', 'true').then(key => {
-            console.log(key);
-          }).catch(error => {
-            console.log(error);
-          });
+          console.log(error);
         });
+
       }).catch(error => {
-        this.rootPage = OnboardPage;
         console.log(error);
+        this.rootPage = OnboardPage;
       });
+
     });
 
   }
