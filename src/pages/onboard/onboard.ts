@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+declare var Swiper: any;
 
 /*
   Generated class for the Onboard page.
@@ -12,26 +13,31 @@ import { NavController, Slides } from 'ionic-angular';
   templateUrl: 'onboard.html'
 })
 export class OnboardPage {
-  @ViewChild('onboardSlider') slider: Slides;
-  onboardSliderOptions = {
-    pager: true,
-    speed: 20,
-    allowSwipeToPrev: false
-  };
 
   constructor(public navCtrl: NavController) {
 
   }
 
-  onSliderChanged() {
-    this.slider.getSlider().params.allowSwipeToPrev = true;
-    this.slider.getSlider().params.allowSwipeToNext = true;
-    if (this.slider.isBeginning() == true) {
-      this.slider.getSlider().params.allowSwipeToPrev = false;
-    }
-    if (this.slider.isEnd() == true) {
-      this.slider.getSlider().params.allowSwipeToNext = false;
-    }
+  ionViewDidEnter() {
+
+    let onboardSwiper = new Swiper('.swiper-container', {
+      speed: 50,
+      paginationClickable: true,
+      pagination: '.swiper-pagination',
+      allowSwipeToPrev: false
+    });
+
+    onboardSwiper.on('slideChangeEnd', () => {
+      onboardSwiper.unlockSwipeToPrev();
+      onboardSwiper.unlockSwipeToNext();
+
+      if (onboardSwiper.isBeginning == true) {
+        onboardSwiper.lockSwipeToPrev();
+      } if (onboardSwiper.isEnd == true) {
+        onboardSwiper.lockSwipeToNext();
+      }
+    });
+
   }
 
 }

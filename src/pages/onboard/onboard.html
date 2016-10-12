@@ -5,18 +5,12 @@
   Ionic pages and navigation.
 -->
 <!-- Slider main container -->
-<ion-slides [options]='onboardSliderOptions' #onboardSlider (ionDidChange)="onSliderChanged()">
 
-  <ion-slide style="background-color: green">
-    <h2>Slide 1</h2>
-  </ion-slide>
-
-  <ion-slide style="background-color: blue">
-    <h2>Slide 2</h2>
-  </ion-slide>
-
-  <ion-slide style="background-color: red">
-    <h2>Slide 3</h2>
-  </ion-slide>
-
-</ion-slides>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" style='background-color: red'>Slide 1</div>
+        <div class="swiper-slide" style='background-color: yellow'>Slide 2</div>
+        <div class="swiper-slide" style='background-color: blue'>Slide 3</div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>

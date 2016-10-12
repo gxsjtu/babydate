@@ -49,9 +49,9 @@ export class MyApp {
 
       }).catch(error => {
         console.log(error);
-        //this.rootPage = OnboardPage;
+        this.rootPage = OnboardPage;
         //在浏览器上使用时使用
-        this.rootPage = HomePage;
+        //this.rootPage = HomePage;
       });
 
     });
