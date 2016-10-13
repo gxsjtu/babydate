@@ -12,10 +12,10 @@ import 'rxjs/add/operator/map';
 export class GlobalParameters {
 
   constructor(public http: Http) {
-    console.log('Hello GlobalParameters Provider');
+
   }
 
   //（宽 ／ 高）
-  public AD_MAIN_RATIO: number = 20 / 9;
+  public AD_MAIN_RATIO: number = 16 / 9;
 
 }

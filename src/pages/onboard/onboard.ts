@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-declare var Swiper: any;
+import * as Swiper from 'swiper';
 
 /*
   Generated class for the Onboard page.
@@ -20,7 +20,7 @@ export class OnboardPage {
 
   ionViewDidEnter() {
 
-    let onboardSwiper = new Swiper('.swiper-container', {
+    let onboardSwiper = new Swiper.default('.swiper-container', {
       speed: 50,
       paginationClickable: true,
       pagination: '.swiper-pagination',

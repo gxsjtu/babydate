@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GlobalParameters } from '../../providers/global-parameters';
-declare var Swiper: any;
+import * as Swiper from 'swiper';
 
 @Component({
   selector: 'page-home',
@@ -17,12 +17,12 @@ export class HomePage {
     let adMain = document.getElementById('ad-main');
     adMain.style.width = document.body.clientWidth + 'px';
     adMain.style.height = document.body.clientWidth / this.gParameters.AD_MAIN_RATIO + 'px';
-    new Swiper('.swiper-container', {
+    new Swiper.default('.swiper-container', {
       autoplay: 2000,
       paginationClickable: true,
       pagination: '.swiper-pagination',
       loop: true,
-      autoplayDisableOnInteraction: false
+      autoplayDisableOnInteraction: false,
     });
   }
 
