@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { OnboardPage } from '../pages/onboard/onboard';
-import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SecureStorage, AppVersion } from 'ionic-native';
 import * as semver from 'semver';
 
@@ -31,7 +31,7 @@ export class MyApp {
                 console.log(error);
               });
             } else {
-              this.rootPage = HomePage;
+              this.rootPage = TabsPage;
             }
 
           }).catch(error => {
@@ -50,7 +50,7 @@ export class MyApp {
       }).catch(error => {
         console.log(error);
         //this.rootPage = OnboardPage;
-        this.rootPage = HomePage;
+        this.rootPage = TabsPage;
       });
 
     });

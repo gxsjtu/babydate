@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
 import { GlobalParameters } from '../providers/global-parameters';
@@ -8,8 +9,9 @@ import { GlobalParameters } from '../providers/global-parameters';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    OnboardPage
+    TabsPage,
+    OnboardPage,
+    HomePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -17,8 +19,9 @@ import { GlobalParameters } from '../providers/global-parameters';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    OnboardPage
+    TabsPage,
+    OnboardPage,
+    HomePage
   ],
   providers: [GlobalParameters]
 })
