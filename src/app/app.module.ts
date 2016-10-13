@@ -3,6 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
+import { GlobalParameters } from '../providers/global-parameters';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,6 @@ import { OnboardPage } from '../pages/onboard/onboard';
     HomePage,
     OnboardPage
   ],
-  providers: []
+  providers: [GlobalParameters]
 })
 export class AppModule { }

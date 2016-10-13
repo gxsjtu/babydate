@@ -18,11 +18,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
 
-      if(platform.is('core') == true){
-        this.rootPage = HomePage;
-        return;
-      }
-
       AppVersion.getVersionNumber().then(ver => {
 
         let secureStorage: SecureStorage = new SecureStorage();
@@ -54,7 +49,8 @@ export class MyApp {
 
       }).catch(error => {
         console.log(error);
-        this.rootPage = OnboardPage;
+        //this.rootPage = OnboardPage;
+        this.rootPage = HomePage;
       });
 
     });
