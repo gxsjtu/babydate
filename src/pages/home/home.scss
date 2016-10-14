@@ -11,4 +11,23 @@ page-home {
   .swiper-container-horizontal > .swiper-pagination{
     bottom: 10px;
   }
+
+  #hospitals ul {
+      padding:0px;
+      margin:0px;
+      li{
+          padding: 0px;
+          color:#f63;
+          font-size:18px;
+      }
+  }
+
+  #hospitals ion-item{
+      border-bottom:5px solid #f8f8f8;
+      .item-inner{
+          border-bottom:none;
+      }
+  }
+
+
 }

@@ -12,7 +12,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'hospital-list.html'
 })
 export class HospitalListPage {
-
+  hos=['','','','','','','',''];
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {

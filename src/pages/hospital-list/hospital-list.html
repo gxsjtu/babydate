@@ -13,6 +13,33 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+    <div id="hospitals" style="border:10px solid #f8f8f8;">
+        <ion-item *ngFor="let h of hos">
 
+          <ion-thumbnail item-left>
+            <img src="http://a.hiphotos.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=2181842d632762d09433acedc185639f/8d5494eef01f3a29a598eec09925bc315c607c6f.jpg">
+          </ion-thumbnail>
+
+
+          <div width-75 style='display:flex;flex-direction:column;justify-content:space-between'>
+
+            <h2>上海长宁区妇幼保健院</h2>
+            <div>
+              <div style="float:left;width:50%;">
+                <rating [(ngModel)]="rate"></rating>
+              </div>
+              <div style="float:left;height:27px;line-height:27px;">等级：2级甲等</div>
+            </div>
+            <div style="color:#ccc">
+              <div style="float:left">长宁区</div>
+            </div>
+
+          </div>
+
+
+
+
+        </ion-item>
+    </div>
 </ion-content>

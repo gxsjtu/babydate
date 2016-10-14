@@ -3,13 +3,15 @@ import { NavController } from 'ionic-angular';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import * as Swiper from 'swiper';
+import { HospitalListPage } from '../hospital-list/hospital-list';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+    hos=['','',''];
+    rate=4.5;
   constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http) {
     http.get('https://172.20.66.66:3000/hospital/getTops').map(res => res.json()).subscribe(data => {
       console.log(data);
@@ -29,6 +31,10 @@ export class HomePage {
       loop: true,
       autoplayDisableOnInteraction: false,
     });
+  }
+
+  goHospital(){
+      this.navCtrl.push(HospitalListPage);
   }
 
 }
