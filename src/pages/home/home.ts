@@ -34,7 +34,9 @@ export class HomePage {
   }
 
   goHospital(){
-      this.navCtrl.push(HospitalListPage);
+      this.navCtrl.push(HospitalListPage, {
+        BackText: '首页'
+      });
   }
 
 }

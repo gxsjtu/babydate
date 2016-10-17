@@ -18,7 +18,12 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     HospitalListPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsPlacement: 'bottom',
+      swipeBackEnabled: true,
+      tabsHideOnSubPages: false,
+      iconMode: 'ios'
+    }),
     Ionic2RatingModule
   ],
   bootstrap: [IonicApp],

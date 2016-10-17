@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
 
 /*
   Generated class for the HospitalList page.
@@ -12,11 +12,17 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'hospital-list.html'
 })
 export class HospitalListPage {
-  hos=['','','','','','','',''];
-  constructor(public navCtrl: NavController) {}
+  hos = ['', '', '', '', '', '', '', ''];
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {
+    console.log(navCtrl.canSwipeBack());
+  }
 
   ionViewDidLoad() {
     console.log('Hello HospitalList Page');
+  }
+
+  ionViewWillEnter() {
+    this.vc.setBackButtonText(this.params.get('BackText'));
   }
 
 }
