@@ -8,7 +8,7 @@ import { HospitalListPage } from '../pages/hospital-list/hospital-list';
 import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { GlobalParameters } from '../providers/global-parameters';
-
+import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
       tabsPlacement: 'bottom',
       swipeBackEnabled: true,
       tabsHideOnSubPages: false,
-      iconMode: 'ios'
+      mode: 'ios'
     }),
     Ionic2RatingModule
   ],
