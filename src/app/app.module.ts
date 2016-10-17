@@ -6,10 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
 import { HospitalListPage } from '../pages/hospital-list/hospital-list';
 import { GlobalParameters } from '../providers/global-parameters';
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
