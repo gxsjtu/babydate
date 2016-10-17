@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,ViewController ,NavParams} from 'ionic-angular';
+import { HospitalMapPage } from '../hospital-map/hospital-map';
 
 /*
   Generated class for the HospitalDetail page.
@@ -13,10 +14,6 @@ import { NavController } from 'ionic-angular';
 })
 export class HospitalDetailPage {
 
-  constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello HospitalDetail Page');
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {
   }
-
 }
