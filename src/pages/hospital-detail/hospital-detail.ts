@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController ,NavParams} from 'ionic-angular';
-import { HospitalMapPage } from '../hospital-map/hospital-map';
+import { NavController } from 'ionic-angular';
 
 /*
   Generated class for the HospitalDetail page.
@@ -14,22 +13,10 @@ import { HospitalMapPage } from '../hospital-map/hospital-map';
 })
 export class HospitalDetailPage {
 
-  hospitalAddress : any;
-
-  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {
-    this.hospitalAddress = '浦东新区高科西路2699号';
-  }
+  constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
     console.log('Hello HospitalDetail Page');
   }
-
-  searchMap(){
-      this.navCtrl.push(HospitalMapPage,
-        {BackText: '医院详情', hospitalAddress:this.hospitalAddress}
-      );
-  }
-
-
 
 }

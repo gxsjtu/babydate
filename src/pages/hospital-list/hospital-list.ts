@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams } from 'ionic-angular';
-import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 
 /*
   Generated class for the HospitalList page.
@@ -24,11 +23,6 @@ export class HospitalListPage {
 
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('BackText'));
-  }
-
-  getHospitalDetail()
-  {
-    this.navCtrl.push(HospitalDetailPage,{aaa:'sss'});
   }
 
 }
