@@ -35,7 +35,7 @@ export class HomePage {
 
   goHospital(){
       this.navCtrl.push(HospitalListPage, {
-        BackText: '首页'
+        backText: '首页'
       });
   }
 

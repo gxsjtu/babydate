@@ -16,7 +16,7 @@
 <ion-content>
   <div id="hospitals">
     <ion-list>
-      <ion-item *ngFor="let h of hos">
+      <ion-item *ngFor="let h of hos" (click)='onHospitalClick()'>
 
         <ion-thumbnail item-left>
           <img src="http://ionicframework.com/dist/preview-app/www/assets/img/thumbnail-totoro.png">
