@@ -25,6 +25,10 @@ export class HospitalListPage {
     this.vc.setBackButtonText(this.params.get('backText'));
   }
 
+  showArea(){
+
+  }
+
   onHospitalClick(){
     this.navCtrl.push('HospitalDetailPage', {
       backText: '',
