@@ -33,6 +33,10 @@ $tabs-ios-tab-color-active: $common-color;
 
 ion-navbar {
   .bar-button-default-ios, .bar-button-default-ios:hover:not(.disable-hover) {
-    color: #f35fa3;
+    color: $common-color;
+  }
+
+  .toolbar-title-ios{
+    color: $common-color;
   }
 }
