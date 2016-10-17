@@ -22,7 +22,30 @@ export class HospitalListPage {
   }
 
   ionViewWillEnter() {
+<<<<<<< HEAD
     this.vc.setBackButtonText(this.params.get('BackText'));
+=======
+    this.vc.setBackButtonText(this.params.get('backText'));
+  }
+
+  showArea(){
+
+  }
+
+  onHospitalClick(){
+    this.navCtrl.push('HospitalDetailPage', {
+      backText: '',
+      address: '',
+      district: '',
+      level: '',
+      description: ''
+    })
+  }
+
+  getHospitalDetail()
+  {
+    this.navCtrl.push(HospitalDetailPage,{aaa:'sss'});
+>>>>>>> origin/master
   }
 
 }

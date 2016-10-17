@@ -8,4 +8,23 @@ page-hospital-list {
             font-size:18px;
         }
     }
+
+    #searchHeader {
+    display: flex;
+
+    div {
+      flex-grow: 1;
+      text-align: center;
+      border-left: 1px solid #ccc;
+      vertical-align: middle;
+    }
+
+    div:first-child {
+      border-left: none;
+    }
+
+    ion-icon {
+      margin-left: 5px;
+    }
+  }
 }
