@@ -13,7 +13,7 @@ export class HomePage {
     hos=['','',''];
     rate=4.5;
   constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http) {
-    http.get( this.gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
+    http.get('https://172.20.66.66:3000/hospital/getTops').map(res => res.json()).subscribe(data => {
       console.log(data);
     }, error => {
       console.log(error);
@@ -35,7 +35,7 @@ export class HomePage {
 
   goHospital(){
       this.navCtrl.push(HospitalListPage, {
-        backText: '首页'
+        BackText: '首页'
       });
   }
 
