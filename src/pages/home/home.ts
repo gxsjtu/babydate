@@ -11,11 +11,21 @@ import {ControlAnchor} from 'angular2-baidu-map';
   templateUrl: 'home.html'
 })
 export class HomePage {
-    hos=['','',''];
-    rate=4.5;
+  hospitals = [];
   constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http) {
+<<<<<<< Updated upstream
     http.get( gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
       console.log(data);
+=======
+    http.get('https://172.20.67.197:3000/hospital/getTops').map(res => res.json()).subscribe(data => {
+      if (data.status == 0) {
+        this.hospitals = data.data;
+        console.log(this.hospitals);
+      }
+      else {
+        //错误信息
+      }
+>>>>>>> Stashed changes
     }, error => {
       console.log(error);
     });
@@ -34,10 +44,14 @@ export class HomePage {
     });
   }
 
-  goHospital(){
-      this.navCtrl.push(HospitalListPage, {
-        BackText: '首页'
-      });
+  goHospital() {
+    this.navCtrl.push(HospitalListPage, {
+      BackText: '首页'
+    });
+  }
+
+  getRate(score: number): number {
+    return Math.floor(score / 20) + 0.5 * (score % 20 >= 10 ? 1 : 0);
   }
 
 }

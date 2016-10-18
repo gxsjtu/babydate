@@ -4,12 +4,16 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
-import { HospitalListPage } from '../pages/hospital-list/hospital-list';
+import { HospitalListPage, AreaPopoverPage } from '../pages/hospital-list/hospital-list';
+import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
+import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
+import { Info } from '../pages/info/info';
 import { GlobalParameters } from '../providers/global-parameters';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { InfoPage } from '../pages/info/info';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +22,16 @@ import { InfoPage } from '../pages/info/info';
     OnboardPage,
     HomePage,
     HospitalListPage,
+<<<<<<< Updated upstream
     HospitalDetailPage,
     HospitalMapPage,
     InfoPage
+=======
+    AreaPopoverPage,
+    HospitalDetailPage,
+    HospitalMapPage,
+    Info
+>>>>>>> Stashed changes
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -39,9 +50,16 @@ import { InfoPage } from '../pages/info/info';
     OnboardPage,
     HomePage,
     HospitalListPage,
+<<<<<<< Updated upstream
     HospitalDetailPage,
     HospitalMapPage,
     InfoPage
+=======
+    AreaPopoverPage,
+    HospitalDetailPage,
+    HospitalMapPage,
+    Info
+>>>>>>> Stashed changes
   ],
   providers: [GlobalParameters]
 })

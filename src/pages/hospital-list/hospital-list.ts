@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+<<<<<<< Updated upstream
 import { NavController, ViewController, NavParams } from 'ionic-angular';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
+=======
+import { NavController, ViewController, NavParams,PopoverController } from 'ionic-angular';
+>>>>>>> Stashed changes
 
 /*
   Generated class for the HospitalList page.
@@ -14,7 +18,7 @@ import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 })
 export class HospitalListPage {
   hos = ['', '', '', '', '', '', '', ''];
-  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams,public popoverCtrl: PopoverController) {
     console.log(navCtrl.canSwipeBack());
   }
 
@@ -26,11 +30,15 @@ export class HospitalListPage {
     this.vc.setBackButtonText(this.params.get('BackText'));
   }
 
-  showArea(){
-
+  showArea(myEvent){
+    let popover = this.popoverCtrl.create(AreaPopoverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
   onHospitalClick(){
+<<<<<<< Updated upstream
     this.navCtrl.push(HospitalDetailPage, {
       backText: '',
       address: '',
@@ -38,6 +46,29 @@ export class HospitalListPage {
       level: '',
       description: ''
     })
+=======
+    // this.navCtrl.push('HospitalDetailPage', {
+    //   backText: '',
+    //   address: '',
+    //   district: '',
+    //   level: '',
+    //   description: ''
+    // })
+>>>>>>> Stashed changes
   }
 
+}
+
+
+@Component({
+  template: `
+    <div>筛选</div>
+  `
+})
+export class AreaPopoverPage {
+  constructor(public viewCtrl: ViewController) {}
+
+  close() {
+    this.viewCtrl.dismiss();
+  }
 }
