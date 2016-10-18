@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams } from 'ionic-angular';
+import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 
 /*
   Generated class for the HospitalList page.
@@ -30,7 +31,7 @@ export class HospitalListPage {
   }
 
   onHospitalClick(){
-    this.navCtrl.push('HospitalDetailPage', {
+    this.navCtrl.push(HospitalDetailPage, {
       backText: '',
       address: '',
       district: '',

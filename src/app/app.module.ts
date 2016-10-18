@@ -7,6 +7,8 @@ import { OnboardPage } from '../pages/onboard/onboard';
 import { HospitalListPage } from '../pages/hospital-list/hospital-list';
 import { GlobalParameters } from '../providers/global-parameters';
 import { Ionic2RatingModule } from 'ionic2-rating';
+import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
+import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     TabsPage,
     OnboardPage,
     HomePage,
-    HospitalListPage
+    HospitalListPage,
+    HospitalDetailPage,
+    HospitalMapPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -32,7 +36,9 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     TabsPage,
     OnboardPage,
     HomePage,
-    HospitalListPage
+    HospitalListPage,
+    HospitalDetailPage,
+    HospitalMapPage
   ],
   providers: [GlobalParameters]
 })
