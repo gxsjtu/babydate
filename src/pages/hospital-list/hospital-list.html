@@ -9,6 +9,10 @@
   <ion-navbar>
     <ion-title>产院列表</ion-title>
   </ion-navbar>
+
+  <ion-searchbar [(ngModel)]="searchKey" [showCancelButton]="true" [cancelButtonText]="'取消'" [placeholder]="'医院名称'" (ionCancel)="onCancel($event)" (search)="onSearch($event)">
+  </ion-searchbar>
+
   <ion-toolbar>
     <div id="searchHeader">
       <a (click)="showArea($event)">区县

@@ -15,6 +15,7 @@ import { NavController, ViewController, NavParams, PopoverController } from 'ion
 })
 export class HospitalListPage {
   hos = ['', '', '', '', '', '', '', ''];
+  searchKey = "";
   selectedArea="全部";
   selectedLevel="全部";
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController) {
@@ -64,6 +65,15 @@ export class HospitalListPage {
   setLevel(level){
     this.selectedLevel = level;
     this.queryHospital();
+  }
+
+  onCancel(event)
+  {
+    console.log('cancel');
+  }
+
+  onSearch(event){
+    alert('search');
   }
 
   queryHospital(){
