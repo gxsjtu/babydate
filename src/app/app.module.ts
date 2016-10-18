@@ -4,7 +4,7 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
-import { HospitalListPage, AreaPopoverPage } from '../pages/hospital-list/hospital-list';
+import { HospitalListPage, AreaPopoverPage, LevelPopoverPage } from '../pages/hospital-list/hospital-list';
 import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { GlobalParameters } from '../providers/global-parameters';
@@ -23,6 +23,7 @@ import { InfoPage } from '../pages/info/info';
     HospitalMapPage,
     InfoPage,
     AreaPopoverPage,
+    LevelPopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -45,7 +46,7 @@ import { InfoPage } from '../pages/info/info';
     HospitalMapPage,
     InfoPage,
     AreaPopoverPage,
-
+    LevelPopoverPage
   ],
   providers: [GlobalParameters]
 })
