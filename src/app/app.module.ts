@@ -21,7 +21,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
       tabsPlacement: 'bottom',
       swipeBackEnabled: true,
       tabsHideOnSubPages: false,
-      iconMode: 'ios'
+      iconMode: 'ios',
+      mode: 'ios'
     }),
     Ionic2RatingModule
   ],
