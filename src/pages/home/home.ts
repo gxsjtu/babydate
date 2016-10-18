@@ -13,19 +13,13 @@ import {ControlAnchor} from 'angular2-baidu-map';
 export class HomePage {
   hospitals = [];
   constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http) {
-<<<<<<< Updated upstream
-    http.get( gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
-      console.log(data);
-=======
-    http.get('https://172.20.67.197:3000/hospital/getTops').map(res => res.json()).subscribe(data => {
+    http.get(gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
       if (data.status == 0) {
         this.hospitals = data.data;
-        console.log(this.hospitals);
       }
       else {
         //错误信息
       }
->>>>>>> Stashed changes
     }, error => {
       console.log(error);
     });
