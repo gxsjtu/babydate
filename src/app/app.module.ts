@@ -7,11 +7,8 @@ import { OnboardPage } from '../pages/onboard/onboard';
 import { HospitalListPage, AreaPopoverPage } from '../pages/hospital-list/hospital-list';
 import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
-import { Info } from '../pages/info/info';
 import { GlobalParameters } from '../providers/global-parameters';
 import { Ionic2RatingModule } from 'ionic2-rating';
-import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
-import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { InfoPage } from '../pages/info/info';
 
 
@@ -22,16 +19,10 @@ import { InfoPage } from '../pages/info/info';
     OnboardPage,
     HomePage,
     HospitalListPage,
-<<<<<<< Updated upstream
     HospitalDetailPage,
     HospitalMapPage,
-    InfoPage
-=======
+    InfoPage,
     AreaPopoverPage,
-    HospitalDetailPage,
-    HospitalMapPage,
-    Info
->>>>>>> Stashed changes
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -50,16 +41,11 @@ import { InfoPage } from '../pages/info/info';
     OnboardPage,
     HomePage,
     HospitalListPage,
-<<<<<<< Updated upstream
     HospitalDetailPage,
     HospitalMapPage,
-    InfoPage
-=======
+    InfoPage,
     AreaPopoverPage,
-    HospitalDetailPage,
-    HospitalMapPage,
-    Info
->>>>>>> Stashed changes
+
   ],
   providers: [GlobalParameters]
 })
