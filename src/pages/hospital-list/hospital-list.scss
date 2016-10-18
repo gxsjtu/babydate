@@ -12,14 +12,18 @@ page-hospital-list {
     #searchHeader {
     display: flex;
 
-    div {
+    a {
       flex-grow: 1;
       text-align: center;
       border-left: 1px solid #ccc;
       vertical-align: middle;
+      color:black;
+    }
+    a:hover{
+      color:black;
     }
 
-    div:first-child {
+    a:first-child {
       border-left: none;
     }
 
@@ -27,4 +31,5 @@ page-hospital-list {
       margin-left: 5px;
     }
   }
+
 }

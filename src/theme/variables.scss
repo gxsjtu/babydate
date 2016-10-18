@@ -40,3 +40,11 @@ ion-navbar {
     color: $common-color;
   }
 }
+
+
+  .popover-ios .popover-wrapper .popover-content{
+    left:0px;
+    width:100%;
+    border-radius:0;
+    //margin-bottom: 49px;
+  }

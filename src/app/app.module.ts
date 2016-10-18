@@ -4,12 +4,13 @@ import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
-import { HospitalListPage } from '../pages/hospital-list/hospital-list';
-import { GlobalParameters } from '../providers/global-parameters';
-import { Ionic2RatingModule } from 'ionic2-rating';
+import { HospitalListPage, AreaPopoverPage, LevelPopoverPage } from '../pages/hospital-list/hospital-list';
 import { HospitalDetailPage } from '../pages/hospital-detail/hospital-detail';
 import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
+import { GlobalParameters } from '../providers/global-parameters';
+import { Ionic2RatingModule } from 'ionic2-rating';
 import { InfoPage } from '../pages/info/info';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { InfoPage } from '../pages/info/info';
     HospitalListPage,
     HospitalDetailPage,
     HospitalMapPage,
-    InfoPage
+    InfoPage,
+    AreaPopoverPage,
+    LevelPopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -41,7 +44,9 @@ import { InfoPage } from '../pages/info/info';
     HospitalListPage,
     HospitalDetailPage,
     HospitalMapPage,
-    InfoPage
+    InfoPage,
+    AreaPopoverPage,
+    LevelPopoverPage
   ],
   providers: [GlobalParameters]
 })
