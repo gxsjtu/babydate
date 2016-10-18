@@ -17,5 +17,6 @@ export class GlobalParameters {
 
   //（宽 ／ 高）
   public AD_MAIN_RATIO: number = 25 / 10;
+  public SERVER: string = 'https://172.20.67.197';
 
 }
