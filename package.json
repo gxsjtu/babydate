@@ -25,6 +25,7 @@
     "@ionic/storage": "^1.0.3",
     "@types/lodash": "^4.14.37",
     "@types/semver": "^5.3.30",
+    "angular2-baidu-map": "^2.5.0",
     "ionic-angular": "^2.0.0-rc.1",
     "ionic-native": "^2.0.3",
     "ionic2-rating": "0.0.10",
