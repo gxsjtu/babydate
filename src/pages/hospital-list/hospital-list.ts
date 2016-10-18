@@ -77,7 +77,7 @@ export class HospitalListPage {
   template: `
     <ion-list>
       <ion-item *ngFor="let area of areaDatas" (click)="areaSelected(area)">
-        <div>{{area}}<ion-icon *ngIf="area == selectedArea" style="float:right;" name="checkmark"></ion-icon></div>
+        <a>{{area}}<ion-icon *ngIf="area == selectedArea" style="float:right;" name="checkmark"></ion-icon></a>
       </ion-item>
     </ion-list>
   `
@@ -130,7 +130,7 @@ export class AreaPopoverPage {
   template: `
     <ion-list>
       <ion-item *ngFor="let level of levelDatas" (click)="levelSelected(level)">
-        <div>{{level}}<ion-icon *ngIf="level == selectedLevel" style="float:right;" name="checkmark"></ion-icon></div>
+        <a>{{level}}<ion-icon *ngIf="level == selectedLevel" style="float:right;" name="checkmark"></ion-icon></a>
       </ion-item>
     </ion-list>
   `
