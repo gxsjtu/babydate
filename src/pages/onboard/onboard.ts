@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as Swiper from 'swiper';
+import { Splashscreen } from 'ionic-native';
 
 /*
   Generated class for the Onboard page.
@@ -16,6 +17,10 @@ export class OnboardPage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewWillEnter() {
+    Splashscreen.hide();
   }
 
   ionViewDidEnter() {
