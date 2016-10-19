@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
-import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
+import { NavController, ViewController, NavParams, PopoverController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import {Converter} from '../../providers/converter';
-
+import 'rxjs/Rx';
 import * as Move from 'move-js';
 
 
@@ -25,8 +25,8 @@ export class HospitalListPage {
   selectedArea = '全部';
   selectedLevel = '全部';
   areaName = '区县';
-  levelName='等级';
-  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController, public gParameters: GlobalParameters, public http: Http, public converter: Converter) {
+  levelName = '等级';
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController, public gParameters: GlobalParameters, public http: Http, public converter: Converter, public loadingCtrl: LoadingController) {
     this.queryHospital();
   }
 
@@ -68,12 +68,10 @@ export class HospitalListPage {
 
   setArea(area) {
     this.selectedArea = area;
-    if(area == "全部")
-    {
+    if (area == "全部") {
       this.areaName = "区县";
     }
-    else
-    {
+    else {
       this.areaName = area;
     }
     this.queryHospital();
@@ -81,12 +79,10 @@ export class HospitalListPage {
 
   setLevel(level) {
     this.selectedLevel = level;
-    if(level == "全部")
-    {
+    if (level == "全部") {
       this.levelName = "区县";
     }
-    else
-    {
+    else {
       this.levelName = level;
     }
     this.queryHospital();
@@ -94,7 +90,7 @@ export class HospitalListPage {
 
   //取消事件，查询全部
   onCancel(event) {
-    this.copyArray(this.hospitals,this.allHospitals);
+    this.copyArray(this.hospitals, this.allHospitals);
   }
 
   //查找事件
@@ -103,19 +99,23 @@ export class HospitalListPage {
   }
 
   //copy arr2 to arr1
-  copyArray(arr1,arr2){
+  copyArray(arr1, arr2) {
     arr1.length = 0;
-    arr2.forEach((o)=>{
-      arr1.push(Object.assign({},o));
+    arr2.forEach((o) => {
+      arr1.push(Object.assign({}, o));
     });
   }
 
   //根据区县和等级查询医院
   queryHospital() {
-    this.http.get(this.gParameters.SERVER + '/hospital/getAll/'+this.selectedArea+'/'+this.selectedLevel).map(res => res.json()).subscribe(data => {
+    let loader = this.loadingCtrl.create({});
+    loader.present();
+    this.http.get(this.gParameters.SERVER + '/hospital/getAll/' + this.selectedArea + '/' + this.selectedLevel).map(res => res.json()).finally(() => {
+      loader.dismiss();
+    }).subscribe(data => {
       if (data.status == 0) {
         this.allHospitals = data.data;
-        this.copyArray(this.hospitals,this.allHospitals);
+        this.copyArray(this.hospitals, this.allHospitals);
       }
       else {
         //错误信息
@@ -139,7 +139,7 @@ export class HospitalListPage {
     // }, error => {
     //   console.log(error);
     // });
-    this.hospitals = this.allHospitals.filter((h)=>{
+    this.hospitals = this.allHospitals.filter((h) => {
       return h.name.indexOf(hospitalName) > -1;
     });
   }
