@@ -4,6 +4,7 @@ import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import * as Swiper from 'swiper';
 import { HospitalListPage } from '../hospital-list/hospital-list';
+import {Converter} from '../../providers/converter';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ import { HospitalListPage } from '../hospital-list/hospital-list';
 })
 export class HomePage {
   hospitals = [];
-  constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http) {
+  constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http, public converter: Converter) {
     http.get(gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
       if (data.status == 0) {
         this.hospitals = data.data;
@@ -42,9 +43,4 @@ export class HomePage {
       BackText: '首页'
     });
   }
-
-  getRate(score: number): number {
-    return Math.floor(score / 20) + 0.5 * (score % 20 >= 10 ? 1 : 0);
-  }
-
 }

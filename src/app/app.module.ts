@@ -10,7 +10,7 @@ import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { GlobalParameters } from '../providers/global-parameters';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { InfoPage } from '../pages/info/info';
-
+import {Converter} from '../providers/converter';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,6 @@ import { InfoPage } from '../pages/info/info';
     AreaPopoverPage,
     LevelPopoverPage
   ],
-  providers: [GlobalParameters]
+  providers: [GlobalParameters, Converter]
 })
 export class AppModule { }

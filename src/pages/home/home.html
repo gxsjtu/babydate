@@ -56,7 +56,7 @@
           <h2>{{h.name}}</h2>
           <div>
             <div style="float:left;width:50%;">
-              <rating [ngModel]="getRate(h.score)" readOnly="true"></rating>
+              <rating [ngModel]="converter.getRate(h.score)" readOnly="true"></rating>
             </div>
             <div style="float:right;height:27px;line-height:27px;">等级：{{h.level}}</div>
           </div>
