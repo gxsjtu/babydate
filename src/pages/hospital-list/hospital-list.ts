@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
-import * as Bounce from 'bounce.js';
+import * as Move from 'move-js';
 
 
 /*
@@ -33,7 +33,7 @@ export class HospitalListPage {
   }
 
   showArea(myEvent) {
-    console.log(this);
+    Move.default('#iconArea').rotate(180).end();
     let popover = this.popoverCtrl.create(AreaPopoverPage, {
       selectedArea: this.selectedArea,
       listPage: this
@@ -44,9 +44,13 @@ export class HospitalListPage {
   }
 
   showLevel(myEvent) {
+    Move.default('#iconLevel').rotate(180).end();
     let popover = this.popoverCtrl.create(LevelPopoverPage, {
       selectedLevel: this.selectedLevel,
       listPage: this
+    });
+    popover.onDidDismiss(() => {
+      Move.default('#iconLevel').rotate(180).duration(10).then().rotate(180).end();
     });
     popover.present({
       ev: myEvent
