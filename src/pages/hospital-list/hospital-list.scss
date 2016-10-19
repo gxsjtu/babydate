@@ -9,28 +9,7 @@ page-hospital-list {
       font-size: 18px;
     }
   }
-  // #searchHeader {
-  // display: flex;
-  //
-  // a {
-  //   flex-grow: 1;
-  //   text-align: center;
-  //   border-left: 1px solid #ccc;
-  //   vertical-align: middle;
-  //   color:black;
-  // }
-  // a:hover{
-  //   color:black;
-  // }
-  //
-  // a:first-child {
-  //   border-left: none;
-  // }
-  //
-  // ion-icon {
-  //   margin-left: 5px;
-  // }
-  //}
+
   ion-toolbar {
     ion-grid {
       padding: 0;
@@ -41,6 +20,7 @@ page-hospital-list {
         .button-ios {
           margin: 0;
           padding: 0;
+          height: 1em;
         }
 
         .button-clear-ios,

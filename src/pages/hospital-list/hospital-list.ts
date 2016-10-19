@@ -74,6 +74,7 @@ export class HospitalListPage {
     else {
       this.areaName = area;
     }
+    this.searchKey='';
     this.queryHospital();
   }
 
@@ -85,6 +86,7 @@ export class HospitalListPage {
     else {
       this.levelName = level;
     }
+    this.searchKey='';
     this.queryHospital();
   }
 
