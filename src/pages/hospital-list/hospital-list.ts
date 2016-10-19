@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
+import * as Bounce from 'bounce.js';
 
 
 /*
@@ -16,8 +17,8 @@ import { NavController, ViewController, NavParams, PopoverController } from 'ion
 export class HospitalListPage {
   hos = ['', '', '', '', '', '', '', ''];
   searchKey = "";
-  selectedArea="全部";
-  selectedLevel="全部";
+  selectedArea = "全部";
+  selectedLevel = "全部";
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController) {
     console.log(navCtrl.canSwipeBack());
     this.queryHospital();
@@ -33,9 +34,9 @@ export class HospitalListPage {
 
   showArea(myEvent) {
     console.log(this);
-    let popover = this.popoverCtrl.create(AreaPopoverPage,{
-      selectedArea:this.selectedArea,
-      listPage:this
+    let popover = this.popoverCtrl.create(AreaPopoverPage, {
+      selectedArea: this.selectedArea,
+      listPage: this
     });
     popover.present({
       ev: myEvent
@@ -43,10 +44,9 @@ export class HospitalListPage {
   }
 
   showLevel(myEvent) {
-    console.log(this);
-    let popover = this.popoverCtrl.create(LevelPopoverPage,{
-      selectedLevel:this.selectedLevel,
-      listPage:this
+    let popover = this.popoverCtrl.create(LevelPopoverPage, {
+      selectedLevel: this.selectedLevel,
+      listPage: this
     });
     popover.present({
       ev: myEvent
@@ -57,27 +57,26 @@ export class HospitalListPage {
 
   }
 
-  setArea(area){
+  setArea(area) {
     this.selectedArea = area;
     this.queryHospital();
   }
 
-  setLevel(level){
+  setLevel(level) {
     this.selectedLevel = level;
     this.queryHospital();
   }
 
-  onCancel(event)
-  {
+  onCancel(event) {
     console.log('cancel');
   }
 
-  onSearch(event){
+  onSearch(event) {
     alert('search');
   }
 
-  queryHospital(){
-    console.log(this.selectedArea+" "+this.selectedLevel);
+  queryHospital() {
+    console.log(this.selectedArea + " " + this.selectedLevel);
   }
 
 }
@@ -114,12 +113,12 @@ export class AreaPopoverPage {
     "金山区",
     "崇明县"
   ];
-  selectedArea:string;
-  listPage:HospitalListPage;
-  constructor(public viewCtrl: ViewController,public navParams: NavParams) { }
+  selectedArea: string;
+  listPage: HospitalListPage;
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) { }
 
   ngOnInit() {
-    if (this.navParams.data){
+    if (this.navParams.data) {
       this.selectedArea = this.navParams.data.selectedArea;
       this.listPage = this.navParams.data.listPage;
     }
@@ -129,7 +128,7 @@ export class AreaPopoverPage {
     this.viewCtrl.dismiss();
   }
 
-  areaSelected(area){
+  areaSelected(area) {
     this.selectedArea = area;
     this.listPage.setArea(area);
     this.close();
@@ -160,12 +159,12 @@ export class LevelPopoverPage {
     "一级丙等",
     "私立医院"
   ];
-  selectedLevel:string;
-  listPage:HospitalListPage;
-  constructor(public viewCtrl: ViewController,public navParams: NavParams) { }
+  selectedLevel: string;
+  listPage: HospitalListPage;
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) { }
 
   ngOnInit() {
-    if (this.navParams.data){
+    if (this.navParams.data) {
       this.selectedLevel = this.navParams.data.selectedLevel;
       this.listPage = this.navParams.data.listPage;
     }
@@ -175,7 +174,7 @@ export class LevelPopoverPage {
     this.viewCtrl.dismiss();
   }
 
-  levelSelected(level){
+  levelSelected(level) {
     this.selectedLevel = level;
     this.listPage.setLevel(level);
     this.close();
