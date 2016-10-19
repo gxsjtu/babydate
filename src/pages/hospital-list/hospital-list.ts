@@ -20,15 +20,14 @@ import * as Move from 'move-js';
 })
 export class HospitalListPage {
   hospitals = [];
+  allHospitals = [];
   searchKey = '';
   selectedArea = '全部';
   selectedLevel = '全部';
+  areaName = '区县';
+  levelName='等级';
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController, public gParameters: GlobalParameters, public http: Http, public converter: Converter) {
     this.queryHospital();
-  }
-
-  ionViewDidLoad() {
-
   }
 
   ionViewWillEnter() {
@@ -67,25 +66,35 @@ export class HospitalListPage {
     });
   }
 
-  onHospitalClick() {
-
-  }
-
   setArea(area) {
     this.selectedArea = area;
+    if(area == "全部")
+    {
+      this.areaName = "区县";
+    }
+    else
+    {
+      this.areaName = area;
+    }
     this.queryHospital();
   }
 
   setLevel(level) {
     this.selectedLevel = level;
+    if(level == "全部")
+    {
+      this.levelName = "区县";
+    }
+    else
+    {
+      this.levelName = level;
+    }
     this.queryHospital();
   }
 
   //取消事件，查询全部
   onCancel(event) {
-    this.selectedArea = '全部';
-    this.selectedLevel = '全部';
-    this.queryHospital();
+    this.copyArray(this.hospitals,this.allHospitals);
   }
 
   //查找事件
@@ -93,12 +102,20 @@ export class HospitalListPage {
     this.queryHospitalByName(this.searchKey);
   }
 
+  //copy arr2 to arr1
+  copyArray(arr1,arr2){
+    arr1.length = 0;
+    arr2.forEach((o)=>{
+      arr1.push(Object.assign({},o));
+    });
+  }
+
   //根据区县和等级查询医院
   queryHospital() {
     this.http.get(this.gParameters.SERVER + '/hospital/getAll/'+this.selectedArea+'/'+this.selectedLevel).map(res => res.json()).subscribe(data => {
       if (data.status == 0) {
-        this.hospitals = data.data;
-        this.searchKey='';
+        this.allHospitals = data.data;
+        this.copyArray(this.hospitals,this.allHospitals);
       }
       else {
         //错误信息
@@ -110,17 +127,20 @@ export class HospitalListPage {
 
   //根据医院名称查询
   queryHospitalByName(hospitalName) {
-    this.http.get(this.gParameters.SERVER + '/hospital/QueryByName/'+hospitalName).map(res => res.json()).subscribe(data => {
-      if (data.status == 0) {
-        this.hospitals = data.data;
-        this.selectedArea = '全部';
-        this.selectedLevel = '全部';
-      }
-      else {
-        //错误信息
-      }
-    }, error => {
-      console.log(error);
+    // this.http.get(this.gParameters.SERVER + '/hospital/QueryByName/'+hospitalName).map(res => res.json()).subscribe(data => {
+    //   if (data.status == 0) {
+    //     this.hospitals = data.data;
+    //     this.selectedArea = '全部';
+    //     this.selectedLevel = '全部';
+    //   }
+    //   else {
+    //     //错误信息
+    //   }
+    // }, error => {
+    //   console.log(error);
+    // });
+    this.hospitals = this.allHospitals.filter((h)=>{
+      return h.name.indexOf(hospitalName) > -1;
     });
   }
 }

@@ -19,13 +19,13 @@
         <ion-row>
           <ion-col width-50 style="border-right:1px solid #ccc;">
             <button (click)="showArea($event)" ion-button clear block>
-              区县
+              {{areaName}}
               <ion-icon id='iconArea' name="arrow-down" item-right></ion-icon>
             </button>
           </ion-col>
           <ion-col width-50>
             <button (click)="showLevel($event)" ion-button clear block>
-              等级
+              {{levelName}}
               <ion-icon id='iconLevel' name="arrow-down" item-right></ion-icon>
             </button>
           </ion-col>
