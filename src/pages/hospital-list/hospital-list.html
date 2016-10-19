@@ -37,28 +37,23 @@
 
 
 <ion-content>
-  <div id="hospitals">
+  <div id="hospitals" *ngIf="hospitals.length > 0">
     <ion-list>
-      <ion-item *ngFor="let h of hos">
-
+      <ion-item *ngFor="let h of hospitals">
         <ion-thumbnail item-left>
-          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/thumbnail-totoro.png">
+          <img [src]="'data:image/png;base64,'+h.logo">
         </ion-thumbnail>
-
-
         <div style='display:flex;flex-direction:column;justify-content:space-between'>
-
-          <h2>上海长宁区妇幼保健院</h2>
+          <h2>{{h.name}}</h2>
           <div>
             <div style="float:left;width:50%;">
-              <rating [(ngModel)]="rate" readOnly="true"></rating>
+              <rating [ngModel]="this.converter.getRate(h.score)" readOnly="true"></rating>
             </div>
-            <div style="float:right;height:27px;line-height:27px;">等级：2级甲等</div>
+            <div style="float:right;height:27px;line-height:27px;">等级：{{h.level}}</div>
           </div>
           <div style="color:#ccc">
-            <div style="float:left">长宁区</div>
+            <div style="float:left">{{h.district}}</div>
           </div>
-
         </div>
       </ion-item>
     </ion-list>
