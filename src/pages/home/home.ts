@@ -4,7 +4,6 @@ import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import * as Swiper from 'swiper';
 import { HospitalListPage } from '../hospital-list/hospital-list';
-import {ControlAnchor} from 'angular2-baidu-map';
 
 @Component({
   selector: 'page-home',

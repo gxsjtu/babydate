@@ -50,7 +50,9 @@ export class HospitalListPage {
       listPage: this
     });
     popover.onDidDismiss(() => {
-      Move.default('#iconLevel').rotate(180).duration(10).then().rotate(180).end();
+      Move.default('#iconLevel').rotate(360).end(() => {
+        document.getElementById('iconLevel').removeAttribute('style');
+      });
     });
     popover.present({
       ev: myEvent
