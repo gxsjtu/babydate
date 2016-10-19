@@ -1,55 +1,53 @@
 page-hospital-list {
-    #hospitals ul {
-        padding:0px;
-        margin:0px;
-        li{
-            padding: 0px;
-            color:#f63;
-            font-size:18px;
-        }
+  #hospitals ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0;
+      color: #f63;
+      font-size: 18px;
     }
-
-    // #searchHeader {
-    // display: flex;
-    //
-    // a {
-    //   flex-grow: 1;
-    //   text-align: center;
-    //   border-left: 1px solid #ccc;
-    //   vertical-align: middle;
-    //   color:black;
-    // }
-    // a:hover{
-    //   color:black;
-    // }
-    //
-    // a:first-child {
-    //   border-left: none;
-    // }
-    //
-    // ion-icon {
-    //   margin-left: 5px;
-    // }
+  }
+  // #searchHeader {
+  // display: flex;
+  //
+  // a {
+  //   flex-grow: 1;
+  //   text-align: center;
+  //   border-left: 1px solid #ccc;
+  //   vertical-align: middle;
+  //   color:black;
+  // }
+  // a:hover{
+  //   color:black;
+  // }
+  //
+  // a:first-child {
+  //   border-left: none;
+  // }
+  //
+  // ion-icon {
+  //   margin-left: 5px;
+  // }
   //}
+  ion-toolbar {
+    ion-grid {
+      padding: 0;
 
-  ion-toolbar{
-    ion-grid{
-      padding: 0px;
-      ion-col{
-        padding: 0px;
-        .button-ios{
-            margin: 0px;
-            padding: 0px;
+      ion-col {
+        padding: 0;
+
+        .button-ios {
+          margin: 0;
+          padding: 0;
         }
-        .button-clear-ios,.button-clear-ios:hover:not(.disable-hover){
+
+        .button-clear-ios,
+        .button-clear-ios:hover:not(.disable-hover) {
           color: black;
-        }
-        ion-icon{
-          margin-left: 5px;
-          font-size: 30px;
         }
       }
     }
   }
-
 }

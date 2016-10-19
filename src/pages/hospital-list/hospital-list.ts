@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { GlobalParameters } from '../../providers/global-parameters';
+import {Converter} from '../../providers/converter';
+
 import * as Move from 'move-js';
 
 
@@ -15,12 +19,11 @@ import * as Move from 'move-js';
   templateUrl: 'hospital-list.html'
 })
 export class HospitalListPage {
-  hos = ['', '', '', '', '', '', '', ''];
-  searchKey = "";
-  selectedArea = "全部";
-  selectedLevel = "全部";
-  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController) {
-    console.log(navCtrl.canSwipeBack());
+  hospitals = [];
+  searchKey = '';
+  selectedArea = '全部';
+  selectedLevel = '全部';
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public popoverCtrl: PopoverController, public gParameters: GlobalParameters, public http: Http, public converter: Converter) {
     this.queryHospital();
   }
 
@@ -37,6 +40,11 @@ export class HospitalListPage {
     let popover = this.popoverCtrl.create(AreaPopoverPage, {
       selectedArea: this.selectedArea,
       listPage: this
+    });
+    popover.onDidDismiss(() => {
+      Move.default('#iconArea').rotate(360).end(() => {
+        document.getElementById('iconArea').removeAttribute('style');
+      });
     });
     popover.present({
       ev: myEvent
@@ -73,18 +81,48 @@ export class HospitalListPage {
     this.queryHospital();
   }
 
+  //取消事件，查询全部
   onCancel(event) {
-    console.log('cancel');
+    this.selectedArea = '全部';
+    this.selectedLevel = '全部';
+    this.queryHospital();
   }
 
+  //查找事件
   onSearch(event) {
-    alert('search');
+    this.queryHospitalByName(this.searchKey);
   }
 
+  //根据区县和等级查询医院
   queryHospital() {
-    console.log(this.selectedArea + " " + this.selectedLevel);
+    this.http.get(this.gParameters.SERVER + '/hospital/getAll/'+this.selectedArea+'/'+this.selectedLevel).map(res => res.json()).subscribe(data => {
+      if (data.status == 0) {
+        this.hospitals = data.data;
+        this.searchKey='';
+      }
+      else {
+        //错误信息
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
+  //根据医院名称查询
+  queryHospitalByName(hospitalName) {
+    this.http.get(this.gParameters.SERVER + '/hospital/QueryByName/'+hospitalName).map(res => res.json()).subscribe(data => {
+      if (data.status == 0) {
+        this.hospitals = data.data;
+        this.selectedArea = '全部';
+        this.selectedLevel = '全部';
+      }
+      else {
+        //错误信息
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
 }
 
 
