@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import * as Swiper from 'swiper';
+declare const Swiper: any;
 import { Splashscreen } from 'ionic-native';
 
 /*
@@ -25,7 +25,7 @@ export class OnboardPage {
 
   ionViewDidEnter() {
 
-    let onboardSwiper = new Swiper.default('.swiper-container', {
+    let onboardSwiper = new Swiper('.swiper-container', {
       speed: 50,
       paginationClickable: true,
       pagination: '.swiper-pagination',

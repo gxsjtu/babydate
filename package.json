@@ -56,8 +56,5 @@
       "locator": "ios"
     }
   ],
-  "description": "babydate: An Ionic project",
-  "config": {
-    "ionic_sass": "./sass.config.js"
-  }
+  "description": "babydate: An Ionic project"
 }

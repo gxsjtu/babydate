@@ -18,13 +18,13 @@
       <ion-col width-50 style="border-right:1px solid #ccc;margin:0px;padding:0px">
         <button small style='margin:0px' (click)="showArea($event)" ion-button clear block>
               {{areaName}}
-              <ion-icon id='iconArea' name="arrow-down" item-right></ion-icon>
+              <i class="fa fa-angle-down" id='iconArea' aria-hidden="true"></i>
             </button>
       </ion-col>
       <ion-col width-50 style='margin:0px;padding:0px'>
         <button style='margin:0px' small (click)="showLevel($event)" ion-button clear block>
               {{levelName}}
-              <ion-icon id='iconLevel' name="arrow-down" item-right></ion-icon>
+            <i class="fa fa-angle-down" id='iconLevel' aria-hidden="true"></i>
             </button>
       </ion-col>
     </ion-row>
@@ -39,7 +39,6 @@
         </ion-thumbnail>
         <div style='display:flex;flex-direction:column;justify-content:space-between' (click)="getHosDetail()">
 
-          <h2>上海长宁区妇幼保健院</h2>
           <div style='display:flex;flex-direction:column;justify-content:space-between'>
             <h3>{{h.name}}</h3>
             <div>

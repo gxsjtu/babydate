@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
-import * as Swiper from 'swiper';
 import { HospitalListPage } from '../hospital-list/hospital-list';
 import {Converter} from '../../providers/converter';
+declare const Swiper: any;
 
 @Component({
   selector: 'page-home',
@@ -29,7 +29,7 @@ export class HomePage {
     let adMain = document.getElementById('ad-main');
     adMain.style.width = document.body.clientWidth + 'px';
     adMain.style.height = document.body.clientWidth / this.gParameters.AD_MAIN_RATIO + 'px';
-    new Swiper.default('.swiper-container', {
+    new Swiper('.swiper-container', {
       autoplay: 2000,
       paginationClickable: true,
       pagination: '.swiper-pagination',
