@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import { HospitalListPage } from '../hospital-list/hospital-list';
+import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import {Converter} from '../../providers/converter';
 declare const Swiper: any;
 
@@ -41,6 +42,13 @@ export class HomePage {
   goHospital() {
     this.navCtrl.push(HospitalListPage, {
       BackText: '首页'
+    });
+  }
+
+  goHospitalDetail(hospital){
+    this.navCtrl.push(HospitalDetailPage,{
+      BackText: '首页',
+      Hospital:hospital
     });
   }
 }

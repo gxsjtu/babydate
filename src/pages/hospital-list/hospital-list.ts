@@ -59,19 +59,19 @@ export class HospitalListPage {
   }
 
   showLevel(myEvent) {
-    // Move.default('#iconLevel').rotate(180).end();
-    // let popover = this.popoverCtrl.create(LevelPopoverPage, {
-    //   selectedLevel: this.selectedLevel,
-    //   listPage: this
-    // });
-    // popover.onDidDismiss(() => {
-    //   Move.default('#iconLevel').rotate(360).end(() => {
-    //     document.getElementById('iconLevel').removeAttribute('style');
-    //   });
-    // });
-    // popover.present({
-    //   ev: myEvent
-    // });
+    Move.default('#iconLevel').rotate(180).end();
+    let popover = this.popoverCtrl.create(LevelPopoverPage, {
+      selectedLevel: this.selectedLevel,
+      listPage: this
+    });
+    popover.onDidDismiss(() => {
+      Move.default('#iconLevel').rotate(360).end(() => {
+        document.getElementById('iconLevel').removeAttribute('style');
+      });
+    });
+    popover.present({
+      ev: myEvent
+    });
   }
 
   setArea(area) {
@@ -137,20 +137,15 @@ export class HospitalListPage {
 
   //根据医院名称查询
   queryHospitalByName(hospitalName) {
-    // this.http.get(this.gParameters.SERVER + '/hospital/QueryByName/'+hospitalName).map(res => res.json()).subscribe(data => {
-    //   if (data.status == 0) {
-    //     this.hospitals = data.data;
-    //     this.selectedArea = '全部';
-    //     this.selectedLevel = '全部';
-    //   }
-    //   else {
-    //     //错误信息
-    //   }
-    // }, error => {
-    //   console.log(error);
-    // });
     this.hospitals = this.allHospitals.filter((h) => {
       return h.name.indexOf(hospitalName) > -1;
+    });
+  }
+
+  goHospitalDetail(hospital){
+    this.navCtrl.push(HospitalDetailPage,{
+      BackText: '医院列表',
+      Hospital:hospital
     });
   }
 }

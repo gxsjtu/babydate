@@ -71,7 +71,7 @@
         <div style="font-size:16px;">热门产院</div>
         <div item-right style="font-size:16px;font-weight:900;" (click)="goHospital()"><button ion-button clear block>更多<i class="fa fa-angle-double-right" aria-hidden="true"></i></button></div>
       </ion-list-header>
-      <ion-item *ngFor="let h of hospitals">
+      <ion-item *ngFor="let h of hospitals" (click)="goHospitalDetail(h)">
         <ion-thumbnail item-left>
           <img [src]="'data:image/png;base64,'+h.logo">
         </ion-thumbnail>
