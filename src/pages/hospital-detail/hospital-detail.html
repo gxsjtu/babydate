@@ -35,15 +35,14 @@
     </ion-list>
 
     <ion-list id="hospitalInfo" style="margin-bottom:15px;">
-      <ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap()">
-        <ion-icon name="pin" style="margin-right:5px;float:left;"></ion-icon>
-        <div style="float:left;padding-top:4px;padding-left:5px;">{{hospital.address}}</div>
-      </ion-item>
-      <ion-item style="border-bottom:0.55px solid #c8c7cc">
-        <ion-icon name="call" style="margin-right:5px;float:left;"></ion-icon>
-        <div style="float:left;padding-top:4px;padding-left:5px;">总机：021-20261000</div>
-        <ion-icon name="arrow-forward" style="float:right;margin-right:5px;"></ion-icon>
-      </ion-item>
+      <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap()">
+        <ion-icon name="pin" item-left></ion-icon>
+        {{hospital.address}}
+      </button>
+      <button ion-item style="border-bottom:0.55px solid #c8c7cc">
+        <ion-icon name="call" item-left></ion-icon>
+        总机：021-20261000
+      </button>
       <ion-item style="padding-left:0px;" id="hospitalFunc">
         <ion-grid style="padding:0;">
           <ion-row>
@@ -52,13 +51,13 @@
             </ion-col>
             <ion-col width-25>
               <button ion-button clear block>候诊排队</button>
-              </ion-col>
+            </ion-col>
             <ion-col width-25>
               <button ion-button clear block>医院照片</button>
-              </ion-col>
+            </ion-col>
             <ion-col width-25>
               <button ion-button clear block>医院公告</button>
-              </ion-col>
+            </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
@@ -68,38 +67,38 @@
       <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
         医院简介
       </div>
-      <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:100px;overflow-y:scroll;" [innerHTML]="hospital.description"></article>
+      <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:150px;overflow-y:scroll;" [innerHTML]="hospital.description"></article>
     </div>
 
     <ion-list id="hospitalService" style="margin-top:15px;">
       <button ion-item>
-        <ion-icon item-left><i class="fa fa-credit-card" aria-hidden="true"></i></ion-icon>
+        <ion-icon item-left style='color:#ffb108'><i class="fa fa-credit-card" aria-hidden="true"></i></ion-icon>
         建卡流程
       </button>
-      <ion-item>
-        <ion-icon item-left></ion-icon>
+      <button ion-item>
+        <ion-icon item-left style='color:#3a85d0'><i class="fa fa-bed" aria-hidden="true"></i></ion-icon>
         病房介绍
-      </ion-item>
-      <ion-item>
-        <ion-icon item-left></ion-icon>
+      </button>
+      <button ion-item>
+        <ion-icon item-left style='color:#f26d55'><i class="fa fa-medkit" aria-hidden="true"></i></ion-icon>
         产检套餐
-      </ion-item>
-      <ion-item>
-        <ion-icon name="contact" item-left></ion-icon>
+      </button>
+      <button ion-item>
+        <ion-icon item-left style='color:#69b03c'><i class="fa fa-hospital-o" aria-hidden="true"></i></ion-icon>
         医务服务/设施
-      </ion-item>
-      <ion-item>
-        <ion-icon name="rose" item-left></ion-icon>
+      </button>
+      <button ion-item>
+        <ion-icon item-left style='color:#ffb108'><i class="fa fa-shopping-basket" aria-hidden="true"></i></ion-icon>
         生产准备
-      </ion-item>
-      <ion-item>
-        <ion-icon name="happy" item-left></ion-icon>
+      </button>
+      <button ion-item>
+        <ion-icon item-left style='color:#f26d55'><i class="fa fa-child" aria-hidden="true"></i></ion-icon>
         产后42天
-      </ion-item>
-      <ion-item>
-        <ion-icon name="calendar" item-left></ion-icon>
+      </button>
+      <button ion-item>
+        <ion-icon item-left style='color:#3a85d0'><i class="fa fa-calendar" aria-hidden="true"></i></ion-icon>
         专家出诊时间
-      </ion-item>
+      </button>
     </ion-list>
 
   </div>

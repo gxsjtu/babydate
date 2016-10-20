@@ -33,7 +33,7 @@
 <ion-content>
   <div id="hospitals" *ngIf="hospitals.length > 0">
     <ion-list>
-      <ion-item *ngFor="let h of hospitals" (click)="goHospitalDetail(h)">
+      <button ion-item *ngFor="let h of hospitals" (click)="goHospitalDetail(h)">
         <ion-thumbnail item-left>
           <img [src]="'data:image/png;base64,'+h.logo">
         </ion-thumbnail>
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-      </ion-item>
+      </button>
     </ion-list>
   </div>
 
