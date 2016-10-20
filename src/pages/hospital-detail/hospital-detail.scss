@@ -1,4 +1,5 @@
 page-hospital-detail {
+
   #hospitals ul {
     padding: 0;
     margin: 0;
@@ -48,6 +49,13 @@ page-hospital-detail {
   #hospitalService{
     ion-icon[name=arrow-forward]{
       color: #ccc;
+    }
+  }
+
+  #description{
+    p:last-child{
+      display:inline;
+      border-top:none;
     }
   }
 }
