@@ -47,10 +47,18 @@
       <ion-item style="padding-left:0px;" id="hospitalFunc">
         <ion-grid style="padding:0;">
           <ion-row>
-            <ion-col width-25>预约挂号</ion-col>
-            <ion-col width-25>候诊排队</ion-col>
-            <ion-col width-25>医院照片</ion-col>
-            <ion-col width-25>医院公告</ion-col>
+            <ion-col width-25>
+              <button ion-button clear block>预约挂号</button>
+            </ion-col>
+            <ion-col width-25>
+              <button ion-button clear block>候诊排队</button>
+              </ion-col>
+            <ion-col width-25>
+              <button ion-button clear block>医院照片</button>
+              </ion-col>
+            <ion-col width-25>
+              <button ion-button clear block>医院公告</button>
+              </ion-col>
           </ion-row>
         </ion-grid>
       </ion-item>
@@ -60,7 +68,7 @@
       <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
         医院简介
       </div>
-      <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;" [innerHTML]="hospital.description"></article>
+      <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:100px;overflow-y:scroll;" [innerHTML]="hospital.description"></article>
     </div>
 
     <ion-list id="hospitalService" style="margin-top:15px;">
