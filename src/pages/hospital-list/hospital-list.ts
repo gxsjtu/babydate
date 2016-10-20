@@ -35,7 +35,7 @@ export class HospitalListPage {
   }
 
   ionViewWillEnter() {
-    this.vc.setBackButtonText(this.params.get('BackText'));
+    this.vc.setBackButtonText(this.params.get('backText'));
   }
 
   showArea(myEvent) {
