@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { HospitalListPage } from '../hospital-list/hospital-list';
 import {Converter} from '../../providers/converter';
 declare const Swiper: any;
+declare var $: any;
 
 @Component({
   selector: 'page-home',
