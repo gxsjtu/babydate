@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>hospitalMap</ion-title>
+    <button (click)="drivingPlain()">驾车</button>
+    <button (click)="transitPlain()">公交</button>
+    <button (click)="walkingPlain()">步行</button>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="page-hospital-map">
+  <div id="mapDIV">
 
+  </div>
 </ion-content>

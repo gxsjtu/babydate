@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
-import * as Move from 'move-js';
+// import * as Move from 'move-js';
 
 
 /*
@@ -24,6 +24,10 @@ export class HospitalListPage {
     this.queryHospital();
   }
 
+  getHosDetail(){
+    this.navCtrl.push(HospitalDetailPage);
+  }
+
   ionViewDidLoad() {
 
   }
@@ -33,30 +37,30 @@ export class HospitalListPage {
   }
 
   showArea(myEvent) {
-    Move.default('#iconArea').rotate(180).end();
-    let popover = this.popoverCtrl.create(AreaPopoverPage, {
-      selectedArea: this.selectedArea,
-      listPage: this
-    });
-    popover.present({
-      ev: myEvent
-    });
+    // Move.default('#iconArea').rotate(180).end();
+    // let popover = this.popoverCtrl.create(AreaPopoverPage, {
+    //   selectedArea: this.selectedArea,
+    //   listPage: this
+    // });
+    // popover.present({
+    //   ev: myEvent
+    // });
   }
 
   showLevel(myEvent) {
-    Move.default('#iconLevel').rotate(180).end();
-    let popover = this.popoverCtrl.create(LevelPopoverPage, {
-      selectedLevel: this.selectedLevel,
-      listPage: this
-    });
-    popover.onDidDismiss(() => {
-      Move.default('#iconLevel').rotate(360).end(() => {
-        document.getElementById('iconLevel').removeAttribute('style');
-      });
-    });
-    popover.present({
-      ev: myEvent
-    });
+    // Move.default('#iconLevel').rotate(180).end();
+    // let popover = this.popoverCtrl.create(LevelPopoverPage, {
+    //   selectedLevel: this.selectedLevel,
+    //   listPage: this
+    // });
+    // popover.onDidDismiss(() => {
+    //   Move.default('#iconLevel').rotate(360).end(() => {
+    //     document.getElementById('iconLevel').removeAttribute('style');
+    //   });
+    // });
+    // popover.present({
+    //   ev: myEvent
+    // });
   }
 
   onHospitalClick() {
