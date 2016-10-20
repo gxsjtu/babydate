@@ -12,8 +12,10 @@ import { Ionic2RatingModule } from 'ionic2-rating';
 import { InfoPage } from '../pages/info/info';
 import { Converter } from '../providers/converter';
 import { LoginPage} from '../pages/login/login';
-import { RegisterPage} from '../pages/register/register';
-import { SettingsPage} from '../pages/settings/settings';
+import { RegisterPage } from '../pages/register/register';
+import { SettingsPage } from '../pages/settings/settings';
+import { AccompanyPage } from '../pages/accompany/accompany';
+import { LoginStatus } from '../providers/login-status';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { SettingsPage} from '../pages/settings/settings';
     LevelPopoverPage,
     LoginPage,
     RegisterPage,
-    SettingsPage
+    SettingsPage,
+    AccompanyPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -56,8 +59,9 @@ import { SettingsPage} from '../pages/settings/settings';
     LevelPopoverPage,
     LoginPage,
     RegisterPage,
-    SettingsPage
+    SettingsPage,
+    AccompanyPage
   ],
-  providers: [GlobalParameters, Converter]
+  providers: [GlobalParameters, Converter, LoginStatus]
 })
 export class AppModule { }

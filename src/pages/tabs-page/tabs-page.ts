@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Splashscreen } from 'ionic-native';
+import { AccompanyPage } from '../accompany/accompany';
 /*
   Generated class for the TabsPage page.
 
@@ -22,6 +23,7 @@ export class TabsPage {
 
   constructor(public navCtrl: NavController) {
     this.home = HomePage;
+    this.accompany = AccompanyPage;
   }
 
   ionViewWillEnter(){

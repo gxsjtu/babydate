@@ -5,14 +5,16 @@ import { OnboardPage } from '../pages/onboard/onboard';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SecureStorage, AppVersion } from 'ionic-native';
 import * as semver from 'semver';
+import { LoginStatus } from '../providers/login-status';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
   rootPage = null;
-
+  loginStatus = new LoginStatus();
   constructor(platform: Platform) {
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
