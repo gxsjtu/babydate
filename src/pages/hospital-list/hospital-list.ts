@@ -140,8 +140,8 @@ export class HospitalListPage {
 
   goHospitalDetail(hospital){
     this.navCtrl.push(HospitalDetailPage,{
-      BackText: '产院列表',
-      Hospital:hospital
+      backText: '产院列表',
+      hospital: hospital
     });
   }
 }

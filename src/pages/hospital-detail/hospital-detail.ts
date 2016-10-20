@@ -15,18 +15,16 @@ import {Converter} from '../../providers/converter';
 })
 export class HospitalDetailPage {
 
-  HosAddress: any;
   hospital = null;
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public converter: Converter, public loadingCtrl: LoadingController) {
-    this.HosAddress = "浦东新区高科西路2699号";
+    this.hospital = this.params.get('hospital');
   }
 
   getMap() {
-    this.navCtrl.push(HospitalMapPage, { HosAddress: this.HosAddress });
+    this.navCtrl.push(HospitalMapPage, { HosAddress: this.hospital.address });
   }
 
   ionViewWillEnter() {
-    this.vc.setBackButtonText(this.params.get('BackText'));
-    this.hospital = this.params.get('Hospital');
+    this.vc.setBackButtonText(this.params.get('backText'));
   }
 }

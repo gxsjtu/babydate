@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class Converter {
 
   constructor(public http: Http) {
-    console.log('Hello Converter Provider');
+
   }
 
   getRate(score: number): number {

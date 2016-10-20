@@ -12,94 +12,91 @@
 
 </ion-header>
 
-<ion-content style="background-color: #f0f0f0;">
-  <div *ngIf="hospital!=null">
-    <ion-list id="hospital" style="margin-bottom:0px;background-color:#f0f0f0;">
-      <ion-item style="border-bottom:0px;background-color:#f0f0f0;">
-        <ion-thumbnail item-left>
-          <img [src]="'data:image/png;base64,'+hospital.logo">
-        </ion-thumbnail>
-        <div style='display:flex;flex-direction:column;justify-content:space-between'>
-          <h3>{{hospital.name}}</h3>
-          <div>
-            <div style="float:left;width:50%;">
-              <rating [ngModel]="this.converter.getRate(hospital.score)" readOnly="true"></rating>
-            </div>
-            <h4 style="float:right;height:20px;line-height:20px;">等级：{{hospital.level}}</h4>
+<ion-content style='background-color:#f0f0f0'>
+  <ion-list id="hospitals" style="margin-bottom:0px;background-color:#f0f0f0;">
+    <ion-item style="border-bottom:0px;background-color:#f0f0f0;">
+      <ion-thumbnail item-left>
+        <img [src]="'data:image/png;base64,'+hospital.logo">
+      </ion-thumbnail>
+      <div style='display:flex;flex-direction:column;justify-content:space-between'>
+        <h3>{{hospital.name}}</h3>
+        <div>
+          <div style="float:left;width:50%;">
+            <rating [ngModel]="this.converter.getRate(hospital.score)" readOnly="true"></rating>
           </div>
-          <div style="color:grey">
-            <h4>{{hospital.district}}</h4>
-          </div>
+          <h4 style="float:right;height:20px;line-height:20px;">等级：{{hospital.level}}</h4>
         </div>
-      </ion-item>
-    </ion-list>
+        <div style="color:grey">
+          <h4>{{hospital.district}}</h4>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 
-    <ion-list id="hospitalInfo" style="margin-bottom:15px;">
-      <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap()">
+  <ion-list id="hospitalInfo" style="margin-bottom:15px;">
+    <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap()">
         <ion-icon name="pin" item-left></ion-icon>
         {{hospital.address}}
       </button>
-      <button ion-item style="border-bottom:0.55px solid #c8c7cc">
+    <button ion-item style="border-bottom:0.55px solid #c8c7cc">
         <ion-icon name="call" item-left></ion-icon>
         总机：021-20261000
       </button>
-      <ion-item style="padding-left:0px;" id="hospitalFunc">
-        <ion-grid style="padding:0;">
-          <ion-row>
-            <ion-col width-25>
-              <button ion-button clear block>预约挂号</button>
-            </ion-col>
-            <ion-col width-25>
-              <button ion-button clear block>候诊排队</button>
-            </ion-col>
-            <ion-col width-25>
-              <button ion-button clear block>医院照片</button>
-            </ion-col>
-            <ion-col width-25>
-              <button ion-button clear block>医院公告</button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-    </ion-list>
+    <ion-item style="padding-left:0px;" id="hospitalFunc">
+      <ion-grid style="padding:0;">
+        <ion-row>
+          <ion-col width-25>
+            <button ion-button clear block>预约挂号</button>
+          </ion-col>
+          <ion-col width-25>
+            <button ion-button clear block>候诊排队</button>
+          </ion-col>
+          <ion-col width-25>
+            <button ion-button clear block>医院照片</button>
+          </ion-col>
+          <ion-col width-25>
+            <button ion-button clear block>医院公告</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 
-    <div style="padding-left:16px;padding-right:16px;background-color:white;">
-      <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
-        医院简介
-      </div>
-      <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:150px;overflow-y:scroll;" [innerHTML]="hospital.description"></article>
+  <div style="padding-left:16px;padding-right:16px;background-color:white;">
+    <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
+      医院简介
     </div>
+    <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:150px;overflow-y:scroll;" [innerHTML]="hospital.description"></article>
+  </div>
 
-    <ion-list id="hospitalService" style="margin-top:15px;">
-      <button ion-item>
+  <ion-list id="hospitalService" style="margin-top:15px;">
+    <button ion-item>
         <ion-icon item-left style='color:#ffb108'><i class="fa fa-credit-card" aria-hidden="true"></i></ion-icon>
         建卡流程
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#3a85d0'><i class="fa fa-bed" aria-hidden="true"></i></ion-icon>
         病房介绍
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#f26d55'><i class="fa fa-medkit" aria-hidden="true"></i></ion-icon>
         产检套餐
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#69b03c'><i class="fa fa-hospital-o" aria-hidden="true"></i></ion-icon>
         医务服务/设施
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#ffb108'><i class="fa fa-shopping-basket" aria-hidden="true"></i></ion-icon>
         生产准备
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#f26d55'><i class="fa fa-child" aria-hidden="true"></i></ion-icon>
         产后42天
       </button>
-      <button ion-item>
+    <button ion-item>
         <ion-icon item-left style='color:#3a85d0'><i class="fa fa-calendar" aria-hidden="true"></i></ion-icon>
         专家出诊时间
       </button>
-    </ion-list>
-
-  </div>
+  </ion-list>
 </ion-content>
