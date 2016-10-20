@@ -35,7 +35,7 @@ export class HospitalDetailPage {
   getLessDescription() {
     let desc = this.hospital.description;
     if (desc.length>200) {
-      this.lessDescription = desc.substr(0,200);
+      this.lessDescription = desc.substr(0,200)+'...';
       this.showLessDescription = true;
     }
     else

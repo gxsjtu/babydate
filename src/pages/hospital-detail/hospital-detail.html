@@ -64,15 +64,15 @@
   </ion-list>
 
   <div style="padding-left:16px;padding-right:16px;background-color:white;">
-    <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
+    <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;border-bottom:1px solid #c8c7cc;">
       医院简介
     </div>
-    <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px"
+    <span id='description' style="font-size:16px;padding-bottom:5px"
     [innerHTML]="showLessDescription ? lessDescription : hospital.description">
-    </article>
-    <div *ngIf="hospital.description.length > 200">
-      <button ion-button clear block (click)="descriptionButtonClick()">{{descriptionButtonText}}</button>
-    </div>
+    </span>
+
+      <button *ngIf="hospital.description.length > 200" ion-button outline small (click)="descriptionButtonClick()">{{descriptionButtonText}}</button>
+
   </div>
 
   <ion-list id="hospitalService" style="margin-top:15px;">
