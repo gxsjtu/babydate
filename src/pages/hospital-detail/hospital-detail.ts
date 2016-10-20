@@ -3,7 +3,6 @@ import { HospitalMapPage } from '../hospital-map/hospital-map';
 import { NavController, ViewController, NavParams, LoadingController} from 'ionic-angular';
 import {Converter} from '../../providers/converter';
 
-
 /*
   Generated class for the HospitalDetail page.
 
@@ -25,9 +24,9 @@ export class HospitalDetailPage {
   getMap() {
     this.navCtrl.push(HospitalMapPage, { HosAddress: this.HosAddress });
   }
+
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('BackText'));
     this.hospital = this.params.get('Hospital');
-    console.log(this.hospital);
   }
 }
