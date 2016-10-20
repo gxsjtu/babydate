@@ -30,8 +30,6 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-
-
 <ion-content>
   <div id="hospitals" *ngIf="hospitals.length > 0">
     <ion-list>
@@ -39,27 +37,24 @@
         <ion-thumbnail item-left>
           <img [src]="'data:image/png;base64,'+h.logo">
         </ion-thumbnail>
-<<<<<<< HEAD
-
-
         <div style='display:flex;flex-direction:column;justify-content:space-between' (click)="getHosDetail()">
 
           <h2>上海长宁区妇幼保健院</h2>
-=======
-        <div style='display:flex;flex-direction:column;justify-content:space-between'>
-          <h3>{{h.name}}</h3>
->>>>>>> origin/master
-          <div>
-            <div style="float:left;width:50%;">
-              <rating [ngModel]="this.converter.getRate(h.score)" readOnly="true"></rating>
+          <div style='display:flex;flex-direction:column;justify-content:space-between'>
+            <h3>{{h.name}}</h3>
+            <div>
+              <div style="float:left;width:50%;">
+                <rating [ngModel]="this.converter.getRate(h.score)" readOnly="true"></rating>
+              </div>
+              <h4 style="float:right;height:20px;line-height:20px;">等级：{{h.level}}</h4>
             </div>
-            <h4 style="float:right;height:20px;line-height:20px;">等级：{{h.level}}</h4>
-          </div>
-          <div style="color:#ccc">
-            <h4>{{h.district}}</h4>
+            <div style="color:#ccc">
+              <h4>{{h.district}}</h4>
+            </div>
           </div>
         </div>
       </ion-item>
     </ion-list>
   </div>
+
 </ion-content>
