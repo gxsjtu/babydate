@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
-import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
 import { NavController, ViewController, NavParams, PopoverController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
