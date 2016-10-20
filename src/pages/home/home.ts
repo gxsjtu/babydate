@@ -42,14 +42,14 @@ export class HomePage {
 
   goHospital() {
     this.navCtrl.push(HospitalListPage, {
-      BackText: '首页'
+      backText: '首页'
     });
   }
 
   goHospitalDetail(hospital){
     this.navCtrl.push(HospitalDetailPage,{
-      BackText: '首页',
-      Hospital:hospital
+      backText: '首页',
+      hospital: hospital
     });
   }
 }
