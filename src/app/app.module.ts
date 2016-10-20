@@ -10,7 +10,10 @@ import { HospitalMapPage } from '../pages/hospital-map/hospital-map';
 import { GlobalParameters } from '../providers/global-parameters';
 import { Ionic2RatingModule } from 'ionic2-rating';
 import { InfoPage } from '../pages/info/info';
-import {Converter} from '../providers/converter';
+import { Converter } from '../providers/converter';
+import { LoginPage} from '../pages/login/login';
+import { RegisterPage} from '../pages/register/register';
+import { SettingsPage} from '../pages/settings/settings';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import {Converter} from '../providers/converter';
     HospitalMapPage,
     InfoPage,
     AreaPopoverPage,
-    LevelPopoverPage
+    LevelPopoverPage,
+    LoginPage,
+    RegisterPage,
+    SettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -47,7 +53,10 @@ import {Converter} from '../providers/converter';
     HospitalMapPage,
     InfoPage,
     AreaPopoverPage,
-    LevelPopoverPage
+    LevelPopoverPage,
+    LoginPage,
+    RegisterPage,
+    SettingsPage
   ],
   providers: [GlobalParameters, Converter]
 })
