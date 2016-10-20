@@ -14,51 +14,50 @@
   </ion-searchbar>
 
   <ion-toolbar>
-
-      <ion-grid>
-        <ion-row>
-          <ion-col width-50 style="border-right:1px solid #ccc;">
-            <button (click)="showArea($event)" ion-button clear block>
-              区县
+    <ion-row>
+      <ion-col width-50 style="border-right:1px solid #ccc;margin:0px;padding:0px">
+        <button small style='margin:0px' (click)="showArea($event)" ion-button clear block>
+              {{areaName}}
               <ion-icon id='iconArea' name="arrow-down" item-right></ion-icon>
             </button>
-          </ion-col>
-          <ion-col width-50>
-            <button (click)="showLevel($event)" ion-button clear block>
-              等级
+      </ion-col>
+      <ion-col width-50 style='margin:0px;padding:0px'>
+        <button style='margin:0px' small (click)="showLevel($event)" ion-button clear block>
+              {{levelName}}
               <ion-icon id='iconLevel' name="arrow-down" item-right></ion-icon>
             </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <div id="hospitals">
+  <div id="hospitals" *ngIf="hospitals.length > 0">
     <ion-list>
-      <ion-item *ngFor="let h of hos">
-
+      <ion-item *ngFor="let h of hospitals">
         <ion-thumbnail item-left>
-          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/thumbnail-totoro.png">
+          <img [src]="'data:image/png;base64,'+h.logo">
         </ion-thumbnail>
+<<<<<<< HEAD
 
 
         <div style='display:flex;flex-direction:column;justify-content:space-between' (click)="getHosDetail()">
 
           <h2>上海长宁区妇幼保健院</h2>
+=======
+        <div style='display:flex;flex-direction:column;justify-content:space-between'>
+          <h3>{{h.name}}</h3>
+>>>>>>> origin/master
           <div>
             <div style="float:left;width:50%;">
-              <rating [(ngModel)]="rate" readOnly="true"></rating>
+              <rating [ngModel]="this.converter.getRate(h.score)" readOnly="true"></rating>
             </div>
-            <div style="float:right;height:27px;line-height:27px;">等级：2级甲等</div>
+            <h4 style="float:right;height:20px;line-height:20px;">等级：{{h.level}}</h4>
           </div>
           <div style="color:#ccc">
-            <div style="float:left">长宁区</div>
+            <h4>{{h.district}}</h4>
           </div>
-
         </div>
       </ion-item>
     </ion-list>
