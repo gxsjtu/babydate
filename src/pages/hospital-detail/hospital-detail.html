@@ -70,9 +70,8 @@
     <span id='description' style="font-size:16px;padding-bottom:5px"
     [innerHTML]="showLessDescription ? lessDescription : hospital.description">
     </span>
-
       <button *ngIf="hospital.description.length > 200" ion-button outline small (click)="descriptionButtonClick()">{{descriptionButtonText}}</button>
-
+      <div style="height:1px;" *ngIf="hospital.description.length <= 200"></div>
   </div>
 
   <ion-list id="hospitalService" style="margin-top:15px;">
