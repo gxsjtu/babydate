@@ -1,16 +1,12 @@
 import { Component } from '@angular/core';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
-<<<<<<< HEAD
 import { NavController, ViewController, NavParams, PopoverController } from 'ionic-angular';
-// import * as Move from 'move-js';
-=======
 import { NavController, ViewController, NavParams, PopoverController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import {Converter} from '../../providers/converter';
 import 'rxjs/Rx';
 import * as Move from 'move-js';
->>>>>>> origin/master
 
 
 /*
@@ -35,7 +31,6 @@ export class HospitalListPage {
     this.queryHospital();
   }
 
-<<<<<<< HEAD
   getHosDetail(){
     this.navCtrl.push(HospitalDetailPage);
   }
@@ -44,23 +39,11 @@ export class HospitalListPage {
 
   }
 
-=======
->>>>>>> origin/master
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('BackText'));
   }
 
   showArea(myEvent) {
-<<<<<<< HEAD
-    // Move.default('#iconArea').rotate(180).end();
-    // let popover = this.popoverCtrl.create(AreaPopoverPage, {
-    //   selectedArea: this.selectedArea,
-    //   listPage: this
-    // });
-    // popover.present({
-    //   ev: myEvent
-    // });
-=======
     Move.default('#iconArea').rotate(180).end();
     let popover = this.popoverCtrl.create(AreaPopoverPage, {
       selectedArea: this.selectedArea,
@@ -74,7 +57,6 @@ export class HospitalListPage {
     popover.present({
       ev: myEvent
     });
->>>>>>> origin/master
   }
 
   showLevel(myEvent) {
