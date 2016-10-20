@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content style='background-color:#f0f0f0'>
+  <button type="button" name="button" (click)="getLessDescription()">click</button>
   <ion-list id="hospitals" style="margin-bottom:0px;background-color:#f0f0f0;">
     <ion-item style="border-bottom:0px;background-color:#f0f0f0;">
       <ion-thumbnail item-left>
@@ -66,9 +67,12 @@
     <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;">
       医院简介
     </div>
-    <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px;max-height:150px;overflow-y:scroll;" [innerHTML]="hospital.description">
-
+    <article id='description' style="font-size:16px;border-top:1px solid #c8c7cc;padding-bottom:5px"
+    [innerHTML]="showLessDescription ? lessDescription : hospital.description">
     </article>
+    <div *ngIf="hospital.description.length > 200">
+      <button ion-button clear block (click)="descriptionButtonClick()">{{descriptionButtonText}}</button>
+    </div>
   </div>
 
   <ion-list id="hospitalService" style="margin-top:15px;">

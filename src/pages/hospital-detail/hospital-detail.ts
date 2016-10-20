@@ -16,8 +16,12 @@ import {Converter} from '../../providers/converter';
 export class HospitalDetailPage {
 
   hospital = null;
+  lessDescription: string;
+  showLessDescription = true;
+  descriptionButtonText = "展开";
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public converter: Converter, public loadingCtrl: LoadingController) {
     this.hospital = this.params.get('hospital');
+    this.getLessDescription();
   }
 
   getMap() {
@@ -26,5 +30,31 @@ export class HospitalDetailPage {
 
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('backText'));
+  }
+
+  getLessDescription() {
+    let desc = this.hospital.description;
+    if (desc.length>200) {
+      this.lessDescription = desc.substr(0,200);
+      this.showLessDescription = true;
+    }
+    else
+    {
+      this.lessDescription = desc;
+      this.showLessDescription = false;
+    }
+  }
+
+  descriptionButtonClick()
+  {
+    this.showLessDescription = !this.showLessDescription;
+    if(this.showLessDescription)
+    {
+      this.descriptionButtonText = "展开";
+    }
+    else
+    {
+      this.descriptionButtonText = "收起";
+    }
   }
 }
