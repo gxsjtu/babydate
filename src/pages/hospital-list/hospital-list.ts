@@ -30,10 +30,6 @@ export class HospitalListPage {
     this.queryHospital();
   }
 
-  getHosDetail(){
-    this.navCtrl.push(HospitalDetailPage);
-  }
-
   ionViewDidLoad() {
 
   }
