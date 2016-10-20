@@ -31,7 +31,8 @@ import {Converter} from '../providers/converter';
       swipeBackEnabled: true,
       tabsHideOnSubPages: false,
       iconMode: 'ios',
-      mode: 'ios'
+      mode: 'ios',
+      canDisableScroll: false
     }),
     Ionic2RatingModule
   ],
