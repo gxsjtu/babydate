@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController,ViewController ,NavParams} from 'ionic-angular';
 import { HospitalMapPage } from '../hospital-map/hospital-map';
+import { NavController, ViewController, NavParams, LoadingController} from 'ionic-angular';
+import {Converter} from '../../providers/converter';
 
 
 /*
@@ -16,13 +17,17 @@ import { HospitalMapPage } from '../hospital-map/hospital-map';
 export class HospitalDetailPage {
 
   HosAddress: any;
-
-  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {
-    this.HosAddress="浦东新区高科西路2699号";
+  hospital = null;
+  constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public converter: Converter, public loadingCtrl: LoadingController) {
+    this.HosAddress = "浦东新区高科西路2699号";
   }
 
-  getMap()
-  {
-    this.navCtrl.push(HospitalMapPage,{HosAddress:this.HosAddress});
+  getMap() {
+    this.navCtrl.push(HospitalMapPage, { HosAddress: this.HosAddress });
+  }
+  ionViewWillEnter() {
+    this.vc.setBackButtonText(this.params.get('BackText'));
+    this.hospital = this.params.get('Hospital');
+    console.log(this.hospital);
   }
 }
