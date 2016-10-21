@@ -16,6 +16,7 @@ import { RegisterPage } from '../pages/register/register';
 import { SettingsPage } from '../pages/settings/settings';
 import { AccompanyPage } from '../pages/accompany/accompany';
 import { LoginStatus } from '../providers/login-status';
+import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginStatus } from '../providers/login-status';
     LoginPage,
     RegisterPage,
     SettingsPage,
-    AccompanyPage
+    AccompanyPage,
+    HospitalGalleryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -60,7 +62,8 @@ import { LoginStatus } from '../providers/login-status';
     LoginPage,
     RegisterPage,
     SettingsPage,
-    AccompanyPage
+    AccompanyPage,
+    HospitalGalleryPage
   ],
   providers: [GlobalParameters, Converter, LoginStatus]
 })

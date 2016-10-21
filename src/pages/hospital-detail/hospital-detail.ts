@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HospitalMapPage } from '../hospital-map/hospital-map';
 import { NavController, ViewController, NavParams, LoadingController} from 'ionic-angular';
 import {Converter} from '../../providers/converter';
+import {HospitalGalleryPage} from '../hospital-gallery/hospital-gallery';
 
 /*
   Generated class for the HospitalDetail page.
@@ -30,6 +31,12 @@ export class HospitalDetailPage {
 
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('backText'));
+  }
+
+  gotoHospitalGallery(){
+    this.navCtrl.push(HospitalGalleryPage, {
+      backText: this.hospital.name
+    })
   }
 
   getLessDescription() {
