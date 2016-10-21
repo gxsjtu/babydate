@@ -150,9 +150,9 @@ export class HospitalListPage {
 @Component({
   template: `
     <ion-list>
-      <ion-item *ngFor="let area of areaDatas" (click)="areaSelected(area)">
+      <button detail-none ion-item *ngFor="let area of areaDatas" (click)="areaSelected(area)">
         <a>{{area}}<ion-icon *ngIf="area == selectedArea" style="float:right;" name="checkmark"></ion-icon></a>
-      </ion-item>
+      </button>
     </ion-list>
   `
 })
