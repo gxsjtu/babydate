@@ -17,6 +17,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AccompanyPage } from '../pages/accompany/accompany';
 import { LoginStatus } from '../providers/login-status';
 import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery';
+import { IdentitySelect } from '../pages/identity-select/identity-select';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery'
     RegisterPage,
     SettingsPage,
     AccompanyPage,
-    HospitalGalleryPage
+    HospitalGalleryPage,
+    IdentitySelect
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -64,7 +66,8 @@ import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery'
     RegisterPage,
     SettingsPage,
     AccompanyPage,
-    HospitalGalleryPage
+    HospitalGalleryPage,
+    IdentitySelect
   ],
   providers: [GlobalParameters, Converter, LoginStatus]
 })
