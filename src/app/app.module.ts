@@ -43,7 +43,8 @@ import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery'
       tabsHideOnSubPages: false,
       iconMode: 'ios',
       mode: 'ios',
-      canDisableScroll: false
+      canDisableScroll: false,
+      backButtonText: '返回'
     }),
     Ionic2RatingModule
   ],
