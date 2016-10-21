@@ -39,9 +39,9 @@
         <ion-icon name="pin" item-left></ion-icon>
         {{hospital.address}}
       </button>
-    <button ion-item style="border-bottom:0.55px solid #c8c7cc">
+    <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="showHospitalTel()">
         <ion-icon name="call" item-left></ion-icon>
-        总机：021-20261000
+        <span *ngIf="hospital.hasOwnProperty('tel') && hospital.tel.hasOwnProperty('main')">{{hospital.tel.main.name+':'+hospital.tel.main.number}}</span>
       </button>
     <ion-item style="padding-left:0px;" id="hospitalFunc">
       <ion-grid style="padding:0;">
