@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Splashscreen } from 'ionic-native';
 import { AccompanyPage } from '../accompany/accompany';
+import {LoginStatus} from '../../providers/login-status';
+import {LoginPage} from '../login/login';
 /*
   Generated class for the TabsPage page.
 
@@ -21,9 +23,13 @@ export class TabsPage {
   mall: any;
   center: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public loginStatus: LoginStatus) {
     this.home = HomePage;
-    this.accompany = AccompanyPage;
+    if(loginStatus.isLoggedIn() == false){
+      this.accompany = LoginPage;
+    }else{
+      this.accompany = AccompanyPage;
+    }
   }
 
   ionViewWillEnter(){

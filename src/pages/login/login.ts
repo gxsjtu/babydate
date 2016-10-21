@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { RegisterPage } from '../register/register';
 
 /*
   Generated class for the Login page.
@@ -13,8 +14,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
   fromPage: string = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController) {
+    console.log('LoginPage');
     this.fromPage = this.navParams.get('fromPage');
   }
 
+  gotoRegister(){
+    this.navCtrl.push(RegisterPage, {
+      backText: '登录'
+    });
+  }
 }

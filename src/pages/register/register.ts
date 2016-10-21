@@ -12,7 +12,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-
+  codeText: string = '获取验证码';
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {

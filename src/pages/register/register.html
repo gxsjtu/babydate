@@ -7,12 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>register</ion-title>
+    <ion-title>注册</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content style="background-color: #f0f0f0">
+  <ion-list no-lines style="margin-top: 50px; margin-bottom:5px">
+    <ion-item>
+      <ion-label>手机号</ion-label>
+      <ion-input type="number"></ion-input>
+      <button item-right outline>{{codeText}}</button>
+    </ion-item>
+  </ion-list>
 
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>验证码</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>密码</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button block color='common'>立即注册</button>
+  </div>
 </ion-content>

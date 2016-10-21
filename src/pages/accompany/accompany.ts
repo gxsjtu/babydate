@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { LoginStatus } from '../../providers/login-status';
-import { LoginPage } from '../login/login';
 
 /*
   Generated class for the Accompany page.
@@ -15,11 +13,6 @@ import { LoginPage } from '../login/login';
 })
 export class AccompanyPage {
 
-  constructor(public navCtrl: NavController, public loginStatus: LoginStatus) {
-    console.log(loginStatus);
-    if(loginStatus.isLoggedIn() == false){
-      navCtrl.setRoot(LoginPage, {fromPage: 'accompany'});
-    }
+  constructor(public navCtrl: NavController) {
   }
-
 }
