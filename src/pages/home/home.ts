@@ -4,6 +4,7 @@ import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import { HospitalListPage } from '../hospital-list/hospital-list';
 import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
+import { IdentitySelect } from '../identity-select/identity-select';
 import {Converter} from '../../providers/converter';
 declare const Swiper: any;
 declare var $: any;
@@ -51,5 +52,9 @@ export class HomePage {
       backText: '首页',
       hospital: hospital
     });
+  }
+
+  showSelect(){
+    this.navCtrl.push(IdentitySelect);
   }
 }

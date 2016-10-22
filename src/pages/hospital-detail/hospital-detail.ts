@@ -66,16 +66,7 @@ export class HospitalDetailPage {
     //主机号码
     if (this.hospital.hasOwnProperty('tel')) {
       let telButtons = [];
-      if (this.hospital.tel.hasOwnProperty('main')) {
-        telButtons.push({
-          text: this.hospital.tel.main.name + ' : ' + this.hospital.tel.main.number,
-          role: 'destructive',
-          handler: () => {
-            //window.location = this.hospital.tel.main.number;
-            CallNumber.callNumber(this.hospital.tel.main.number, true).catch(() => console.log('Error launching dialer'));
-          }
-        });
-      }
+
 
       if (this.hospital.tel.hasOwnProperty('others') && this.hospital.tel.others.length > 0) {
         for (let i = 0; i < this.hospital.tel.others.length; i++) {
@@ -86,6 +77,16 @@ export class HospitalDetailPage {
             }
           });
         }
+      }
+
+      if (this.hospital.tel.hasOwnProperty('main')) {
+        telButtons.push({
+          text: this.hospital.tel.main.name + ' : ' + this.hospital.tel.main.number,
+          handler: () => {
+            //window.location = this.hospital.tel.main.number;
+            CallNumber.callNumber(this.hospital.tel.main.number, true).catch(() => console.log('Error launching dialer'));
+          }
+        });
       }
 
       telButtons.push({
