@@ -1,3 +1,16 @@
 page-identity-select {
-
+  #timePicker{
+    .item-block{
+      min-height: 0;
+    }
+    ion-label{
+      margin: 0;
+    }
+    .item-ios.item-block .item-inner{
+      border-bottom: 0;
+    }
+    .button-ios-danger{
+      background-color: #f35fa3;
+    }
+  }
 }

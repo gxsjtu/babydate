@@ -25,12 +25,12 @@
       </ion-row>
       <ion-row id="rowPic">
         <ion-col width-50>
-          <a href="#" (click)="selectPregnant()" class="pregnant" id="pregnant">
+          <a href="#" (click)="selectRole('pregnant')" class="pregnant" id="pregnant">
           <img src="assets/images/pregnant.jpg" style="width:100%">
         </a>
         </ion-col>
         <ion-col width-50>
-          <a href="#" (click)="selectMother()" class="mother" id="mother">
+          <a href="#" (click)="selectRole('mother')" class="mother" id="mother">
           <img src="assets/images/mother.jpg" style="width:100%">
         </a>
         </ion-col>
@@ -40,12 +40,14 @@
           <ion-row>
             <ion-col width-10></ion-col>
             <ion-col width-80>
-              <ion-grid>
-                <ion-row style="border:1px solid black;">
-                  <ion-col width-50>{{selectDateText}}</ion-col>
-                  <ion-col width-50 style="text-align:right;">
-                    {{myDate}}
-                    <!-- <ion-datetime style="float:right;padding:0;" displayFormat="YYYY-MM-DD" [(ngModel)]="myDate"></ion-datetime> -->
+              <ion-grid id="timePicker">
+                <ion-row style="border:1px solid #f35fa3;box-shadow: 0px 1px 5px grey inset;">
+                  <!-- <ion-col width-50></ion-col> -->
+                  <ion-col style="text-align:right;">
+                    <ion-item>
+                      <ion-label style="height:20px;">{{selectDateText}}</ion-label>
+                      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" max="2018" cancelText="取消" doneText="确定" [(ngModel)]="myDate" style="height:20px;padding:0;"></ion-datetime>
+                    </ion-item>
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -56,7 +58,7 @@
           <ion-row>
             <ion-col width-25></ion-col>
             <ion-col width-50>
-              <button ion-button block round color="danger">保存</button>
+              <button ion-button block round style="background-color:#f35fa3;border-radius:15px;">保存</button>
             </ion-col>
             <ion-col width-25></ion-col>
           </ion-row>
