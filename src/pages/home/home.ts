@@ -8,7 +8,6 @@ import { IdentitySelect } from '../identity-select/identity-select';
 import {Converter} from '../../providers/converter';
 declare const Swiper: any;
 declare var $: any;
-import Move from 'move-js';
 
 @Component({
   selector: 'page-home',
@@ -27,10 +26,6 @@ export class HomePage {
     }, error => {
       console.log(error);
     });
-  }
-
-  onBox(){
-    Move('#box').set('opacity', 0.2).duration(1000).end();
   }
 
   ionViewDidEnter() {
