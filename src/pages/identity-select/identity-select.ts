@@ -39,11 +39,11 @@ export class IdentitySelect {
       this.selectDateText = role == 'pregnant' ? "预产日期" : '宝宝出生日期';
       $("#text").animate({
         opacity: 0
-      }, 1000);
+      }, 500);
       let dismissDom = role == 'pregnant' ? $('#mother') : $('#pregnant');
       dismissDom.animate({
         opacity: 0
-      }, 1000, function() {
+      }, 500, function() {
         let content = $("#content").width();
         let width = $('#pregnant').width() + $('#pregnant').width() / 4;
         let height = $("#content").height();
@@ -55,10 +55,10 @@ export class IdentitySelect {
           marginLeft: left,
           marginTop: marginTop,
           width: width
-        }, 1000, function() {
+        }, 500, function() {
           $("#select").animate({
             opacity: 1
-          }, 1000);
+          }, 500);
         })
 
       });
