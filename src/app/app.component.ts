@@ -56,10 +56,7 @@ export class MyApp {
         });
 
       }).catch(error => {
-        console.log(error);
-        //目前使用浏览器所以需要注释掉，发布时应该打开
-        //this.rootPage = OnboardPage;
-        this.rootPage = TabsPage;
+        this.rootPage = OnboardPage;
       });
     });
   }

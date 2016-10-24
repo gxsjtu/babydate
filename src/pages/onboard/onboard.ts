@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 declare const Swiper: any;
 import { Splashscreen } from 'ionic-native';
+import { IdentitySelect } from '../identity-select/identity-select';
 
 /*
   Generated class for the Onboard page.
@@ -17,6 +18,10 @@ export class OnboardPage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  gotoIdentity(){
+    this.navCtrl.setRoot(IdentitySelect);
   }
 
   ionViewWillEnter() {
