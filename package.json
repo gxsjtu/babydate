@@ -31,6 +31,7 @@
     "ionic2-rating": "0.0.10",
     "ionicons": "^3.0.0",
     "lodash": "^4.16.4",
+    "moment": "^2.15.1",
     "move-js": "^0.5.0",
     "rxjs": "^5.0.0-beta.12",
     "semver": "^5.3.0",

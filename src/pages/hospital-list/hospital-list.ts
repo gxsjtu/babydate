@@ -5,8 +5,8 @@ import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import {Converter} from '../../providers/converter';
 import 'rxjs/Rx';
-import * as Move from 'move-js';
-
+import Move from 'move-js';
+import moment from 'moment';
 
 /*
   Generated class for the HospitalList page.
@@ -31,7 +31,7 @@ export class HospitalListPage {
   }
 
   ionViewDidLoad() {
-
+    console.log(moment());
   }
 
   ionViewWillEnter() {
@@ -39,13 +39,13 @@ export class HospitalListPage {
   }
 
   showArea(myEvent) {
-    Move.default('#iconArea').rotate(180).end();
+    Move('#iconArea').rotate(180).end();
     let popover = this.popoverCtrl.create(AreaPopoverPage, {
       selectedArea: this.selectedArea,
       listPage: this
     });
     popover.onDidDismiss(() => {
-      Move.default('#iconArea').rotate(360).end(() => {
+      Move('#iconArea').rotate(360).end(() => {
         document.getElementById('iconArea').removeAttribute('style');
       });
     });
@@ -55,13 +55,13 @@ export class HospitalListPage {
   }
 
   showLevel(myEvent) {
-    Move.default('#iconLevel').rotate(180).end();
+    Move('#iconLevel').rotate(180).end();
     let popover = this.popoverCtrl.create(LevelPopoverPage, {
       selectedLevel: this.selectedLevel,
       listPage: this
     });
     popover.onDidDismiss(() => {
-      Move.default('#iconLevel').rotate(360).end(() => {
+      Move('#iconLevel').rotate(360).end(() => {
         document.getElementById('iconLevel').removeAttribute('style');
       });
     });
