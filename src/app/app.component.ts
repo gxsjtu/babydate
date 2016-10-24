@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { OnboardPage } from '../pages/onboard/onboard';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
-import { SecureStorage, AppVersion } from 'ionic-native';
+import { NativeStorage, AppVersion } from 'ionic-native';
 import * as semver from 'semver';
 import { LoginStatus } from '../providers/login-status';
 import { IdentitySelect } from '../pages/identity-select/identity-select';
@@ -22,38 +22,62 @@ export class MyApp {
       StatusBar.styleDefault();
 
       AppVersion.getVersionNumber().then(ver => {
-
-        let secureStorage: SecureStorage = new SecureStorage();
-        secureStorage.create('babydate').then(() => {
-          secureStorage.get('version').then(data => {
-            if (semver.lt(data, ver) == true) {
-              this.rootPage = OnboardPage;
-              secureStorage.set('version', ver).then(key => {
-                console.log(ver);
-              }).catch(error => {
-                console.log(error);
-              });
-            } else {
-              //身份是否已经选择。如没有选择进入选择页面
-              secureStorage.get('stage').then(data => {
-                this.rootPage = TabsPage;
-              }).catch(err => {
-                console.log(err);
-                this.rootPage = IdentitySelect;
-              });
-            }
-          }).catch(error => {
+        NativeStorage.getItem('version').then(data => {
+          console.log(data);
+          if (semver.lt(data.version, ver) == true) {
             this.rootPage = OnboardPage;
-            secureStorage.set('version', ver).then(key => {
-              console.log(ver);
-            }).catch(error => {
-              console.log(error);
+            NativeStorage.setItem('version', { version: ver }).then(
+            ).catch(err => {
+              console.log(err);
             });
+          } else {
+            NativeStorage.getItem('identity').then(
+              () => { this.rootPage = TabsPage; }
+            ).catch(err => {
+              console.log(err);
+              this.rootPage = IdentitySelect;
+            });
+          }
+        }).catch(err => {
+          console.log(err);
+          NativeStorage.setItem('version', { version: ver }).then(
+          ).catch(err => {
+            console.log(err);
           });
-        }).catch(error => {
           this.rootPage = OnboardPage;
-          console.log(error);
         });
+
+        // let secureStorage: SecureStorage = new SecureStorage();
+        // secureStorage.create('babydate').then(() => {
+        //   secureStorage.get('version').then(data => {
+        //     if (semver.lt(data, ver) == true) {
+        //       this.rootPage = OnboardPage;
+        //       secureStorage.set('version', ver).then(key => {
+        //         console.log(ver);
+        //       }).catch(error => {
+        //         console.log(error);
+        //       });
+        //     } else {
+        //       //身份是否已经选择。如没有选择进入选择页面
+        //       secureStorage.get('stage').then(data => {
+        //         this.rootPage = TabsPage;
+        //       }).catch(err => {
+        //         console.log(err);
+        //         this.rootPage = IdentitySelect;
+        //       });
+        //     }
+        //   }).catch(error => {
+        //     this.rootPage = OnboardPage;
+        //     secureStorage.set('version', ver).then(key => {
+        //       console.log(ver);
+        //     }).catch(error => {
+        //       console.log(error);
+        //     });
+        //   });
+        // }).catch(error => {
+        //   this.rootPage = OnboardPage;
+        //   console.log(error);
+        // });
 
       }).catch(error => {
         this.rootPage = OnboardPage;

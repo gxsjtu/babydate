@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { SecureStorage, Splashscreen } from 'ionic-native';
+import { NativeStorage, Splashscreen } from 'ionic-native';
 import { TabsPage } from '../tabs-page/tabs-page';
 import moment from 'moment';
 declare var $: any;
@@ -67,18 +67,23 @@ export class IdentitySelect {
 
   saveMySelected() {
     this.platform.ready().then(() => {
-      let secureStorage: SecureStorage = new SecureStorage();
-      secureStorage.create('babydate').then(() => {
-        secureStorage.set('stage', this.selectedRole).then(key => {
-          secureStorage.set('date', this.myDate).then(key => {
-            this.navCtrl.setRoot(TabsPage);
-          }).catch(error => {
-            console.log(error);
-          });
-        }).catch(error => {
-          console.log(error);
-        });
+      NativeStorage.setItem('identity', { role: this.selectRole, date: this.myDate }).then(
+        () => { this.navCtrl.setRoot(TabsPage); }
+      ).catch(err => {
+        console.log(err);
       });
+      // let secureStorage: SecureStorage = new SecureStorage();
+      // secureStorage.create('babydate').then(() => {
+      //   secureStorage.set('stage', this.selectedRole).then(key => {
+      //     secureStorage.set('date', this.myDate).then(key => {
+      //       this.navCtrl.setRoot(TabsPage);
+      //     }).catch(error => {
+      //       console.log(error);
+      //     });
+      //   }).catch(error => {
+      //     console.log(error);
+      //   });
+      // });
     });
   }
 }
