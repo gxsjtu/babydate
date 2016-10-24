@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { SecureStorage, Splashscreen } from 'ionic-native';
+import { TabsPage } from '../tabs-page/tabs-page';
 import moment from 'moment';
 declare var $: any;
 
@@ -19,10 +20,10 @@ export class IdentitySelect {
   imgWidth = 0;
   selectDateText = "预产日期";
   myDate = '2016-10-24';
-  minYear = moment().subtract(4,'years').format('YYYY');
+  minYear = moment().subtract(4, 'years').format('YYYY');
   maxYear = moment().add(3, 'years').format('YYYY');
-  selectedRole : string;
-  constructor(public navCtrl: NavController) {
+  selectedRole: string;
+  constructor(public navCtrl: NavController, public platform: Platform) {
 
   }
 
@@ -30,12 +31,7 @@ export class IdentitySelect {
     Splashscreen.hide();
   }
 
-  ionViewDidLoad() {
-    console.log(moment().format('YYYY-MM-DD'));
-  }
-
-  selectRole(role)
-  {
+  selectRole(role) {
     this.selectedRole = role;
     this.imgWidth = $('#pregnant').width();
     if (this.canSelect && !$("#text").is(":animated")) {
@@ -53,7 +49,7 @@ export class IdentitySelect {
         let height = $("#content").height();
         let top = $("#rowPic").scrollTop();
         let marginTop = top - ((height - width - $("#rowDate").height()) / 2);
-        let left = role == 'pregnant' ? ((content - width) / 2) : ('-='+((content - width) / 2 + $('#mother').width() / 4));
+        let left = role == 'pregnant' ? ((content - width) / 2) : ('-=' + ((content - width) / 2 + $('#mother').width() / 4));
         let moveDom = role == 'pregnant' ? $('#pregnant') : $('#mother');
         moveDom.animate({
           marginLeft: left,
@@ -69,16 +65,19 @@ export class IdentitySelect {
     }
   }
 
-  saveMySelected(){
-    let secureStorage: SecureStorage = new SecureStorage();
-    secureStorage.get('babydate').then(() => {
-      secureStorage.set('role', this.selectedRole).then(key => {
-        secureStorage.set('date', this.myDate).then(key => {
+  saveMySelected() {
+    this.platform.ready().then(() => {
+      let secureStorage: SecureStorage = new SecureStorage();
+      secureStorage.create('babydate').then(() => {
+        secureStorage.set('stage', this.selectedRole).then(key => {
+          secureStorage.set('date', this.myDate).then(key => {
+            this.navCtrl.setRoot(TabsPage);
+          }).catch(error => {
+            console.log(error);
+          });
         }).catch(error => {
           console.log(error);
         });
-      }).catch(error => {
-        console.log(error);
       });
     });
   }
