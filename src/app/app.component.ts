@@ -21,49 +21,51 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
 
-      AppVersion.getVersionNumber().then(ver => {
+      this.rootPage = IdentitySelect;
+      return;
 
-        let secureStorage: SecureStorage = new SecureStorage();
-        secureStorage.create('babydate').then(() => {
-          secureStorage.get('version').then(data => {
-            if (semver.lt(data, ver) == true) {
-              this.rootPage = OnboardPage;
-              secureStorage.set('version', ver).then(key => {
-                console.log(ver);
-              }).catch(error => {
-                console.log(error);
-              });
-            } else {
-              //身份是否已经选择。如没有选择进入选择页面
-              secureStorage.get('stage').then(data => {
-                this.rootPage = TabsPage;
-              }).catch(err => {
-                console.log(err);
-                this.rootPage = IdentitySelect;
-              });
-            }
-
-          }).catch(error => {
-            this.rootPage = OnboardPage;
-            secureStorage.set('version', ver).then(key => {
-              console.log(ver);
-            }).catch(error => {
-              console.log(error);
-            });
-          });
-        }).catch(error => {
-          this.rootPage = OnboardPage;
-          console.log(error);
-        });
-
-      }).catch(error => {
-        console.log(error);
-        //目前使用浏览器所以需要注释掉，发布时应该打开
-        //this.rootPage = OnboardPage;
-        this.rootPage = TabsPage;
-      });
-
-    });
+    //   AppVersion.getVersionNumber().then(ver => {
+    //
+    //     let secureStorage: SecureStorage = new SecureStorage();
+    //     secureStorage.create('babydate').then(() => {
+    //       secureStorage.get('version').then(data => {
+    //         if (semver.lt(data, ver) == true) {
+    //           this.rootPage = OnboardPage;
+    //           secureStorage.set('version', ver).then(key => {
+    //             console.log(ver);
+    //           }).catch(error => {
+    //             console.log(error);
+    //           });
+    //         } else {
+    //           //身份是否已经选择。如没有选择进入选择页面
+    //           secureStorage.get('stage').then(data => {
+    //             this.rootPage = TabsPage;
+    //           }).catch(err => {
+    //             console.log(err);
+    //             this.rootPage = IdentitySelect;
+    //           });
+    //         }
+    //       }).catch(error => {
+    //         this.rootPage = OnboardPage;
+    //         secureStorage.set('version', ver).then(key => {
+    //           console.log(ver);
+    //         }).catch(error => {
+    //           console.log(error);
+    //         });
+    //       });
+    //     }).catch(error => {
+    //       this.rootPage = OnboardPage;
+    //       console.log(error);
+    //     });
+    //
+    //   }).catch(error => {
+    //     console.log(error);
+    //     //目前使用浏览器所以需要注释掉，发布时应该打开
+    //     //this.rootPage = OnboardPage;
+    //     this.rootPage = TabsPage;
+    //   });
+    //
+     });
 
   }
 }

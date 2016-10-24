@@ -20,7 +20,7 @@ export class IdentitySelect {
   selectDateText = "预产日期";
   myDate = '2016-10-24';
   minYear = moment().subtract(4,'years').format('YYYY');
-  maxYear = moment().add('years',3).format('YYYY');
+  maxYear = moment().add(3, 'years').format('YYYY');
   selectedRole : string;
   constructor(public navCtrl: NavController) {
 
