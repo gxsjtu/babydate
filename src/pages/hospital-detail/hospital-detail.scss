@@ -1,5 +1,4 @@
 page-hospital-detail {
-
   #hospitals ul {
     padding: 0;
     margin: 0;
@@ -10,47 +9,51 @@ page-hospital-detail {
       font-size: 14px;
     }
 
-    .list-ios .item-block .item-inner{
+    .list-ios .item-block .item-inner {
       border-bottom: none;
     }
   }
 
-  #hospitalInfo
-  {
-    .item-inner{
+  #hospitalInfo {
+    .item-inner {
       border-bottom: none;
     }
 
-    ion-icon{
+    ion-icon {
       color: #ccc;
-      font-size:24px;
-      width:15px;
+      font-size: 24px;
+      width: 15px;
     }
 
-    .label-ios{
+    .label-ios {
       margin: 0;
     }
-    ion-col{
+
+    ion-col {
       padding: 0;
       height: 52.797px;
       line-height: 52.797px;
       text-align: center;
-      border-right:1px solid #c8c7cc;
+      border-right: 1px solid #c8c7cc;
     }
-    ion-col:last-child{
-      border-right:none;
+
+    ion-col:last-child {
+      border-right: none;
     }
   }
-  #hospitalFunc{
-    .item-inner{
-      padding-right: 0px;
+
+  #hospitalFunc {
+    .item-inner {
+      padding-right: 0;
     }
-    .button-ios{
+
+    .button-ios {
       padding: 0;
     }
   }
-  #hospitalService{
-    ion-icon[name=arrow-forward]{
+
+  #hospitalService {
+    ion-icon[name=arrow-forward] {
       color: #ccc;
     }
   }
