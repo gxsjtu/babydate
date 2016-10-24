@@ -23,7 +23,6 @@ export class MyApp {
 
       AppVersion.getVersionNumber().then(ver => {
         NativeStorage.getItem('version').then(data => {
-          console.log(data);
           if (semver.lt(data.version, ver) == true) {
             this.rootPage = OnboardPage;
             NativeStorage.setItem('version', { version: ver }).then(

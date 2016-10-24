@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 declare const Swiper: any;
 import { Splashscreen } from 'ionic-native';
 import { IdentitySelect } from '../identity-select/identity-select';
+import { NativeStorage } from 'ionic-native';
+import {TabsPage} from '../tabs-page/tabs-page';
 
 /*
   Generated class for the Onboard page.
@@ -20,8 +22,12 @@ export class OnboardPage {
 
   }
 
-  gotoIdentity(){
-    this.navCtrl.setRoot(IdentitySelect);
+  gotoIdentity() {
+    NativeStorage.getItem('identity').then(
+      () => { this.navCtrl.setRoot(TabsPage); }
+    ).catch(err => {
+      this.navCtrl.setRoot(IdentitySelect);
+    });
   }
 
   ionViewWillEnter() {
