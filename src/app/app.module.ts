@@ -18,6 +18,7 @@ import { AccompanyPage } from '../pages/accompany/accompany';
 import { LoginStatus } from '../providers/login-status';
 import { HospitalGalleryPage } from '../pages/hospital-gallery/hospital-gallery';
 import { IdentitySelect } from '../pages/identity-select/identity-select';
+import { ChangePasswordPage } from '../pages/change-password/change-password';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { IdentitySelect } from '../pages/identity-select/identity-select';
     SettingsPage,
     AccompanyPage,
     HospitalGalleryPage,
-    IdentitySelect
+    IdentitySelect,
+    ChangePasswordPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -67,7 +69,8 @@ import { IdentitySelect } from '../pages/identity-select/identity-select';
     SettingsPage,
     AccompanyPage,
     HospitalGalleryPage,
-    IdentitySelect
+    IdentitySelect,
+    ChangePasswordPage
   ],
   providers: [GlobalParameters, Converter, LoginStatus]
 })

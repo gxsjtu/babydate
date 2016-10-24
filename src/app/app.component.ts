@@ -6,6 +6,7 @@ import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SecureStorage, AppVersion } from 'ionic-native';
 import * as semver from 'semver';
 import { LoginStatus } from '../providers/login-status';
+import { IdentitySelect } from '../pages/identity-select/identity-select';
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
@@ -33,7 +34,13 @@ export class MyApp {
                 console.log(error);
               });
             } else {
-              this.rootPage = TabsPage;
+              //身份是否已经选择。如没有选择进入选择页面
+              secureStorage.get('stage').then(data => {
+                this.rootPage = TabsPage;
+              }).catch(err => {
+                console.log(err);
+                this.rootPage = IdentitySelect;
+              });
             }
 
           }).catch(error => {
