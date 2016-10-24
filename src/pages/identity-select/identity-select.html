@@ -50,9 +50,9 @@
           <ion-row>
             <ion-col width-10></ion-col>
             <ion-col width-80>
-              <button ion-button block round style="background-color:#f35fa3;border-radius:15px;" (click)="saveMySelected()">完成</button>
+              <button ion-button block round [disabled]="isButtonDisable" style="background-color:#f35fa3;border-radius:15px;" (click)="saveMySelected()">完成</button>
             </ion-col>
-            <ion-col width-10></ion-col>
+            <ion-col width-10 style="display:flex;flex-direction:column;justify-content:center;padding-left:0px;"><ion-spinner *ngIf="isButtonDisable"></ion-spinner></ion-col>
           </ion-row>
         </ion-grid>
       </ion-row>

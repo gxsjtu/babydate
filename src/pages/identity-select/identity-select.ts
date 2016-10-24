@@ -23,6 +23,7 @@ export class IdentitySelect {
   minYear = moment().subtract(4, 'years').format('YYYY');
   maxYear = moment().add(3, 'years').format('YYYY');
   selectedRole: string;
+  isButtonDisable = false;
   constructor(public navCtrl: NavController, public platform: Platform) {
 
   }
@@ -66,6 +67,7 @@ export class IdentitySelect {
   }
 
   saveMySelected() {
+    this.isButtonDisable = true;
     this.platform.ready().then(() => {
       NativeStorage.setItem('identity', { role: this.selectRole, date: this.myDate }).then(
         () => { this.navCtrl.setRoot(TabsPage); }
