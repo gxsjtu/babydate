@@ -15,7 +15,6 @@ import { RegisterPage } from '../register/register';
 export class LoginPage {
   fromPage: string = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController) {
-    console.log('LoginPage');
     this.fromPage = this.navParams.get('fromPage');
   }
 
