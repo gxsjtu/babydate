@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import { ChangePasswordPage } from '../change-password/change-password';
 
 /*
   Generated class for the Login page.
@@ -21,6 +22,12 @@ export class LoginPage {
   gotoRegister(){
     this.navCtrl.push(RegisterPage, {
       backText: '登录'
+    });
+  }
+
+  gotoChangePassword(){
+    this.navCtrl.push(ChangePasswordPage, {
+      backText: '忘记密码'
     });
   }
 }
