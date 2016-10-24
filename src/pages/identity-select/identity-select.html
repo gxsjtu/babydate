@@ -38,7 +38,7 @@
                   <ion-col style="text-align:right;">
                     <ion-item>
                       <ion-label style="height:20px;">{{selectDateText}}</ion-label>
-                      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" max="2018" cancelText="取消" doneText="确定" [(ngModel)]="myDate" style="height:20px;padding:0;"></ion-datetime>
+                      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [max]="maxYear" [min]="minYear" cancelText="取消" doneText="确定" [(ngModel)]="myDate" style="height:20px;padding:0;"></ion-datetime>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -50,7 +50,7 @@
           <ion-row>
             <ion-col width-25></ion-col>
             <ion-col width-50>
-              <button ion-button block round style="background-color:#f35fa3;border-radius:15px;">保存</button>
+              <button ion-button block round style="background-color:#f35fa3;border-radius:15px;" (click)="saveMySelected()">保存</button>
             </ion-col>
             <ion-col width-25></ion-col>
           </ion-row>

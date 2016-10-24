@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// import { moment } from 'moment';
+import { SecureStorage } from 'ionic-native';
+import moment from 'moment';
 declare var $: any;
 
 /*
@@ -17,20 +18,21 @@ export class IdentitySelect {
   canSelect = true;
   imgWidth = 0;
   selectDateText = "预产日期";
-  myDate = "2016-01-01";
-  //myDate = moment().format('YYYY-MM-DD');
-  //minYear = moment().format('YYYY');
-  //maxYear = moment().add('years',3).format('YYYY');
+  myDate = '2016-10-24';
+  minYear = moment().subtract(4,'years').format('YYYY');
+  maxYear = moment().add('years',3).format('YYYY');
+  selectedRole : string;
   constructor(public navCtrl: NavController) {
-    // console.log(moment());
+
   }
 
   ionViewDidLoad() {
-    //console.log('Hello IdentitySelect Page');
+    console.log(moment().format('YYYY-MM-DD'));
   }
 
   selectRole(role)
   {
+    this.selectedRole = role;
     this.imgWidth = $('#pregnant').width();
     if (this.canSelect && !$("#text").is(":animated")) {
       this.canSelect = false;
@@ -63,67 +65,17 @@ export class IdentitySelect {
     }
   }
 
-  //
-  // selectPregnant() {
-  //   this.imgWidth = $('#pregnant').width();
-  //   if (this.canSelect && !$("#text").is(":animated")) {
-  //     this.selectDateText = "预产日期";
-  //     this.canSelect = false;
-  //     $("#text").animate({
-  //       opacity: 0
-  //     }, 1000);
-  //     $("#mother").animate({
-  //       opacity: 0
-  //     }, 1000, function() {
-  //       let content = $("#content").width();
-  //       let width = $('#pregnant').width() + $('#pregnant').width() / 4;
-  //       let height = $("#content").height();
-  //       let top = $("#rowPic").scrollTop();
-  //       let marginTop = top - ((height - width - $("#rowDate").height()) / 2);
-  //       let left = (content - width) / 2;
-  //       $("#pregnant").animate({
-  //         marginLeft: left,
-  //         marginTop: marginTop,
-  //         width: width
-  //       }, 1000, function() {
-  //         $("#select").animate({
-  //           opacity: 1
-  //         }, 1000);
-  //       })
-  //
-  //     });
-  //   }
-  //
-  // }
-  //
-  // selectMother() {
-  //   this.imgWidth = $('#mother').width();
-  //   if (this.canSelect && !$("#text").is(":animated")) {
-  //     this.selectDateText = "宝宝出生日期";
-  //     this.canSelect = false;
-  //     $("#text").animate({
-  //       opacity: 0
-  //     }, 1000);
-  //     $("#pregnant").animate({
-  //       opacity: 0
-  //     }, 1000, function() {
-  //       let content = $("#content").width();
-  //       let width = $('#mother').width() + $('#mother').width() / 4;
-  //       let height = $("#content").height();
-  //       let top = $("#rowPic").scrollTop();
-  //       let marginTop = top - ((height - width - $("#rowDate").height()) / 2);
-  //       let left = (content - width) / 2 + $('#mother').width() / 4;
-  //       $("#mother").animate({
-  //         marginLeft: '-=' + left,
-  //         marginTop: marginTop,
-  //         width: width
-  //       }, 1000, function() {
-  //         $("#select").animate({
-  //           opacity: 1
-  //         }, 1000);
-  //       })
-  //
-  //     });
-  //   }
-  // }
+  saveMySelected(){
+    let secureStorage: SecureStorage = new SecureStorage();
+    secureStorage.get('babydate').then(() => {
+      secureStorage.set('role', this.selectedRole).then(key => {
+        secureStorage.set('date', this.myDate).then(key => {
+        }).catch(error => {
+          console.log(error);
+        });
+      }).catch(error => {
+        console.log(error);
+      });
+    });
+  }
 }
