@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { SecureStorage } from 'ionic-native';
+import { SecureStorage, Splashscreen } from 'ionic-native';
 import moment from 'moment';
 declare var $: any;
 
@@ -24,6 +24,10 @@ export class IdentitySelect {
   selectedRole : string;
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewWillEnter() {
+    Splashscreen.hide();
   }
 
   ionViewDidLoad() {
