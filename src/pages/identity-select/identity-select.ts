@@ -23,7 +23,7 @@ export class IdentitySelect {
   minYear = moment().subtract(4, 'years').format('YYYY');
   maxYear = moment().add(3, 'years').format('YYYY');
   selectedRole: string;
-  isButtonDisable = false;
+  isSumit = false;
   constructor(public navCtrl: NavController, public platform: Platform) {
 
   }
@@ -67,13 +67,15 @@ export class IdentitySelect {
   }
 
   saveMySelected() {
-    this.isButtonDisable = true;
+    this.isSumit = true;
+    $("#btnSubmit").css('opacity',0.4);
     this.platform.ready().then(() => {
       NativeStorage.setItem('identity', { role: this.selectRole, date: this.myDate }).then(
         () => { this.navCtrl.setRoot(TabsPage); }
       ).catch(err => {
         console.log(err);
       });
+
       // let secureStorage: SecureStorage = new SecureStorage();
       // secureStorage.create('babydate').then(() => {
       //   secureStorage.set('stage', this.selectedRole).then(key => {
@@ -86,6 +88,7 @@ export class IdentitySelect {
       //     console.log(error);
       //   });
       // });
+
     });
   }
 }
