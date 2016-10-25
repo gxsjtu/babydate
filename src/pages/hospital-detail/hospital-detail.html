@@ -13,7 +13,6 @@
 </ion-header>
 
 <ion-content style='background-color:#f0f0f0'>
-
   <ion-list id="hospitals" style="margin-bottom:0px;background-color:#f0f0f0;">
     <ion-item style="border-bottom:0px;background-color:#f0f0f0;">
       <ion-thumbnail item-left>
@@ -35,7 +34,7 @@
   </ion-list>
 
   <ion-list id="hospitalInfo" style="margin-bottom:15px;">
-    <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap()">
+    <button ion-item style="border-bottom:0.55px solid #c8c7cc" (click)="getMap(hospital.address)">
         <ion-icon name="pin" item-left></ion-icon>
         {{hospital.address}}
       </button>

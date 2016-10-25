@@ -5,17 +5,66 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <button (click)="drivingPlain()">驾车</button>
-    <button (click)="transitPlain()">公交</button>
-    <button (click)="walkingPlain()">步行</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-30  id="carEl" (click)="drivingPlain()" style="text-align:center">
+          <ion-icon name="car" style="display:block"></ion-icon>
+          {{carTime}}
+      </ion-col>
+      <ion-col width-30 id="busEl" (click)="transitPlain()" style="text-align:center">
+          <ion-icon name="bus" style="display:block"></ion-icon>
+          {{transitTime}}
+      </ion-col>
+      <ion-col width-30 id="manEl" (click)="walkingPlain()" style="text-align:center">
+          <ion-icon name="man"  style="display:block"></ion-icon>
+          {{walkTime}}
+      </ion-col>
+      <ion-col width-10>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <button ion-button>
+    <div>
+      <ion-icon name="car"></ion-icon>
+    </div>
+    <br />
+    <label>{{carTime}}</label>
+  </button>
+  <button ion-button>
+    <div>
+      <ion-icon name="bus"></ion-icon>
+    </div>
+    <br />
+    {{transitTime}}
+  </button>
+  <button ion-button>
+    <div>
+      <ion-icon name="man"></ion-icon>
+    </div>
+    <br />
+    {{walkTime}}
+  </button> -->
+  <!-- <ion-segment style="height:100%">
+    <ion-segment-button>
+      <ion-icon name="car" style="display:block"></ion-icon>
+      {{carTime}}
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-icon name="bus" style="display:block"></ion-icon>
+      {{transitTime}}
+    </ion-segment-button>
+    <ion-segment-button>
+      <ion-icon name="man"  style="display:block"></ion-icon>
+      {{walkTime}}
+    </ion-segment-button>
+  </ion-segment> -->
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding class="page-hospital-map">
+<ion-content class="page-hospital-map">
   <div id="mapDIV">
 
   </div>

@@ -26,8 +26,8 @@ export class HospitalDetailPage {
     this.getLessDescription();
   }
 
-  getMap() {
-    this.navCtrl.push(HospitalMapPage, { HosAddress: this.hospital.address });
+  getMap(address) {
+    this.navCtrl.push(HospitalMapPage, { HosAddress: address });
   }
 
   ionViewWillEnter() {
