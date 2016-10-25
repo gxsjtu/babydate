@@ -30,6 +30,8 @@ export class HospitalMapPage {
   carTime:any;
   transitTime:any;
   walkTime:any;
+  tabHeight: any;
+  headerHeight: any;
 
   constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public params: NavParams) {
       this.carTime = "驾车";
@@ -45,10 +47,10 @@ export class HospitalMapPage {
     let mapDiv = document.getElementById('mapDIV');
     var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
     var headerEl = document.getElementsByTagName('ion-header')[3];
-    console.log(headerEl);
-    console.log(tabs.clientHeight + "||" + headerEl.clientHeight);
+    this.tabHeight = tabs.clientHeight;
+    this.headerHeight = headerEl.clientHeight;
     mapDiv.style.width = document.body.clientWidth + 'px';
-    mapDiv.style.height = (document.body.clientHeight - tabs.clientHeight - headerEl.clientHeight) + 'px';
+    mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
     this.hosAddress = this.params.get('HosAddress');
     this.getMap();
   }
@@ -103,6 +105,12 @@ export class HospitalMapPage {
 
 //步行路线规划
   walkingPlain(){
+    var elCar = document.getElementById("carEl");
+    var elBus = document.getElementById("busEl");
+    var elMan = document.getElementById("manEl");
+    elMan.style.color = '#FFB90F';
+    elBus.style.color = 'black';
+    elCar.style.color = 'black';
     Geolocation.getCurrentPosition().then((resp) => {
       this.currentLongitude = resp.coords.longitude;
       this.currentLatitude = resp.coords.latitude;
@@ -120,15 +128,15 @@ export class HospitalMapPage {
             var plan = results.getPlan(0);
             this.carTime = "驾车";
             this.transitTime = "公交";
-            var elCar = document.getElementById("carEl");
-            var elBus = document.getElementById("busEl");
-            var elMan = document.getElementById("manEl");
-            elMan.style.color = '#FFB90F';
-            elBus.style.color = 'black';
-            elCar.style.color = 'black';
+            // var elCar = document.getElementById("carEl");
+            // var elBus = document.getElementById("busEl");
+            // var elMan = document.getElementById("manEl");
+            // elMan.style.color = '#FFB90F';
+            // elBus.style.color = 'black';
+            // elCar.style.color = 'black';
             this.walkTime = this.convertTime(plan.getDuration(true));
           }
-          var walking = new BMap.WalkingRoute(this.mapT, {renderOptions:{map: this.mapT, autoViewport: true}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: walkingComplete});
+          var walking = new BMap.WalkingRoute(this.mapT, {renderOptions:{map: this.mapT,panel:"resultDiv", autoViewport: true}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: walkingComplete});
           walking.search(this.startPoint,this.endPoint);
       }
     },"上海");
@@ -140,6 +148,12 @@ export class HospitalMapPage {
 
 //驾车路线规划
   drivingPlain(){
+    var elCar = document.getElementById("carEl");
+    var elBus = document.getElementById("busEl");
+    var elMan = document.getElementById("manEl");
+    elCar.style.color = '#FFB90F';
+    elBus.style.color = 'black';
+    elMan.style.color = 'black';
     Geolocation.getCurrentPosition().then((resp) => {
       this.currentLongitude = resp.coords.longitude;
       this.currentLatitude = resp.coords.latitude;
@@ -157,15 +171,15 @@ export class HospitalMapPage {
               var plan = results.getPlan(0);
               this.transitTime = "公交";
               this.walkTime = "步行";
-              var elCar = document.getElementById("carEl");
-              var elBus = document.getElementById("busEl");
-              var elMan = document.getElementById("manEl");
-              elCar.style.color = '#FFB90F';
-              elBus.style.color = 'black';
-              elMan.style.color = 'black';
+              // var elCar = document.getElementById("carEl");
+              // var elBus = document.getElementById("busEl");
+              // var elMan = document.getElementById("manEl");
+              // elCar.style.color = '#FFB90F';
+              // elBus.style.color = 'black';
+              // elMan.style.color = 'black';
               this.carTime = this.convertTime(plan.getDuration(true));
             }
-            var driving = new BMap.DrivingRoute(this.mapT, {renderOptions:{map: this.mapT, autoViewport: true}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: drivingComplete});
+            var driving = new BMap.DrivingRoute(this.mapT, {renderOptions:{map: this.mapT,panel:"resultDiv", autoViewport: true}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: drivingComplete});
             driving.search(this.startPoint,this.endPoint);
         }
       }, "上海");
@@ -177,6 +191,12 @@ export class HospitalMapPage {
 
 //公交路线
   transitPlain(){
+    var elCar = document.getElementById("carEl");
+    var elBus = document.getElementById("busEl");
+    var elMan = document.getElementById("manEl");
+    elBus.style.color = '#FFB90F';
+    elCar.style.color = 'black';
+    elMan.style.color = 'black';
     Geolocation.getCurrentPosition().then((resp) => {
       this.currentLongitude = resp.coords.longitude;
       this.currentLatitude = resp.coords.latitude;
@@ -194,15 +214,15 @@ export class HospitalMapPage {
               var plan = results.getPlan(0);
               this.carTime = "驾车";
               this.walkTime = "步行";
-              var elCar = document.getElementById("carEl");
-              var elBus = document.getElementById("busEl");
-              var elMan = document.getElementById("manEl");
-              elBus.style.color = '#FFB90F';
-              elCar.style.color = 'black';
-              elMan.style.color = 'black';
+              // var elCar = document.getElementById("carEl");
+              // var elBus = document.getElementById("busEl");
+              // var elMan = document.getElementById("manEl");
+              // elBus.style.color = '#FFB90F';
+              // elCar.style.color = 'black';
+              // elMan.style.color = 'black';
               this.transitTime = this.convertTime(plan.getDuration(true));
             }
-            var transit = new BMap.TransitRoute(this.mapT, {renderOptions: {map: this.mapT}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: transitComplete});
+            var transit = new BMap.TransitRoute(this.mapT, {renderOptions: {map: this.mapT, panel:"resultDiv"}, policy: "BMAP_DRIVING_POLICY_LEAST_TIME", onSearchComplete: transitComplete});
             transit.search(this.startPoint,this.endPoint);
 
         }
@@ -227,6 +247,21 @@ export class HospitalMapPage {
     else{
       var min = timeStr.substring(0,(indexOfMin + 1));
       return min;
+    }
+  }
+
+  disPlanRes(){
+    var resDiv = document.getElementById('resultDiv');
+    if(resDiv.style.display == 'block' || resDiv.style.display == '')//当前是显示状态
+    {
+      resDiv.style.display = 'none';
+      let mapDiv = document.getElementById('mapDIV');
+      mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
+    }
+    else{
+      let mapDiv = document.getElementById('mapDIV');
+      mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight)/2 + 'px';
+      resDiv.style.display = 'block';
     }
   }
 
