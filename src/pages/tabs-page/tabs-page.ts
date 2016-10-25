@@ -5,6 +5,9 @@ import { Splashscreen } from 'ionic-native';
 import { AccompanyPage } from '../accompany/accompany';
 import {LoginStatus} from '../../providers/login-status';
 import {LoginPage} from '../login/login';
+import {CenterPage} from '../center/center';
+import {MallPage} from '../mall/mall';
+import {AssistantPage} from '../assistant/assistant';
 /*
   Generated class for the TabsPage page.
 
@@ -30,6 +33,9 @@ export class TabsPage {
     }else{
       this.accompany = AccompanyPage;
     }
+    this.mall = MallPage;
+    this.assistant = AssistantPage;
+    this.center = CenterPage;
   }
 
   ionViewWillEnter(){
