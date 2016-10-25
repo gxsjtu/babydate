@@ -54,3 +54,42 @@ ion-navbar {
       color:black;
     }
   }
+
+  .picker-opt-selected{
+    color: red;
+  }
+
+  .picker-toolbar-button:not(.picker-toolbar-cancel){
+    button{
+      height:auto;
+      margin: 8px 10px;
+      background-color:red;
+      padding:5px 20px;
+      span.button-inner{
+        color: white;
+        height:auto;
+        font-weight: 500;
+      }
+    }
+  }
+
+
+  .picker-ios {
+    .picker-toolbar-cancel{
+      button{
+        height:auto;
+        border: 0.55px solid red;
+        padding:5px 20px;
+        span.button-inner{
+          color: red;
+          height:auto;
+          font-weight: 500;
+        }
+      }
+      .picker-button,.picker-button.activated{
+        margin: 8px 10px;
+        height: auto;
+      }
+    }
+
+  }
