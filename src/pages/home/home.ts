@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { Http } from '@angular/http';
 import { HospitalListPage } from '../hospital-list/hospital-list';
@@ -7,24 +7,49 @@ import { HospitalDetailPage } from '../hospital-detail/hospital-detail';
 import { Converter } from '../../providers/converter';
 declare const Swiper: any;
 declare var $: any;
+import Promise from 'promise';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   hospitals = [];
-  constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http, public converter: Converter) {
-    http.get(gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
-      if (data.status == 0) {
-        this.hospitals = data.data;
-      }
-      else {
-        //错误信息
-      }
-    }, error => {
-      console.log(error);
+  constructor(public navCtrl: NavController, public gParameters: GlobalParameters, public http: Http, public converter: Converter, public loadingCtrl: LoadingController) {
+    let loader = loadingCtrl.create();
+    loader.present();
+    Promise.all([this.loadHospitals(), this.loadRecommend(), this.loadWork()]).then(res => {
+      this.hospitals = res[0];
+    }).catch(err => {
+      console.log(err);
+    }).done(() => {
+      loader.dismiss();
     });
+  }
+
+  loadHospitals() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.gParameters.SERVER + '/hospital/getTops').map(res => res.json()).subscribe(data => {
+        if (data.status == 0) {
+          //this.hospitals = data.data;
+          resolve(data.data);
+        }
+        else {
+          console.log(data);
+        }
+      }, error => {
+        console.log(error);
+      });
+    });
+  }
+
+  loadRecommend() {
+
+  }
+
+  loadWork() {
+
   }
 
   ionViewDidEnter() {
@@ -46,8 +71,8 @@ export class HomePage {
     });
   }
 
-  goHospitalDetail(hospital){
-    this.navCtrl.push(HospitalDetailPage,{
+  goHospitalDetail(hospital) {
+    this.navCtrl.push(HospitalDetailPage, {
       backText: '首页',
       hospital: hospital
     });
