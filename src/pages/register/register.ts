@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { GlobalParameters } from '../../providers/global-parameters';
 import * as Clocky from 'clocky';
 import validator from 'validator';
 declare const notify: any;
@@ -22,8 +24,12 @@ export class RegisterPage {
   password: string = '';
   isSubmit = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public vc: ViewController, public gParameters: GlobalParameters) {
 
+  }
+
+  ionViewWillEnter() {
+    this.vc.setBackButtonText(this.navParams.get('backText'));
   }
 
   doRegister() {
