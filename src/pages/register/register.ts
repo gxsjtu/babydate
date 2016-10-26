@@ -26,10 +26,17 @@ export class RegisterPage {
   }
 
   doRegister() {
-    console.log($('#mobileBox'));
+    //不能为空的验证
     if (validator.isEmpty(this.mobile) == true) {
       $('#mobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
     }
+    if (validator.isEmpty(this.mobile) == true) {
+      $('#codeBox').notify('验证码不能为空', { position: "bottom center", className: 'error' });
+    }
+    if (validator.isEmpty(this.mobile) == true) {
+      $('#passwordBox').notify('密码不能为空', { position: "bottom center", className: 'error' });
+    }
+    //其他验证
   }
 
   getCode() {
