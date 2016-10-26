@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController,Events } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ChangePasswordPage } from '../change-password/change-password';
 import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
+import 'rxjs/add/operator/timeout';
 import validator from 'validator';
 declare const notify: any;
 declare const $: any;
@@ -23,7 +24,7 @@ export class LoginPage {
   mobile: string = '';
   password: string = '';
   isSubmit = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController, public http: Http, public gParameters: GlobalParameters) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController, public http: Http, public gParameters: GlobalParameters, public loadingCtrl: LoadingController,public events: Events) {
     this.fromPage = this.navParams.get('fromPage');
   }
 
@@ -39,7 +40,7 @@ export class LoginPage {
     });
   }
 
-  onLogin(){
+  doLogin(){
     if (validator.isEmpty(this.mobile) == true) {
       $('#loginPageMobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
       return;
@@ -64,5 +65,21 @@ export class LoginPage {
       }
     }
     this.isSubmit = true;
+
+    let loader = this.loadingCtrl.create({});
+    loader.present();
+    let params = "tel=" + this.mobile + "&password=" + this.password;
+    this.http.post(this.gParameters.SERVER + '/user/login', params).timeout(6000).map(res => res.json()).finally(() => {
+      loader.dismiss();
+    }).subscribe(data => {
+      if (data.status == 0) {
+          this.isSubmit = false;
+      }
+      else {
+        //错误信息
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 }

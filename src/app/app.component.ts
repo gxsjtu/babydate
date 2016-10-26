@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform,Events,AlertController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { OnboardPage } from '../pages/onboard/onboard';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
@@ -14,12 +14,27 @@ import { IdentitySelect } from '../pages/identity-select/identity-select';
 export class MyApp {
   rootPage = null;
   loginStatus = new LoginStatus();
-  constructor(platform: Platform) {
+
+  //弹出消息框方法,挂载在Events上
+  public showAlert(msg: string) {
+    let alert = this.alertCtrl.create({
+        title: msg,
+        buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  constructor(platform: Platform,public events: Events, public alertCtrl: AlertController) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+
+      //订阅alert:show事件,用于弹出消息框
+      events.subscribe('alert:show', (alertData) => {
+        this.showAlert(alertData);
+      });
 
       AppVersion.getVersionNumber().then(ver => {
         NativeStorage.getItem('version').then(data => {
