@@ -6,6 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
+    <ion-title>
   <ion-grid>
     <ion-row>
       <ion-col width-30  id="carEl" (click)="drivingPlain()" style="text-align:center">
@@ -24,48 +25,19 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!-- <button ion-button>
-    <div>
-      <ion-icon name="car"></ion-icon>
-    </div>
-    <br />
-    <label>{{carTime}}</label>
-  </button>
-  <button ion-button>
-    <div>
-      <ion-icon name="bus"></ion-icon>
-    </div>
-    <br />
-    {{transitTime}}
-  </button>
-  <button ion-button>
-    <div>
-      <ion-icon name="man"></ion-icon>
-    </div>
-    <br />
-    {{walkTime}}
-  </button> -->
-  <!-- <ion-segment style="height:100%">
-    <ion-segment-button>
-      <ion-icon name="car" style="display:block"></ion-icon>
-      {{carTime}}
-    </ion-segment-button>
-    <ion-segment-button>
-      <ion-icon name="bus" style="display:block"></ion-icon>
-      {{transitTime}}
-    </ion-segment-button>
-    <ion-segment-button>
-      <ion-icon name="man"  style="display:block"></ion-icon>
-      {{walkTime}}
-    </ion-segment-button>
-  </ion-segment> -->
+  </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content class="page-hospital-map">
+  <ion-fab right bottom>
+    <button ion-fab mini (click)="disPlanRes()"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list>
+    </ion-fab-list>
+  </ion-fab>
   <div id="mapDIV">
-
+  </div>
+  <div id="resultDiv" style="display:none">
   </div>
 </ion-content>
