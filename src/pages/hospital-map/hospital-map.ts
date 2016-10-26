@@ -38,12 +38,8 @@ export class HospitalMapPage {
       this.transitTime = "公交";
       this.walkTime = "步行";
   }
-  ionViewDidLoad() {
-    console.log('Hello HospitalMap Page');
-  }
 
-  ionViewWillEnter() {
-    console.log('ionViewWillEnter');
+  ionViewDidEnter() {
     let mapDiv = document.getElementById('mapDIV');
     var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
     var headerEl = document.getElementsByTagName('ion-header')[3];
