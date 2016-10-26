@@ -4,6 +4,7 @@ import { NavController, ViewController, NavParams, LoadingController, ActionShee
 import {Converter} from '../../providers/converter';
 import {HospitalGalleryPage} from '../hospital-gallery/hospital-gallery';
 import { CallNumber } from 'ionic-native';
+import { HospitalTermsPage } from '../hospital-terms/hospital-terms';
 
 /*
   Generated class for the HospitalDetail page.
@@ -24,6 +25,10 @@ export class HospitalDetailPage {
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public converter: Converter, public loadingCtrl: LoadingController, public actionSheetCtrl: ActionSheetController) {
     this.hospital = this.params.get('hospital');
     this.getLessDescription();
+  }
+
+  gotoHospitalTerms(){
+    this.navCtrl.push(HospitalTermsPage);
   }
 
   getMap(address) {
