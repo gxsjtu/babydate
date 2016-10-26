@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ChangePasswordPage } from '../change-password/change-password';
+import { Http } from '@angular/http';
+import { GlobalParameters } from '../../providers/global-parameters';
 import validator from 'validator';
 declare const notify: any;
 declare const $: any;
@@ -21,7 +23,7 @@ export class LoginPage {
   mobile: string = '';
   password: string = '';
   isSubmit = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public vc: ViewController, public http: Http, public gParameters: GlobalParameters) {
     this.fromPage = this.navParams.get('fromPage');
   }
 
@@ -33,7 +35,7 @@ export class LoginPage {
 
   gotoChangePassword(){
     this.navCtrl.push(ChangePasswordPage, {
-      backText: '忘记密码'
+      backText: '登录'
     });
   }
 
