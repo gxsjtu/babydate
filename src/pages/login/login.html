@@ -14,25 +14,25 @@
 
 
 <ion-content style="background-color: #f0f0f0">
-  <ion-list no-lines style="margin-top: 50px; margin-bottom:5px">
+  <ion-list id='loginPageMobileBox' no-lines style="margin-top: 50px; margin-bottom:5px">
     <ion-item>
       <ion-label>手机号</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="tel" [(ngModel)]="mobile"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-list no-lines>
+  <ion-list id='loginPagePasswordBox' no-lines>
     <ion-item>
       <ion-label>密码</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]='password'></ion-input>
     </ion-item>
   </ion-list>
 
   <div padding>
-    <button ion-button block color='common'>登录</button>
+    <button ion-button block color='common' [disabled]="isSubmit" (click)="onLogin()">登录</button>
     <ion-item no-lines style="padding-left: 0px;background-color: #f0f0f0">
-      <button (click)='gotoRegister()' ion-button style='text-align:left; padding: 0px' clear item-left>立即注册</button>
-      <button ion-button style='text-align:right; padding: 0px; margin: 0px' clear item-right (click)="gotoChangePassword()">忘记密码</button>
+      <button (click)='gotoRegister()' ion-button style='text-align:left; padding: 0px' clear item-left [disabled]="isSubmit">立即注册</button>
+      <button ion-button style='text-align:right; padding: 0px; margin: 0px' clear item-right (click)="gotoChangePassword()" [disabled]="isSubmit">忘记密码</button>
     </ion-item>
   </div>
 </ion-content>

@@ -6,22 +6,20 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>
+  <ion-title>
   <ion-grid>
     <ion-row>
-      <ion-col width-30  id="carEl" (click)="drivingPlain()" style="text-align:center">
+      <ion-col width-20  id="carEl" (click)="drivingPlain()" style="text-align:center">
           <ion-icon name="car" style="display:block"></ion-icon>
           {{carTime}}
       </ion-col>
-      <ion-col width-30 id="busEl" (click)="transitPlain()" style="text-align:center">
+      <ion-col width-60 id="busEl" (click)="transitPlain()" style="text-align:center">
           <ion-icon name="bus" style="display:block"></ion-icon>
           {{transitTime}}
       </ion-col>
-      <ion-col width-30 id="manEl" (click)="walkingPlain()" style="text-align:center">
+      <ion-col width-20 id="manEl" (click)="walkingPlain()" style="text-align:center">
           <ion-icon name="man"  style="display:block"></ion-icon>
           {{walkTime}}
-      </ion-col>
-      <ion-col width-10>
       </ion-col>
     </ion-row>
   </ion-grid>

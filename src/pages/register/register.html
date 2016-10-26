@@ -14,7 +14,7 @@
 
 
 <ion-content style="background-color: #f0f0f0">
-  <ion-list id='mobileBox' no-lines style="margin-top: 50px; margin-bottom:5px">
+  <ion-list id='registerPageMobileBox' no-lines style="margin-top: 50px; margin-bottom:5px">
     <ion-item>
       <ion-label>手机号</ion-label>
       <ion-input type="tel" [(ngModel)]="mobile"></ion-input>
@@ -22,14 +22,14 @@
     </ion-item>
   </ion-list>
 
-  <ion-list id='codeBox' no-lines style="margin-bottom:5px">
+  <ion-list id='registerCodeBox' no-lines style="margin-bottom:5px">
     <ion-item>
       <ion-label>验证码</ion-label>
       <ion-input type="number" [(ngModel)]='code'></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-list id='passwordBox' no-lines>
+  <ion-list id='registerPasswordBox' no-lines>
     <ion-item>
       <ion-label>密码</ion-label>
       <ion-input type="password" [(ngModel)]='password'></ion-input>
@@ -37,6 +37,6 @@
   </ion-list>
 
   <div padding>
-    <button ion-button block color='common' (click)='doRegister()'>立即注册</button>
+    <button ion-button block color='common' [disabled]="isSubmit" (click)='doRegister()'>立即注册</button>
   </div>
 </ion-content>
