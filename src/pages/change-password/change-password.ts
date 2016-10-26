@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as Clocky from 'clocky';
+import validator from 'validator';
+declare const notify: any;
+declare const $: any;
 
 /*
   Generated class for the ChangePassword page.
@@ -15,9 +18,18 @@ import * as Clocky from 'clocky';
 export class ChangePasswordPage {
   codeText: string = '获取验证码';
   isCodeButtonDisable: boolean = false;
+  mobile: string = '';
+  code: string = '';
+  password: string = '';
+  isSubmit = false;
+
   constructor(public navCtrl: NavController) {}
 
   getCode() {
+    if(!this.validatorMobile())
+    {
+      return;
+    }
     let clocky = new Clocky.__moduleExports.Clocky();
     clocky.runFor(60);
     clocky.tickEvery(1);
@@ -32,5 +44,46 @@ export class ChangePasswordPage {
       this.codeText = '获取验证码';
     });
     clocky.start();
+  }
+
+  doChangePassword() {
+    //不能为空的验证
+    if(!this.validatorMobile())
+    {
+      return;
+    }
+    if (validator.isEmpty(this.code) == true) {
+      $('#codeBox').notify('验证码不能为空', { position: "bottom center", className: 'error' });
+      return;
+    }
+    if (validator.isEmpty(this.password) == true) {
+      $('#passwordBox').notify('密码不能为空', { position: "bottom center", className: 'error' });
+      return;
+    }
+    else
+    {
+      if (validator.isLength(this.password,{max:3})) {
+        $('#passwordBox').notify('密码不能少于4位', { position: "bottom center", className: 'error' });
+        return;
+      }
+    }
+
+    this.isSubmit = true;
+  }
+
+  validatorMobile(){
+    if (validator.isEmpty(this.mobile) == true) {
+      $('#registerPageMobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
+      return false;
+    }
+    else
+    {
+        if(!validator.isMobilePhone(this.mobile,'zh-CN'))
+        {
+          $('#registerPageMobileBox').notify('手机号码格式不正确', { position: "bottom center", className: 'error' });
+          return false;
+        }
+    }
+    return true;
   }
 }

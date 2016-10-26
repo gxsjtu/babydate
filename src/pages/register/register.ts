@@ -20,6 +20,7 @@ export class RegisterPage {
   mobile: string = '';
   code: string = '';
   password: string = '';
+  isSubmit = false;
 
   constructor(public navCtrl: NavController) {
 
@@ -27,19 +28,50 @@ export class RegisterPage {
 
   doRegister() {
     //不能为空的验证
-    if (validator.isEmpty(this.mobile) == true) {
-      $('#mobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
+    if(!this.validatorMobile())
+    {
+      return;
     }
-    if (validator.isEmpty(this.mobile) == true) {
-      $('#codeBox').notify('验证码不能为空', { position: "bottom center", className: 'error' });
+    if (validator.isEmpty(this.code) == true) {
+      $('#registerPageCodeBox').notify('验证码不能为空', { position: "bottom center", className: 'error' });
+      return;
     }
-    if (validator.isEmpty(this.mobile) == true) {
-      $('#passwordBox').notify('密码不能为空', { position: "bottom center", className: 'error' });
+    if (validator.isEmpty(this.password) == true) {
+      $('#registerPagePasswordBox').notify('密码不能为空', { position: "bottom center", className: 'error' });
+      return;
     }
-    //其他验证
+    else
+    {
+      if (validator.isLength(this.password,{max:3})) {
+        $('#registerPagePasswordBox').notify('密码不能少于4位', { position: "bottom center", className: 'error' });
+        return;
+      }
+    }
+
+    this.isSubmit = true;
+  }
+
+  validatorMobile(){
+    if (validator.isEmpty(this.mobile) == true) {
+      $('#registerPageMobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
+      return false;
+    }
+    else
+    {
+        if(!validator.isMobilePhone(this.mobile,'zh-CN'))
+        {
+          $('#registerPageMobileBox').notify('手机号码格式不正确', { position: "bottom center", className: 'error' });
+          return false;
+        }
+    }
+    return true;
   }
 
   getCode() {
+    if(!this.validatorMobile())
+    {
+      return;
+    }
     let clocky = new Clocky.__moduleExports.Clocky();
     clocky.runFor(60);
     clocky.tickEvery(1);
