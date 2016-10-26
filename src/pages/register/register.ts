@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as Clocky from 'clocky';
+import validator from 'validator';
+declare const notify: any;
+declare const $: any;
 /*
   Generated class for the Register page.
 
@@ -14,9 +17,19 @@ import * as Clocky from 'clocky';
 export class RegisterPage {
   codeText: string = '获取验证码';
   isCodeButtonDisable: boolean = false;
+  mobile: string = '';
+  code: string = '';
+  password: string = '';
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  doRegister() {
+    console.log($('#mobileBox'));
+    if (validator.isEmpty(this.mobile) == true) {
+      $('#mobileBox').notify('手机号码不能为空', { position: "bottom center", className: 'error' });
+    }
   }
 
   getCode() {

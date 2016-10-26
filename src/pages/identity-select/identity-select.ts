@@ -68,27 +68,17 @@ export class IdentitySelect {
 
   saveMySelected() {
     this.isSumit = true;
-    $("#btnSubmit").css('opacity',0.4);
-    this.platform.ready().then(() => {
-      NativeStorage.setItem('identity', { role: this.selectRole, date: this.myDate }).then(
-        () => { this.navCtrl.setRoot(TabsPage); }
-      ).catch(err => {
-        console.log(err);
+    $("#btnSubmit").css('opacity', 0.4);
+    if (this.platform.is('core') == true) {
+      this.navCtrl.setRoot(TabsPage);
+    } else {
+      this.platform.ready().then(() => {
+        NativeStorage.setItem('identity', { role: this.selectRole, date: this.myDate }).then(
+          () => { this.navCtrl.setRoot(TabsPage); }
+        ).catch(err => {
+          console.log(err);
+        });
       });
-
-      // let secureStorage: SecureStorage = new SecureStorage();
-      // secureStorage.create('babydate').then(() => {
-      //   secureStorage.set('stage', this.selectedRole).then(key => {
-      //     secureStorage.set('date', this.myDate).then(key => {
-      //       this.navCtrl.setRoot(TabsPage);
-      //     }).catch(error => {
-      //       console.log(error);
-      //     });
-      //   }).catch(error => {
-      //     console.log(error);
-      //   });
-      // });
-
-    });
+    }
   }
 }
