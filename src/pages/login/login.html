@@ -29,7 +29,7 @@
   </ion-list>
 
   <div padding>
-    <button ion-button block color='common' [disabled]="isSubmit" (click)="onLogin()">登录</button>
+    <button ion-button block color='common' [disabled]="isSubmit" (click)="doLogin()">登录</button>
     <ion-item no-lines style="padding-left: 0px;background-color: #f0f0f0">
       <button (click)='gotoRegister()' ion-button style='text-align:left; padding: 0px' clear item-left [disabled]="isSubmit">立即注册</button>
       <button ion-button style='text-align:right; padding: 0px; margin: 0px' clear item-right (click)="gotoChangePassword()" [disabled]="isSubmit">忘记密码</button>

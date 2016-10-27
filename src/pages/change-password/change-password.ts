@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, LoadingController, Events } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
+import 'rxjs/add/operator/timeout';
 import * as Clocky from 'clocky';
 import validator from 'validator';
 declare const notify: any;
@@ -25,7 +26,7 @@ export class ChangePasswordPage {
   password: string = '';
   isSubmit = false;
 
-  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public vc: ViewController, public gParameters: GlobalParameters) {}
+  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public vc: ViewController, public gParameters: GlobalParameters, public loadingCtrl: LoadingController, public events: Events) {}
 
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.navParams.get('backText'));
@@ -36,6 +37,7 @@ export class ChangePasswordPage {
     {
       return;
     }
+
     let clocky = new Clocky.__moduleExports.Clocky();
     clocky.runFor(60);
     clocky.tickEvery(1);
@@ -50,6 +52,20 @@ export class ChangePasswordPage {
       this.codeText = '获取验证码';
     });
     clocky.start();
+
+
+    this.http.get(this.gParameters.SERVER + '/hospital/sendVerifyCode/'+this.mobile.trim()+'/'+this.gParameters.verifyCodeUses.changePassword).timeout(3000).map(res => res.json()).subscribe(data => {
+      if (data.status != 0) {
+        //错误信息
+        clocky.resume();
+        this.events.publish('alert:show',data.message);
+      }
+    }, error => {
+      //console.log(error);
+      clocky.resume();
+      this.events.publish('alert:show',error);
+    });
+
   }
 
   doChangePassword() {
@@ -75,6 +91,22 @@ export class ChangePasswordPage {
     }
 
     this.isSubmit = true;
+
+    let loader = this.loadingCtrl.create({});
+    loader.present();
+    let params = "mobile=" + this.mobile + "&code=" + this.code + "&password=" + this.password;
+    this.http.post(this.gParameters.SERVER + '/user/changePassword', params).map(res => res.json()).finally(() => {
+      loader.dismiss();
+    }).subscribe(data => {
+      if (data.status == 0) {
+          this.isSubmit = false;
+      }
+      else {
+        //错误信息
+      }
+    }, error => {
+      console.log(error);
+    });
   }
 
   validatorMobile(){

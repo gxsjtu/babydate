@@ -19,4 +19,10 @@ export class GlobalParameters {
   public AD_MAIN_RATIO: number = 25 / 10;
   public SERVER: string = 'https://nicebaby.shtx.com.cn';
 
+  //验证码的使用用途
+  public verifyCodeUses = {
+    register : 0,         //注册用户
+    changePassword : 1    //忘记密码
+  }
+
 }
