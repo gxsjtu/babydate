@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { NavController,NavParams } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { Geolocation, Diagnostic, LocationAccuracy } from 'ionic-native';
 
 declare var BMap : any;
 declare var BMapLib : any;
@@ -38,21 +38,27 @@ export class HospitalMapPage {
       this.transitTime = "公交";
       this.walkTime = "步行";
   }
-  ionViewDidLoad() {
-    console.log('Hello HospitalMap Page');
-  }
 
-  ionViewWillEnter() {
-    console.log('ionViewWillEnter');
-    let mapDiv = document.getElementById('mapDIV');
-    var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
-    var headerEl = document.getElementsByTagName('ion-header')[3];
-    this.tabHeight = tabs.clientHeight;
-    this.headerHeight = headerEl.clientHeight;
-    mapDiv.style.width = document.body.clientWidth + 'px';
-    mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
-    this.hosAddress = this.params.get('HosAddress');
-    this.getMap();
+  ionViewDidEnter() {
+    LocationAccuracy.canRequest().then((canRequest: boolean) => {
+      if(canRequest)
+      {
+          LocationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(() => {
+            console.log('suc');
+            let mapDiv = document.getElementById('mapDIV');
+            var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
+            var headerEl = document.getElementsByTagName('ion-header')[3];
+            this.tabHeight = tabs.clientHeight;
+            this.headerHeight = headerEl.clientHeight;
+            mapDiv.style.width = document.body.clientWidth + 'px';
+            mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
+            this.hosAddress = this.params.get('HosAddress');
+            this.getMap();
+          }, (err) => {
+            console.log('err');
+          });
+      }
+    });
   }
 
   getMap(){
@@ -200,7 +206,6 @@ export class HospitalMapPage {
     Geolocation.getCurrentPosition().then((resp) => {
       this.currentLongitude = resp.coords.longitude;
       this.currentLatitude = resp.coords.latitude;
-
       var myGeo = new BMap.Geocoder();
       myGeo.getPoint(this.hosAddress, (point) => {
           if (point) {
