@@ -5,6 +5,7 @@ import {Converter} from '../../providers/converter';
 import {HospitalGalleryPage} from '../hospital-gallery/hospital-gallery';
 import { CallNumber } from 'ionic-native';
 import { HospitalTermsPage } from '../hospital-terms/hospital-terms';
+import { HospitalCardPage } from '../hospital-card/hospital-card';
 
 /*
   Generated class for the HospitalDetail page.
@@ -29,6 +30,10 @@ export class HospitalDetailPage {
 
   gotoHospitalTerms(){
     this.navCtrl.push(HospitalTermsPage, {terms: this.hospital.terms});
+  }
+
+  gotoHospitalCard(){
+    this.navCtrl.push(HospitalCardPage);
   }
 
   getMap(address) {

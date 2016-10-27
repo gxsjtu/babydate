@@ -16,7 +16,7 @@
 <ion-content style="background-color: #f0f0f0">
   <ion-list id='registerPageMobileBox' no-lines style="margin-top: 50px; margin-bottom:5px">
     <ion-item>
-      <ion-label>手机号</ion-label>
+      <ion-label floating>手机号</ion-label>
       <ion-input type="tel" [(ngModel)]="mobile"></ion-input>
       <button id='countdown' ion-button item-right (click)='getCode()' [disabled]="isCodeButtonDisable">{{codeText}}</button>
     </ion-item>
@@ -24,14 +24,14 @@
 
   <ion-list id='registerPageCodeBox' no-lines style="margin-bottom:5px">
     <ion-item>
-      <ion-label>验证码</ion-label>
+      <ion-label floating>验证码</ion-label>
       <ion-input type="number" [(ngModel)]='code'></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-list id='registerPagePasswordBox' no-lines>
     <ion-item>
-      <ion-label>密码</ion-label>
+      <ion-label floating>密码</ion-label>
       <ion-input type="password" [(ngModel)]='password'></ion-input>
     </ion-item>
   </ion-list>
