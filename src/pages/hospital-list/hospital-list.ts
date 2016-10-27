@@ -6,7 +6,6 @@ import { GlobalParameters } from '../../providers/global-parameters';
 import {Converter} from '../../providers/converter';
 import 'rxjs/Rx';
 import Move from 'move-js';
-import moment from 'moment';
 
 /*
   Generated class for the HospitalList page.

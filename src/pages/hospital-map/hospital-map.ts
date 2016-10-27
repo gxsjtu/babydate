@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalParameters } from '../../providers/global-parameters';
 import { NavController,NavParams } from 'ionic-angular';
-import { Geolocation, Diagnostic, LocationAccuracy } from 'ionic-native';
+import { Geolocation, LocationAccuracy } from 'ionic-native';
 
 declare var BMap : any;
 declare var BMapLib : any;
@@ -57,7 +57,7 @@ export class HospitalMapPage {
           }, (err) => {
             console.log('err');
           });
-          
+
       }
     });
   }
