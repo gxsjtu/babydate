@@ -30,10 +30,6 @@ export class HospitalListPage {
     this.queryHospital();
   }
 
-  ionViewDidLoad() {
-    console.log(moment());
-  }
-
   ionViewWillEnter() {
     this.vc.setBackButtonText(this.params.get('backText'));
   }
