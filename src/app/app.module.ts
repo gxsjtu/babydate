@@ -23,6 +23,7 @@ import { AssistantPage } from '../pages/assistant/assistant';
 import { MallPage } from '../pages/mall/mall';
 import { CenterPage } from '../pages/center/center';
 import { HospitalTermsPage } from '../pages/hospital-terms/hospital-terms';
+import { HospitalCardPage } from '../pages/hospital-card/hospital-card';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HospitalTermsPage } from '../pages/hospital-terms/hospital-terms';
     AssistantPage,
     MallPage,
     CenterPage,
-    HospitalTermsPage
+    HospitalTermsPage,
+    HospitalCardPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -82,7 +84,8 @@ import { HospitalTermsPage } from '../pages/hospital-terms/hospital-terms';
     AssistantPage,
     MallPage,
     CenterPage,
-    HospitalTermsPage
+    HospitalTermsPage,
+    HospitalCardPage
   ],
   providers: [GlobalParameters, Converter, LoginStatus]
 })

@@ -82,7 +82,7 @@ export class RegisterPage {
     clocky.runFor(60);
     clocky.tickEvery(1);
     clocky.onTick((ticks, startedAt, elapsed) => {
-      this.codeText = '重新获取验证码（' + (60 - ticks) + '秒）';
+      this.codeText = '重新获取（' + (60 - ticks) + '秒）';
     });
     clocky.onStart((ticks, startedAt, elapsed) => {
       this.isCodeButtonDisable = true;
