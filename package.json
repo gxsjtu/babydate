@@ -33,6 +33,7 @@
     "lodash": "^4.16.4",
     "moment": "^2.15.1",
     "move-js": "^0.5.0",
+    "progressbar.js": "^1.0.1",
     "promise": "^7.1.1",
     "rxjs": "^5.0.0-beta.12",
     "semver": "^5.3.0",
