@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+declare const $: any;
+declare const timeliner: any;
 /*
   Generated class for the HospitalCard page.
 
@@ -13,10 +14,12 @@ import { NavController } from 'ionic-angular';
 })
 export class HospitalCardPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) { }
 
-  ionViewDidLoad() {
-    console.log('Hello HospitalCard Page');
+  ionViewDidEnter() {
+    $(document).ready(function() {
+      $.timeliner({});
+    });
   }
 
 }
