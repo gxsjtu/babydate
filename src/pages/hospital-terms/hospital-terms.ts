@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 /*
   Generated class for the HospitalTerms page.
@@ -13,6 +13,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HospitalTermsPage {
 
-  constructor(public navCtrl: NavController) {}
+  terms: any;
+
+  constructor(public navCtrl: NavController, public params: NavParams) {
+
+  }
+
+  ionViewWillEnter() {
+    // this.vc.setBackButtonText(this.params.get('backText'));
+    this.terms = this.params.get('terms');
+  }
+
 
 }
