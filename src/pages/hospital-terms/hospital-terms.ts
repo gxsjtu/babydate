@@ -19,7 +19,6 @@ export class HospitalTermsPage {
   termList: any = "yTerm";
 
   constructor(public navCtrl: NavController, public params: NavParams) {
-    // termList = "yTerm";
   }
 
   ionViewWillEnter() {
