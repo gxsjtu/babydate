@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController, Events } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import 'rxjs/add/operator/timeout';
 import * as Clocky from 'clocky';
@@ -60,6 +60,10 @@ export class ChangePasswordPage {
         clocky.resume();
         this.events.publish('alert:show',data.message);
       }
+      else{
+        this.events.publish('alert:show', '密码修改成功');
+        this.navCtrl.pop();
+      }
     }, error => {
       //console.log(error);
       clocky.resume();
@@ -94,18 +98,26 @@ export class ChangePasswordPage {
 
     let loader = this.loadingCtrl.create({});
     loader.present();
-    let params = "mobile=" + this.mobile + "&code=" + this.code + "&password=" + this.password;
-    this.http.post(this.gParameters.SERVER + '/user/changePassword', params).map(res => res.json()).finally(() => {
+    let params = JSON.stringify(
+      { "tel": this.mobile, "verCode": this.code, "passWord": this.password }
+    )
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(this.gParameters.SERVER + '/hospital/registerUser', params,options).map(res => res.json()).finally(() => {
       loader.dismiss();
+      this.isSubmit = false;
     }).subscribe(data => {
       if (data.status == 0) {
-          this.isSubmit = false;
+
       }
       else {
         //错误信息
+        this.events.publish('alert:show', data.message);
+
       }
     }, error => {
       console.log(error);
+      this.events.publish('alert:show', error);
     });
   }
 

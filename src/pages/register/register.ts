@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController, Events } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import 'rxjs/add/operator/timeout';
 import * as Clocky from 'clocky';
@@ -57,18 +57,28 @@ export class RegisterPage {
 
     let loader = this.loadingCtrl.create({});
     loader.present();
-    let params = "mobile=" + this.mobile + "&code=" + this.code + "&password=" + this.password;
-    this.http.post(this.gParameters.SERVER + '/user/register', params).map(res => res.json()).finally(() => {
+    let params = JSON.stringify(
+      { "tel": this.mobile, "verCode": this.code, "passWord": this.password }
+    )
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //let params = "tel=" + this.mobile + "&verCode=" + this.code + "&passWord=" + this.password;
+    this.http.post(this.gParameters.SERVER + '/hospital/registerUser', params, options).map(res => res.json()).finally(() => {
       loader.dismiss();
+      this.isSubmit = false;
     }).subscribe(data => {
       if (data.status == 0) {
-          this.isSubmit = false;
+
+        this.events.publish('alert:show', '注册成功');
+        this.navCtrl.pop();
       }
       else {
         //错误信息
+        this.events.publish('alert:show', data.message);
       }
     }, error => {
       console.log(error);
+      this.events.publish('alert:show', error);
     });
 
   }
@@ -109,7 +119,7 @@ export class RegisterPage {
     clocky.start();
 
 
-    this.http.get(this.gParameters.SERVER + '/hospital/sendVerifyCode/'+this.mobile.trim()+'/'+this.gParameters.verifyCodeUses.register).timeout(3000).map(res => res.json()).subscribe(data => {
+    this.http.get(this.gParameters.SERVER + '/hospital/sendVerifyCode/' + this.mobile.trim() + '/' + this.gParameters.verifyCodeUses.register).timeout(3000).map(res => res.json()).subscribe(data => {
       if (data.status != 0) {
         clocky.resume();
         this.events.publish('alert:show', data.message);

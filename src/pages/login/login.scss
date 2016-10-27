@@ -1,5 +1,16 @@
 page-login {
-  .item-ios.item-block .item-inner{
-    padding-right: 0px;
+  $labelWidth : 50px;
+  ion-label[fixed]{
+    width: $labelWidth;
+    min-width: $labelWidth;
+    max-width: $labelWidth;
+  }
+  .label-ios + ion-input .text-input, .label-ios + ion-textarea .text-input{
+    margin-left: 0px;
+  }
+  .input-ios {
+    .text-input{
+      padding-right: 0px;
+    }
   }
 }

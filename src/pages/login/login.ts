@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, LoadingController,Events } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ChangePasswordPage } from '../change-password/change-password';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { GlobalParameters } from '../../providers/global-parameters';
 import 'rxjs/add/operator/timeout';
 import validator from 'validator';
@@ -68,12 +68,17 @@ export class LoginPage {
 
     let loader = this.loadingCtrl.create({});
     loader.present();
-    let params = "tel=" + this.mobile + "&password=" + this.password;
-    this.http.post(this.gParameters.SERVER + '/user/login', params).timeout(6000).map(res => res.json()).finally(() => {
+    let params = JSON.stringify(
+      { "tel": this.mobile, "passWord": this.password }
+    )
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(this.gParameters.SERVER + '/user/login', params, options).timeout(6000).map(res => res.json()).finally(() => {
       loader.dismiss();
+      this.isSubmit = false;
     }).subscribe(data => {
       if (data.status == 0) {
-          this.isSubmit = false;
+
       }
       else {
         //错误信息
