@@ -14,14 +14,19 @@ import { NavController, NavParams } from 'ionic-angular';
 export class HospitalTermsPage {
 
   terms: any;
+  yList: any;
+  cList: any;
+  termList: any = "yTerm";
 
   constructor(public navCtrl: NavController, public params: NavParams) {
-
+    // termList = "yTerm";
   }
 
   ionViewWillEnter() {
-    // this.vc.setBackButtonText(this.params.get('backText'));
     this.terms = this.params.get('terms');
+    console.log(this.terms);
+    this.yList = this.terms[0].docs;
+    this.cList = this.terms[1].docs;
   }
 
 

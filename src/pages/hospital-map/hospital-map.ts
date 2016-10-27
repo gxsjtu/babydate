@@ -45,21 +45,21 @@ export class HospitalMapPage {
       {
           LocationAccuracy.request(LocationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(() => {
             console.log('suc');
-            let mapDiv = document.getElementById('mapDIV');
-            var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
-            var headerEl = document.getElementsByTagName('ion-header')[3];
-            this.tabHeight = tabs.clientHeight;
-            this.headerHeight = headerEl.clientHeight;
-            mapDiv.style.width = document.body.clientWidth + 'px';
-            mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
-            this.hosAddress = this.params.get('HosAddress');
-            this.getMap();
           }, (err) => {
             console.log('err');
           });
-
       }
     });
+
+    let mapDiv = document.getElementById('mapDIV');
+    var tabs = document.getElementsByTagName('ion-tabs')[0].getElementsByTagName('div')[0];
+    var headerEl = document.getElementsByTagName('ion-header')[3];
+    this.tabHeight = tabs.clientHeight;
+    this.headerHeight = headerEl.clientHeight;
+    mapDiv.style.width = document.body.clientWidth + 'px';
+    mapDiv.style.height = (document.body.clientHeight - this.tabHeight - this.headerHeight) + 'px';
+    this.hosAddress = this.params.get('HosAddress');
+    this.getMap();
   }
 
   getMap(){

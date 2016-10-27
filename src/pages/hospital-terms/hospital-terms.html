@@ -1,9 +1,3 @@
-<!--
-  Generated template for the HospitalTerms page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,5 +8,45 @@
 
 
 <ion-content>
-  
+  <div padding>
+  <ion-segment [(ngModel)]="termList" color='common'>
+    <ion-segment-button value="yTerm">
+      医护服务项目
+    </ion-segment-button>
+    <ion-segment-button value="cTerm">
+      重点产检项目
+    </ion-segment-button>
+  </ion-segment>
+</div>
+  <div [ngSwitch]="termList">
+    <ion-grid width="100%" *ngSwitchCase="'yTerm'">
+      <ion-row>
+        <!-- <ion-col style="background:#EEEEEE;font-size:19px;color:#949494">
+          医护服务项目
+        </ion-col> -->
+      </ion-row>
+      <ion-row ion-item *ngFor="let y of yList">
+        <ion-col width-10 style="font-size:18px">
+          <ion-icon name="checkmark-circle" style="color:#40cc92;padding-right:20px" *ngIf="y.isHas==true"></ion-icon>
+          <ion-icon name="close-circle" style="color:#ff9aa0;padding-right:20px" *ngIf="y.isHas==false"></ion-icon>
+          {{y.name}}
+        </ion-col>
+        <!-- <ion-col style="font-size:18px;">{{y.name}}</ion-col> -->
+      </ion-row>
+    </ion-grid>
+    <ion-grid width="100%" *ngSwitchCase="'cTerm'">
+      <ion-row>
+        <!-- <ion-col style="background:#EEEEEE;font-size:19px;color:#949494">
+          重点产检项目
+        </ion-col> -->
+      </ion-row>
+      <ion-row ion-item *ngFor="let c of cList">
+        <ion-col width-10 style="font-size:18px">
+          <ion-icon name="checkmark-circle" style="color:#40cc92;padding-right:20px" *ngIf="c.isHas==true"></ion-icon>
+          <ion-icon name="close-circle" style="color:#ff9aa0;padding-right:20px" *ngIf="c.isHas==false"></ion-icon>
+          {{c.name}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
 </ion-content>
