@@ -15,8 +15,8 @@ export class HospitalGalleryPage {
 
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams) {}
 
-  ionViewWillEnter() {
-    this.vc.setBackButtonText(this.params.get('backText'));
-  }
+  // ionViewWillEnter() {
+  //   this.vc.setBackButtonText(this.params.get('backText'));
+  // }
 
 }
