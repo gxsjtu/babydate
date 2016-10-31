@@ -13,10 +13,95 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+  <ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-10 style="color:#f35fa3">
+        完成度
+      </ion-col>
+      <ion-col>
+      <div id='box'>
 
-  <div id='box'>
-
+      </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-item>
+</ion-list>
+<div>
+  <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;color:#f35fa3">
+    未完成
   </div>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col padding style="background:#EEEEEE;font-size:19px">
+        证件准备
+      </ion-col>
+    </ion-row>
+    <ion-row style="font-size:19px" *ngFor="let card of cardList">
+      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="card.isOptional==true">
+        {{card.name}}<button ion-button outline small color="common" readonly="true" style="font-size:5px">必备</button>
+      </ion-col>
+      <ion-col padding-left width-70 *ngIf="card.isOptional==false">
+        {{card.name}}<button ion-button outline small color="common" readonly="true" style="font-size:5px">必备</button>
+      </ion-col>
+      <!-- <ion-col padding-left width-70>
+        {{card.name}}
+      </ion-col> -->
+      <ion-col width-20 style="color:#8c8c8c">
+        {{card.quantity}}
+      </ion-col>
+      <ion-col width-10 style="font-size:25px" (click)="checkCard(card)">
+        <ion-icon name="checkmark-circle-outline"  *ngIf="card.isOptional==false" style="color:#8c8c8c"></ion-icon>
+        <ion-icon name="checkmark-circle-outline"  *ngIf="card.isOptional==true" style="color:#f35fa3"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col padding style="background:#EEEEEE;font-size:19px">
+        待产包准备
+      </ion-col>
+    </ion-row>
+    <ion-row style="font-size:19px" *ngFor="let package of packageList">
+      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="package.isOptional==true">
+        {{package.name}}
+      </ion-col>
+        <ion-col padding-left width-70 *ngIf="package.isOptional==false">
+          {{package.name}}
+        </ion-col>
+        <ion-col width-20 style="color:#8c8c8c">
+          {{package.quantity}}
+        </ion-col>
+        <ion-col width-10 style="font-size:25px" (click)="checkPackage(package)">
+          <ion-icon name="checkmark-circle-outline"  *ngIf="package.isOptional==false" style="color:#8c8c8c"></ion-icon>
+          <ion-icon name="checkmark-circle-outline"  *ngIf="package.isOptional==true" style="color:#f35fa3"></ion-icon>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col padding style="background:#EEEEEE;font-size:19px">
+        宝宝用品
+      </ion-col>
+    </ion-row>
+    <ion-row style="font-size:19px" *ngFor="let baby of babyList">
+      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="baby.isOptional==true">
+        {{baby.name}}
+      </ion-col>
+        <ion-col padding-left width-70 *ngIf="baby.isOptional==false">
+          {{baby.name}}
+        </ion-col>
+        <ion-col width-20 style="color:#8c8c8c">
+          {{baby.quantity}}
+        </ion-col>
+        <ion-col width-10 style="font-size:25px" (click)="checkBaby(baby)">
+          <ion-icon name="checkmark-circle-outline"  *ngIf="baby.isOptional==false" style="color:#8c8c8c"></ion-icon>
+          <ion-icon name="checkmark-circle-outline"  *ngIf="baby.isOptional==true" style="color:#f35fa3"></ion-icon>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
 </ion-content>

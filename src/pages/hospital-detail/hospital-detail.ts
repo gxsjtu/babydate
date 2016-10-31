@@ -38,7 +38,7 @@ export class HospitalDetailPage {
   }
 
   gotoHospitalPackage(){
-    this.navCtrl.push(HospitalPackagePage);
+    this.navCtrl.push(HospitalPackagePage, {packages: this.hospital.packages});
   }
 
   getMap(address) {
