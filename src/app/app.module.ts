@@ -25,6 +25,7 @@ import { CenterPage } from '../pages/center/center';
 import { HospitalTermsPage } from '../pages/hospital-terms/hospital-terms';
 import { HospitalCardPage } from '../pages/hospital-card/hospital-card';
 import { HospitalPackagePage } from '../pages/hospital-package/hospital-package';
+import { HospitalImageViewerPage } from '../pages/hospital-image-viewer/hospital-image-viewer';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { HospitalPackagePage } from '../pages/hospital-package/hospital-package'
     CenterPage,
     HospitalTermsPage,
     HospitalCardPage,
+    HospitalImageViewerPage,
     HospitalPackagePage
   ],
   imports: [
@@ -88,6 +90,7 @@ import { HospitalPackagePage } from '../pages/hospital-package/hospital-package'
     CenterPage,
     HospitalTermsPage,
     HospitalCardPage,
+    HospitalImageViewerPage,
     HospitalPackagePage
   ],
   providers: [GlobalParameters, Converter, LoginStatus]

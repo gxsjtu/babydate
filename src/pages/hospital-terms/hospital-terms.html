@@ -23,7 +23,7 @@
       <ion-row>
       </ion-row>
       <ion-row ion-item *ngFor="let y of yList">
-        <ion-col width-10 style="font-size:18px">
+        <ion-col style="font-size:18px">
           <ion-icon name="checkmark-circle" style="color:#40cc92;padding-right:20px" *ngIf="y.isHas==true"></ion-icon>
           <ion-icon name="close-circle" style="color:#ff9aa0;padding-right:20px" *ngIf="y.isHas==false"></ion-icon>
           {{y.name}}
@@ -34,7 +34,7 @@
       <ion-row>
       </ion-row>
       <ion-row ion-item *ngFor="let c of cList">
-        <ion-col width-10 style="font-size:18px">
+        <ion-col style="font-size:18px">
           <ion-icon name="checkmark-circle" style="color:#40cc92;padding-right:20px" *ngIf="c.isHas==true"></ion-icon>
           <ion-icon name="close-circle" style="color:#ff9aa0;padding-right:20px" *ngIf="c.isHas==false"></ion-icon>
           {{c.name}}

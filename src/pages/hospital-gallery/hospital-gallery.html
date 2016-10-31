@@ -16,18 +16,29 @@
 <ion-content>
   <div padding>
     <ion-segment color='common'>
-      <ion-segment-button value="environment">
+      <ion-segment-button value="environment" class="segment-activated" (click)="onEnvironmentClick()">
         环境
       </ion-segment-button>
-      <ion-segment-button value="facility">
+      <ion-segment-button value="facility" (click)="onFacilityClick()">
         设施
       </ion-segment-button>
-      <ion-segment-button value="room">
+      <ion-segment-button value="room" (click)="onRoomClick()">
         病房
       </ion-segment-button>
-      <ion-segment-button value="all">
+      <ion-segment-button value="all" (click)="onAllClick()">
         全部
       </ion-segment-button>
     </ion-segment>
+    <div style="padding:20px 5px 0px;" id="hospital-gallery">
+      <div class="container">
+        <div class="wrap" *ngFor="let pic of displayArray" (click)="pressEvent()">
+          <div style="position:relative;">
+          <img [src]="'data:image/png;base64,'+pic.logo" />
+          <div class="hospitalImage-desc">{{pic.orderN}}</div>
+        </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

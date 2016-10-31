@@ -38,7 +38,7 @@ export class HospitalDetailPage {
   }
 
   gotoHospitalPackage(){
-    this.navCtrl.push(HospitalPackagePage);
+    this.navCtrl.push(HospitalPackagePage, {packages: this.hospital.packages});
   }
 
   getMap(address) {
@@ -50,8 +50,10 @@ export class HospitalDetailPage {
   }
 
   gotoHospitalGallery(){
+    console.log(this.hospital);
     this.navCtrl.push(HospitalGalleryPage, {
-      backText: this.hospital.name
+      backText: this.hospital.name,
+      hospitalId:this.hospital._id
     })
   }
 

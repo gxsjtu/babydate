@@ -23,7 +23,6 @@ export class HospitalTermsPage {
 
   ionViewWillEnter() {
     this.terms = this.params.get('terms');
-    console.log(this.terms);
     this.yList = this.terms[0].docs;
     this.cList = this.terms[1].docs;
   }
