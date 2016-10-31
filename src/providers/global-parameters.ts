@@ -17,7 +17,8 @@ export class GlobalParameters {
 
   //（宽 ／ 高）
   public AD_MAIN_RATIO: number = 25 / 10;
-  public SERVER: string = 'https://nicebaby.shtx.com.cn';
+  //public SERVER: string = 'https://nicebaby.shtx.com.cn';
+  public SERVER: string = 'https://172.20.70.16:3000';
 
   //验证码的使用用途
   public verifyCodeUses = {
