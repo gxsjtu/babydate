@@ -6,6 +6,7 @@ page-hospital-gallery {
       position:relative;
       -webkit-column-break-inside:avoid;
       column-break-inside:avoid;
+      padding-bottom: 10px;
 
       img{
         max-width: none;
@@ -16,7 +17,7 @@ page-hospital-gallery {
         position: absolute;
         width: 100%;
         background-color:rgba(0, 0, 0, 0.3);
-        bottom: 2px;
+        bottom: 12px;
         text-align: center;
         color: white;
       }

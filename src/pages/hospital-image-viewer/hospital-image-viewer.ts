@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, Slides } from 'ionic-angular';
 declare var $: any;
 declare const Swiper: any;
 
@@ -23,17 +23,17 @@ export class HospitalImageViewerPage {
 
   }
 
-  onClick(){
+  goImageListPage(){
     this.viewCtrl.dismiss();
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
 
     new Swiper('.swiper-container', {
-      paginationClickable: true,
-      pagination: '.swiper-pagination',
       loop: false,
-      spaceBetween: 30
+      spaceBetween: 30,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev'
     });
   }
 

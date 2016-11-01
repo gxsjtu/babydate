@@ -31,7 +31,7 @@
     </ion-segment>
 
     <div style="padding:20px 5px 0px;" id="hospital-gallery">
-        <div *ngFor="let pic of displayArray" class="box" (click)="pressEvent()">
+        <div *ngFor="let pic of displayArray" class="box" (click)="pressEvent(pic)">
           <img [src]="'data:image/png;base64,'+pic.logo" />
           <div class="hospitalImage-desc">{{pic.name}}</div>
         </div>

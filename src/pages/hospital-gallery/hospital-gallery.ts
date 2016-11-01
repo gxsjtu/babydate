@@ -173,9 +173,18 @@ export class HospitalGalleryPage {
     this.allArray = this.environmentArray.concat(this.facilityArray).concat(this.roomArray);
   }
 
-  pressEvent() {
+  pressEvent(pic) {
+    let arr = [];
+    arr.push(pic);
+    for(let i = 0;i<this.displayArray.length;i++)
+    {
+      if(this.displayArray[i].orderN == pic.orderN){
+        continue;
+      }
+      arr.push(this.displayArray[i]);
+    }
     let modal = this.modalCtrl.create(HospitalImageViewerPage, {
-      images: this.displayArray
+      images: arr
     });
     modal.present();
   }
