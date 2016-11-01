@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, Slides } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 declare var $: any;
 declare const Swiper: any;
 
