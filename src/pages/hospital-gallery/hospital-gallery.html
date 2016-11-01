@@ -29,16 +29,12 @@
         全部
       </ion-segment-button>
     </ion-segment>
-    <div style="padding:20px 5px 0px;" id="hospital-gallery">
-      <div class="container">
-        <div class="wrap" *ngFor="let pic of displayArray" (click)="pressEvent()">
-          <div style="position:relative;">
-          <img [src]="'data:image/png;base64,'+pic.logo" />
-          <div class="hospitalImage-desc">{{pic.orderN}}</div>
-        </div>
 
+    <div style="padding:20px 5px 0px;" id="hospital-gallery">
+        <div *ngFor="let pic of displayArray" class="box" (click)="pressEvent()">
+          <img [src]="'data:image/png;base64,'+pic.logo" />
+          <div class="hospitalImage-desc">{{pic.name}}</div>
         </div>
-      </div>
     </div>
   </div>
 </ion-content>

@@ -28,6 +28,7 @@ export class HospitalGalleryPage {
 
   constructor(public navCtrl: NavController, public vc: ViewController, public params: NavParams, public http: Http, public events: Events, public loadingCtrl: LoadingController, public gParameters: GlobalParameters, public modalCtrl: ModalController) {
     this.hospitalId = params.get('hospitalId');
+    console.log(document.body.clientWidth);
   }
 
   // ionViewWillEnter() {
@@ -39,9 +40,9 @@ export class HospitalGalleryPage {
 
   //从网络获取医院图片
   loadHospitalImage(imageType: string) {
-    console.log(this.gParameters.SERVER + '/hospital/getImage/'+this.hospitalId+'/'+imageType);
+    //console.log(this.gParameters.SERVER + '/hospital/getImage/'+this.hospitalId+'/'+imageType);
     return new Promise((resolve, reject) => {
-      this.http.get(this.gParameters.SERVER + '/hospital/getImage/'+this.hospitalId+'/'+imageType).map(res => res.json()).subscribe((data) => {
+      this.http.get(this.gParameters.SERVER + '/hospital/getImage/' + this.hospitalId + '/' + imageType).map(res => res.json()).subscribe((data) => {
         if (data.status == 0) {
           resolve(data.data);
         }
@@ -123,26 +124,31 @@ export class HospitalGalleryPage {
       let requireArray = [];
       if (this.environmentArray.length == 0) {
         //加载环境图片
-        requireArray.push(this.environmentArray);
+        requireArray.push('environmentArray');
         requireLoadArray.push(this.loadHospitalImage('environment'));
       }
       if (this.facilityArray.length == 0) {
         //加载设施图片
         requireLoadArray.push(this.loadHospitalImage('facility'));
-        requireArray.push(this.facilityArray);
+        requireArray.push('facilityArray');
       }
       if (this.roomArray.length == 0) {
         //加载病房图片
         requireLoadArray.push(this.loadHospitalImage('room'));
-        requireArray.push(this.roomArray);
+        requireArray.push('roomArray');
       }
       if (requireLoadArray.length > 0) {
-
         Promise.all(requireLoadArray).then(res => {
-
-          for(let i = 0;i<requireLoadArray.length;i++)
-          {
-            requireArray[i] = res[i];
+          for (let i = 0; i < requireLoadArray.length; i++) {
+            if (requireArray[i] == "environmentArray") {
+              this.environmentArray = res[i];
+            }
+            else if (requireArray[i] == "facilityArray") {
+              this.facilityArray = res[i];
+            }
+            else {
+              this.roomArray = res[i];
+            }
           }
 
           this.mergeArrayToAll();
@@ -151,7 +157,7 @@ export class HospitalGalleryPage {
           loader.dismiss();
         });
       }
-      else{
+      else {
         this.mergeArrayToAll();
         this.displayArray = this.allArray;
         loader.dismiss();
@@ -163,13 +169,13 @@ export class HospitalGalleryPage {
     }
   }
 
-  mergeArrayToAll(){
+  mergeArrayToAll() {
     this.allArray = this.environmentArray.concat(this.facilityArray).concat(this.roomArray);
   }
 
-  pressEvent(){
-    let modal = this.modalCtrl.create(HospitalImageViewerPage,{
-      images:this.displayArray
+  pressEvent() {
+    let modal = this.modalCtrl.create(HospitalImageViewerPage, {
+      images: this.displayArray
     });
     modal.present();
   }

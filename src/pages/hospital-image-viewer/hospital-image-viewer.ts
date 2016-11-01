@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+declare var $: any;
+declare const Swiper: any;
 
 /*
   Generated class for the HospitalImageViewer page.
@@ -18,11 +20,21 @@ export class HospitalImageViewerPage {
   }
 
   ionViewDidLoad() {
-    console.log('Hello HospitalImageViewer Page');
+
   }
 
   onClick(){
     this.viewCtrl.dismiss();
+  }
+
+  ionViewDidEnter() {
+
+    new Swiper('.swiper-container', {
+      paginationClickable: true,
+      pagination: '.swiper-pagination',
+      loop: false,
+      spaceBetween: 30
+    });
   }
 
 }
