@@ -21,6 +21,7 @@
       <ion-col width-10 style="color:#f35fa3">
         完成度
       </ion-col>
+      <ion-col width-10></ion-col>
       <ion-col>
       <div id='box'>
 
@@ -32,7 +33,7 @@
 </ion-list>
 <div>
   <div style="font-size:18px;font-weight:600;padding-top:10px;padding-bottom:10px;color:#f35fa3">
-    未完成
+    <span style="background:#f35fa3">&nbsp;</span>&nbsp;&nbsp;未完成
   </div>
   <ion-grid>
     <ion-row>
@@ -41,15 +42,12 @@
       </ion-col>
     </ion-row>
     <ion-row style="font-size:19px" *ngFor="let card of cardList">
-      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="card.isOptional==true">
+      <ion-col padding-left width-70 style="text-decoration:line-through;color:#8c8c8c" *ngIf="card.isOptional==true">
         {{card.name}}<button ion-button outline small color="common" readonly="true" style="font-size:5px">必备</button>
       </ion-col>
       <ion-col padding-left width-70 *ngIf="card.isOptional==false">
         {{card.name}}<button ion-button outline small color="common" readonly="true" style="font-size:5px">必备</button>
       </ion-col>
-      <!-- <ion-col padding-left width-70>
-        {{card.name}}
-      </ion-col> -->
       <ion-col width-20 style="color:#8c8c8c">
         {{card.quantity}}
       </ion-col>
@@ -66,7 +64,7 @@
       </ion-col>
     </ion-row>
     <ion-row style="font-size:19px" *ngFor="let package of packageList">
-      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="package.isOptional==true">
+      <ion-col padding-left width-70 style="text-decoration:line-through;color:#8c8c8c" *ngIf="package.isOptional==true">
         {{package.name}}
       </ion-col>
         <ion-col padding-left width-70 *ngIf="package.isOptional==false">
@@ -88,7 +86,7 @@
       </ion-col>
     </ion-row>
     <ion-row style="font-size:19px" *ngFor="let baby of babyList">
-      <ion-col padding-left width-70 style="text-decoration:line-through" *ngIf="baby.isOptional==true">
+      <ion-col padding-left width-70 style="text-decoration:line-through;color:#8c8c8c" *ngIf="baby.isOptional==true">
         {{baby.name}}
       </ion-col>
         <ion-col padding-left width-70 *ngIf="baby.isOptional==false">
