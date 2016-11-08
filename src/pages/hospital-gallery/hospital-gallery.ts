@@ -59,114 +59,129 @@ export class HospitalGalleryPage {
   onEnvironmentClick() {
     let loader = this.loadingCtrl.create();
     loader.present();
-    if (this.environmentArray.length == 0) {
-      //加载环境图片
-      this.loadHospitalImage('environment').then((data) => {
-        this.environmentArray = data;
-        this.displayArray = this.environmentArray;
-      }).catch((error) => {
-        this.events.publish('alert:show', error);
-      }).finally(() => {
-        loader.dismiss();
-      });
-    }
-    else {
-      this.displayArray = this.environmentArray;
-      loader.dismiss();
-    }
-  }
-  //点击设施
-  onFacilityClick() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    if (this.facilityArray.length == 0) {
-      //加载设施图片
-      this.loadHospitalImage('facility').then((data) => {
-        this.facilityArray = data;
-        this.displayArray = this.facilityArray;
-      }).catch((error) => {
-        this.events.publish('alert:show', error);
-      }).finally(() => {
-        loader.dismiss();
-      });
-    }
-    else {
-      this.displayArray = this.facilityArray;
-      loader.dismiss();
-    }
-  }
-  //点击病房
-  onRoomClick() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    if (this.roomArray.length == 0) {
-      //加载病房图片
-      this.loadHospitalImage('room').then((data) => {
-        this.roomArray = data;
-        this.displayArray = this.roomArray;
-      }).catch((error) => {
-        this.events.publish('alert:show', error);
-      }).finally(() => {
-        loader.dismiss();
-      });
-    }
-    else {
-      this.displayArray = this.roomArray;
-      loader.dismiss();
-    }
-  }
-  //点击全部
-  onAllClick() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    if (this.allArray.length == 0) {
-      let requireLoadArray = [];
-      let requireArray = [];
+
+    setTimeout(()=>{
       if (this.environmentArray.length == 0) {
         //加载环境图片
-        requireArray.push('environmentArray');
-        requireLoadArray.push(this.loadHospitalImage('environment'));
-      }
-      if (this.facilityArray.length == 0) {
-        //加载设施图片
-        requireLoadArray.push(this.loadHospitalImage('facility'));
-        requireArray.push('facilityArray');
-      }
-      if (this.roomArray.length == 0) {
-        //加载病房图片
-        requireLoadArray.push(this.loadHospitalImage('room'));
-        requireArray.push('roomArray');
-      }
-      if (requireLoadArray.length > 0) {
-        Promise.all(requireLoadArray).then(res => {
-          for (let i = 0; i < requireLoadArray.length; i++) {
-            if (requireArray[i] == "environmentArray") {
-              this.environmentArray = res[i];
-            }
-            else if (requireArray[i] == "facilityArray") {
-              this.facilityArray = res[i];
-            }
-            else {
-              this.roomArray = res[i];
-            }
-          }
-
-          this.mergeArrayToAll();
-          this.displayArray = this.allArray;
+        this.loadHospitalImage('environment').then((data) => {
+          this.environmentArray = data;
+          this.displayArray = this.environmentArray;
+        }).catch((error) => {
+          this.events.publish('alert:show', error);
         }).finally(() => {
           loader.dismiss();
         });
       }
       else {
-        this.mergeArrayToAll();
+        this.displayArray = this.environmentArray;
+        loader.dismiss();
+      }
+    },100);
+
+
+  }
+  //点击设施
+  onFacilityClick() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+
+    setTimeout(()=>{
+      if (this.facilityArray.length == 0) {
+        //加载设施图片
+        this.loadHospitalImage('facility').then((data) => {
+          this.facilityArray = data;
+          this.displayArray = this.facilityArray;
+        }).catch((error) => {
+          this.events.publish('alert:show', error);
+        }).finally(() => {
+          loader.dismiss();
+        });
+      }
+      else {
+        this.displayArray = this.facilityArray;
+        loader.dismiss();
+      }
+    },100);
+
+  }
+  //点击病房
+  onRoomClick() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    setTimeout(()=>{
+      if (this.roomArray.length == 0) {
+        //加载病房图片
+        this.loadHospitalImage('room').then((data) => {
+          this.roomArray = data;
+          this.displayArray = this.roomArray;
+        }).catch((error) => {
+          this.events.publish('alert:show', error);
+        }).finally(() => {
+          loader.dismiss();
+        });
+      }
+      else {
+        this.displayArray = this.roomArray;
+        loader.dismiss();
+      }
+    },100);
+
+  }
+  //点击全部
+  onAllClick() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    setTimeout(()=>{
+      if (this.allArray.length == 0) {
+        let requireLoadArray = [];
+        let requireArray = [];
+        if (this.environmentArray.length == 0) {
+          //加载环境图片
+          requireArray.push('environmentArray');
+          requireLoadArray.push(this.loadHospitalImage('environment'));
+        }
+        if (this.facilityArray.length == 0) {
+          //加载设施图片
+          requireLoadArray.push(this.loadHospitalImage('facility'));
+          requireArray.push('facilityArray');
+        }
+        if (this.roomArray.length == 0) {
+          //加载病房图片
+          requireLoadArray.push(this.loadHospitalImage('room'));
+          requireArray.push('roomArray');
+        }
+        if (requireLoadArray.length > 0) {
+          Promise.all(requireLoadArray).then(res => {
+            for (let i = 0; i < requireLoadArray.length; i++) {
+              if (requireArray[i] == "environmentArray") {
+                this.environmentArray = res[i];
+              }
+              else if (requireArray[i] == "facilityArray") {
+                this.facilityArray = res[i];
+              }
+              else {
+                this.roomArray = res[i];
+              }
+            }
+
+            this.mergeArrayToAll();
+            this.displayArray = this.allArray;
+          }).finally(() => {
+            loader.dismiss();
+          });
+        }
+        else {
+          this.mergeArrayToAll();
+          this.displayArray = this.allArray;
+          loader.dismiss();
+        }
+      }
+      else {
         this.displayArray = this.allArray;
         loader.dismiss();
       }
-    }
-    else {
-      this.displayArray = this.allArray;
-      loader.dismiss();
-    }
+    },100);
+
   }
 
   mergeArrayToAll() {
