@@ -58,7 +58,7 @@ import { HospitalImageViewerPage } from '../pages/hospital-image-viewer/hospital
     IonicModule.forRoot(MyApp, {
       tabsPlacement: 'bottom',
       swipeBackEnabled: true,
-      tabsHideOnSubPages: false,
+      tabsHideOnSubPages: true,
       iconMode: 'ios',
       mode: 'ios',
       canDisableScroll: false,
