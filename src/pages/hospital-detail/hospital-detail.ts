@@ -34,7 +34,7 @@ export class HospitalDetailPage {
   }
 
   gotoHospitalCard(){
-    this.navCtrl.push(HospitalCardPage);
+    this.navCtrl.push(HospitalCardPage, {cards: this.hospital.cards});
   }
 
   gotoHospitalPackage(){

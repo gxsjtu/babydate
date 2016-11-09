@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import ProgressBar from 'progressbar.js';
+// import ProgressBar from 'progressbar.js';
+declare var $: any;
 
 /*
   Generated class for the HospitalPackage page.
@@ -23,6 +24,7 @@ export class HospitalPackagePage {
     perNum: any;
     linePro: any;
     allList: any;
+    perStr: any;
 
   constructor(public navCtrl: NavController, public params: NavParams) {
 
@@ -49,54 +51,80 @@ export class HospitalPackagePage {
     }).length;
     this.perNum = (100/29)/100;
     this.baseNum = this.perNum * (packageNum + cardNum + babyNum);
+    // this.perStr = this.baseNum*100 + "%";
+    this.perStr = parseInt(String(this.baseNum * 100)) + "%";
+    $("#box div div").css("width",this.perStr);
   }
 
   ionViewDidEnter() {
-    var line = new ProgressBar.Line('#box',
-    {
-      color:'#fafafa',
-      trailColor:'#f15ea2',
-      trailWidth:1,
-      // strokeWidth:0.8,
-      svgStyle:{width: '100%', height: '100%'},
-      text: {
-        style: {
-            color: '#f15ea2',
-            position: 'absolute',
-            left: '50%',
-            top: '40px',
-            padding: 0,
-            margin: 0,
-            transform: null
-          },
-          autoStyleContainer: false
-        },
-      step:(state,line) => {
-        var onlyList = this.allList.filter((p) => {
-          return p.isOptional == false;
-        });
-        if(onlyList.length <= 0)
-        {
-          line.setText("100%");
-        }
-        else
-        {
-        var num = this.baseNum * 100;
-        line.setText(parseInt(String(num)) + "%");
-        }
-      }
-    });
-    line.animate(this.baseNum, {
-      duration: 800,
-       step: function(state, circle, attachment) {
-        circle.path.setAttribute('stroke-width','0.6');
-        circle.path.setAttribute('d','M 0.3,0.5 L 99.7,0.5');
-    }
-    }, function() {
-      console.log('Animation has finished');
-    });
+    // var line = new ProgressBar.Line('#box',
+    // {
+    //   color:'#fafafa',
+    //   trailColor:'#f15ea2',
+    //   trailWidth:1,
+    //    strokeWidth:2,
+    //   // height:5,
+    //   svgStyle:{display:'block',width: '100%', height: '100%'},
+    //   text: {
+    //     style: {
+    //         color: '#f15ea2',
+    //         position: 'absolute',
+    //         left: '50%',
+    //         top: '35px',
+    //         padding: 0,
+    //         margin: 0,
+    //         transform: null
+    //       },
+    //       autoStyleContainer: false
+    //     },
+    //   step:(state,line) => {
+    //     var onlyList = this.allList.filter((p) => {
+    //       return p.isOptional == false;
+    //     });
+    //     if(onlyList.length <= 0)
+    //     {
+    //       line.setText("100%");
+    //     }
+    //     else
+    //     {
+    //     var num = this.baseNum * 100;
+    //     line.setText(parseInt(String(num)) + "%");
+    //     }
+    //   }
+    // });
+    // line.animate(this.baseNum, {
+    //   duration: 800,
+    //   strokeWidth:2,
+    //   step: function(state, circle, attachment) {
+    //     // console.log(circle.svg.childNodes[0]);
+    //     circle.svg.childNodes[0].setAttribute('stroke-width','2');
+    //     circle.path.setAttribute('stroke-width','1.4');
+    //     circle.path.setAttribute('d','M 0.3,1 L 99.7,1');
+    // }
+    // }, function() {
+    //   console.log('Animation has finished');
+    // });
+    //
+    // this.linePro = line;
+  }
 
-    this.linePro = line;
+  checkPer()
+  {
+    debugger
+    var onlyList = this.allList.filter((p) => {
+      return p.isOptional == false;
+    });
+    if(onlyList.length <= 0)
+    {
+      this.perStr = "100%";
+    }
+    else
+    {
+    // var num = this.baseNum * 100;
+    this.perStr = parseInt(String(this.baseNum * 100)) + "%";
+    }
+
+    $("#box div div").animate({width:this.perStr});
   }
 
   checkCard(card){
@@ -107,14 +135,8 @@ export class HospitalPackagePage {
     else{
       this.baseNum = this.baseNum + this.perNum;
     }
-
-      this.linePro.animate(this.baseNum, {
-        duration: 800
-      }, function() {
-        console.log('Animation has finished');
-      });
-
-      card.isOptional = !card.isOptional;
+    card.isOptional = !card.isOptional;
+    this.checkPer();
 
   }
   checkPackage(p){
@@ -126,12 +148,13 @@ export class HospitalPackagePage {
       this.baseNum = this.baseNum + this.perNum;
     }
     p.isOptional = !p.isOptional;
+    this.checkPer();
 
-      this.linePro.animate(this.baseNum, {
-        duration: 800
-      }, function() {
-        console.log('Animation has finished');
-      });
+      // this.linePro.animate(this.baseNum, {
+      //   duration: 800
+      // }, function() {
+      //   console.log('Animation has finished');
+      // });
   }
   checkBaby(baby){
     if(baby.isOptional)
@@ -142,11 +165,12 @@ export class HospitalPackagePage {
       this.baseNum = this.baseNum + this.perNum;
     }
     baby.isOptional = !baby.isOptional;
+    this.checkPer();
 
-      this.linePro.animate(this.baseNum, {
-        duration: 800
-      }, function() {
-        console.log('Animation has finished');
-      });
+      // this.linePro.animate(this.baseNum, {
+      //   duration: 800
+      // }, function() {
+      //   console.log('Animation has finished');
+      // });
   }
 }

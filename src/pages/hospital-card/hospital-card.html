@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <div id="timeline" class="timeline-container">
+  <!-- <div id="timeline" class="timeline-container">
     <div class="timeline-wrapper">
       <h2 class="timeline-time">1976</h2>
 
@@ -25,8 +25,8 @@
           <p>Content about the event goes here.</p>
         </dd>
 
-        <dt class="timeline-event" id="event02"><a>Another Event</a></dt>
-        <dd class="timeline-event-content" id="event02EX">
+        <dt class="timeline-event" id="eventafafafa02"><a>Another Event</a></dt>
+        <dd class="timeline-event-content" id="eventafafafa02EX">
           <p>Content about the other event.</p>
         </dd>
 
@@ -45,5 +45,53 @@
       </dl>
     </div>
     <br class="clear">
-  </div>
+  </div> -->
+
+  <ion-list id="timeline" class="timeline-container">
+    <ion-item *ngFor="let card of dataList">
+      <div class="timeline-wrapper">
+        <p style="font-size:20px;" color="common" class="timeline-time">{{card.name}}</p>
+
+        <dl class="timeline-series">
+          <div *ngFor="let c of card.content" >
+          <dt class="timeline-event" id="{{c.ex1ID}}" [innerHTML]="c.name">
+          </dt>
+          <dd class="timeline-event-content" id="{{c.ex2ID}}">
+          </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let img of card.imgs">
+              <img [src]="'data:image/png;base64,'+img.logo" style="width:100%">
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    </ion-item>
+    <ion-item>
+      <div id="pDIV">
+      <p>
+        注意事项：
+      </p>
+      <br />
+      <p>
+        1.产科初诊时间：周一至周五全天，周六上午8:00-11:30，下午13:30-15:00
+      </p>
+      <p>
+        2.VIP医生需要预约，每个医生每个月只有7个名额。
+      </p>
+      <p>
+        3.产科初诊需空腹，一名家属陪同。
+      </p>
+      <p>
+        4.所需材料：身份证。
+      </p>
+    </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

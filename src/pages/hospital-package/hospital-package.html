@@ -23,8 +23,14 @@
       </ion-col>
       <ion-col width-10></ion-col>
       <ion-col>
-      <div id='box'>
-
+      <div id='box' style="height:7px;margin-top:6px">
+          <div style="background:#f35fa3;height:100%;border-radius:15px;border:1px solid #f35fa3">
+            <div style="background:#fafafa;width:0;height:100%;border-radius:15px">
+            </div>
+          </div>
+      </div>
+      <div style="text-align:center;color:#f35fa3;font-size:12px">
+        {{perStr}}
       </div>
       </ion-col>
     </ion-row>
@@ -51,7 +57,7 @@
       <ion-col width-20 style="color:#8c8c8c">
         {{card.quantity}}
       </ion-col>
-      <ion-col width-10 style="font-size:25px" (click)="checkCard(card)">
+      <ion-col width-10 style="font-size:25px" (click)="checkCard(card)" tappable>
         <ion-icon name="checkmark-circle-outline"  *ngIf="card.isOptional==false" style="color:#8c8c8c"></ion-icon>
         <ion-icon name="checkmark-circle-outline"  *ngIf="card.isOptional==true" style="color:#f35fa3"></ion-icon>
       </ion-col>
@@ -73,7 +79,7 @@
         <ion-col width-20 style="color:#8c8c8c">
           {{package.quantity}}
         </ion-col>
-        <ion-col width-10 style="font-size:25px" (click)="checkPackage(package)">
+        <ion-col width-10 style="font-size:25px" (click)="checkPackage(package)" tappable>
           <ion-icon name="checkmark-circle-outline"  *ngIf="package.isOptional==false" style="color:#8c8c8c"></ion-icon>
           <ion-icon name="checkmark-circle-outline"  *ngIf="package.isOptional==true" style="color:#f35fa3"></ion-icon>
         </ion-col>
@@ -95,7 +101,7 @@
         <ion-col width-20 style="color:#8c8c8c">
           {{baby.quantity}}
         </ion-col>
-        <ion-col width-10 style="font-size:25px" (click)="checkBaby(baby)">
+        <ion-col width-10 style="font-size:25px" (click)="checkBaby(baby)" tappable>
           <ion-icon name="checkmark-circle-outline"  *ngIf="baby.isOptional==false" style="color:#8c8c8c"></ion-icon>
           <ion-icon name="checkmark-circle-outline"  *ngIf="baby.isOptional==true" style="color:#f35fa3"></ion-icon>
         </ion-col>
